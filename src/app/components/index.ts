@@ -4,5 +4,3 @@ export { Abonos } from './Abonos';
 export { Multimedia } from './Multimedia';
 export { Galeria } from './Galeria';
 export { Footer } from './Footer';
-
-

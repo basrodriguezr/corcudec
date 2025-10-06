@@ -5,29 +5,35 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Corporación Cultural Universidad de Concepción",
   description: "CORPORACIÓN",
-  icons: "https://www.corcudec.cl/favicon/favicon-32x32.png?ver=202306091143"
+  icons: "https://www.corcudec.cl/favicon/favicon-32x32.png?ver=202306091143",
 };
 
-export default function RootLayout({children}: Readonly<{children: React.ReactNode;}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }> ) {
   return (
     <html lang="es">
-      <body>
-        {/*INICIO CABECERA*/}  
-        <header className="relative overflow-hidden min-h-[70vh] flex flex-col bg-cover bg-center bg-no-repeat bg-[url('/img/violonchelista.png')]">                          
-            <MenuNav/>            
-            <Carrusel></Carrusel>
+      <body className="bg-neutral-950 text-white">
+        {/*INICIO CABECERA*/}
+        <header className="relative flex min-h-[75vh] flex-col overflow-hidden bg-[url('/img/violonchelista.png')] bg-cover bg-center bg-no-repeat">
+          <div className="absolute inset-0 bg-black/55" />
+          <div className="relative z-10">
+            <MenuNav />
+          </div>
+          <div className="relative z-10 flex flex-1 flex-col h-fit">
+            <Carrusel />
+          </div>
         </header>
         {/*FIN CABECERA*/} 
 
         {/*INICIO CUERPO*/} 
-        {children}
+        <main className="bg-white text-neutral-900">
+          {children}
+        </main>        
         {/*FIN CUERPO*/} 
 
         {/*INICIO FOOTER*/} 
-        <footer className='relative min-h-[70vh] bg-[url("/img/FOOTER.png")] bg-cover bg-center bg-no-repeat'>
-         {/* oscurecer uniforme */}
-          <div className="absolute inset-0 bg-black/40" />
-          <Footer/>
+        <footer className="relative min-h-[60vh] bg-[url('/img/FOOTER.png')] bg-cover bg-center bg-no-repeat">
+          <div className="absolute inset-0 bg-black/60" />
+          <Footer />
         </footer>
         {/*INICIO FOOTER*/} 
       </body>

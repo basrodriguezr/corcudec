@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export const MenuNav = () => {
     return (
-        <nav className="sticky top-0 bg-black/70 text-white backdrop-blur h-auto">
+        <nav className="sticky top-0 bg-black/50 text-white backdrop-blur h-auto">
             <div className="mx-auto max-w-7xl flex items-center">
                 <div className="flex-1 shrink-0 px-4 py-2 m-2">
                     <Image 
