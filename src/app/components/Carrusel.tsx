@@ -30,14 +30,9 @@ export const Carrusel=() => {
     <div className="relative w-full py-8 h-auto">
       <Swiper
           className="event-swiper px-2"
-          modules={[Navigation]}
-          slidesPerView="auto"
-          spaceBetween={24}
-          loop
-          loopAdditionalSlides={slides.length}   // 🔑 v11
-          speed={600}
-          grabCursor
-          navigation
+            slidesPerView={1}
+            spaceBetween={30}
+            loop={true}
       >
         {slides.map((e, i) => (
           <SwiperSlide key={i} className="!w-[260px] sm:!w-[320px] lg:!w-[380px]">

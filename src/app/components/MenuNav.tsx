@@ -10,17 +10,16 @@ export const MenuNav = () => {
                 <div className="flex-1 shrink-0 px-4 py-2 m-2">
                     <Image 
                         src="/img/logoudec.png"
-                        width={122}
-                        height={48}
-                        alt="Universidad de Concepción"
-                        
+                        width={165}
+                        height={50}
+                        alt="Universidad de Concepción"                        
                     />
                 </div>
                 <ul className="flex-1 flex justify-center gap-5 tracking-wide font-semibold text-xs"> 
                     <li className="group relative">
-                        <Link href="#" className="inline-flex items-center px-2 py-6 hover:text-amber-400 whitespace-nowrap uppercase">CORCUDEC</Link>
+                        <Link href="#" className="inline-flex items-center px-2 py-6 hover:text-amber-400 whitespace-nowrap uppercase text-sm">CORCUDEC</Link>
                         <div className="pointer-events-none absolute left-1/2 top-full hidden -translate-x-1/2 group-hover:block group-focus-within:block">
-                            <div className="mt-2 min-w-56 rounded-md bg-black/90 ring-1 ring-white/10 shadow-xl p-2 text-sm pointer-events-auto">
+                            <div className="mt-2 min-w-56 rounded-md bg-black/90 ring-1 ring-white/10 shadow-xl p-2 text-md pointer-events-auto">
                                 <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Quiénes Somos</Link>
                                 <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Equipo</Link>
                                 <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Alianzas</Link>
@@ -28,7 +27,7 @@ export const MenuNav = () => {
                         </div>
                     </li>
                     <li className="group relative">
-                        <Link href="#" className="inline-flex items-center px-2 py-6 hover:text-amber-400 whitespace-nowrap uppercase">
+                        <Link href="#" className="inline-flex items-center px-2 py-6 hover:text-amber-400 whitespace-nowrap uppercase text-sm">
                         Elencos
                         </Link>
                         <div className="pointer-events-none absolute left-1/2 top-full hidden -translate-x-1/2 group-hover:block group-focus-within:block">
@@ -40,7 +39,7 @@ export const MenuNav = () => {
                         </div>
                     </li>
                     <li className="group relative">
-                        <Link href="#" className="inline-flex items-center px-2 py-6 hover:text-amber-400 whitespace-nowrap uppercase">
+                        <Link href="#" className="inline-flex items-center px-2 py-6 hover:text-amber-400 whitespace-nowrap uppercase text-sm">
                         Teatro Udec
                         </Link>
                         <div className="pointer-events-none absolute left-1/2 top-full hidden -translate-x-1/2 group-hover:block group-focus-within:block">
@@ -55,7 +54,7 @@ export const MenuNav = () => {
                         </div>
                     </li>
                     <li className="group relative">
-                        <Link href="#" className="inline-flex items-center px-2 py-6 hover:text-amber-400 whitespace-nowrap uppercase">
+                        <Link href="#" className="inline-flex items-center px-2 py-6 hover:text-amber-400 whitespace-nowrap uppercase text-sm">
                             Programación
                         </Link>
                         <div className="pointer-events-none absolute left-1/2 top-full hidden -translate-x-1/2 group-hover:block group-focus-within:block">
@@ -70,12 +69,12 @@ export const MenuNav = () => {
                     </li>
 
                     <li>
-                        <Link href="#" className="inline-flex items-center px-2 py-6 hover:text-amber-400 whitespace-nowrap uppercase">
+                        <Link href="#" className="inline-flex items-center px-2 py-6 hover:text-amber-400 whitespace-nowrap uppercase text-sm">
                             Abonos
                         </Link>
                     </li>
                     <li>
-                        <Link href="#" className="inline-flex items-center px-2 py-6 hover:text-amber-400 whitespace-nowrap uppercase">
+                        <Link href="#" className="inline-flex items-center px-2 py-6 hover:text-amber-400 whitespace-nowrap uppercase text-sm">
                             NOTICIAS
                         </Link>
                     </li>

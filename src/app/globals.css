@@ -63,5 +63,77 @@ body {
   pointer-events: none;
 }
 
-@components {
+@layer components {
+  .contact-list {
+    @apply list-none 
+      p-0 
+      m-0;
+  }
+
+  .contact-item {
+    @apply flex      
+      items-center 
+      gap-2 
+      mb-2.5 
+      justify-center 
+      font-[14px];
+  }
+
+  .icon {
+    @apply text-white 
+      inline-grid
+      place-items-center
+      min-w-5;
+  }
+
+  .social-row {
+    @apply flex
+      gap-4.5
+      justify-center
+      mt-2;
+  }
+
+  /* tailwind.css o styles.css */
+  .social {
+    @apply w-[44px] 
+      h-[44px] 
+      rounded-full 
+      grid 
+      place-items-center
+      border-[1.5px] 
+      border-white/90 
+      text-white 
+      no-underline
+      transition-all 
+      duration-150 
+      ease-[cubic-bezier(.25,.1,.25,1)]
+      backdrop-blur-[2px]
+      hover:-translate-y-0.5 
+      hover:bg-white/10;
+  }
+
+  .multimedia {
+    @apply min-h-[55vh] 
+      bg-[url('/img/seccion3.webp')] 
+      max-w-[var(--max-wrap)] 
+      mx-auto
+      grid 
+      grid-cols-[2fr_1.2fr] 
+      gap-8 
+      items-center 
+      text-left 
+      p-5;
+  }
+
+  .video-contenedor {
+    @apply justify-self-center;
+  }
+
+  .video {
+    @apply aspect-video w-[720px] max-w-[960px] rounded-2xl;
+  }
+
+  .video-texto {
+    @apply justify-self-start self-start -ml-20 mt-25 text-white text-[15px] text-justify max-w-[480px] w-[420px];
+  }
 }

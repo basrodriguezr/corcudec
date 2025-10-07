@@ -32,7 +32,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 
         {/*INICIO FOOTER*/} 
         <footer className="relative min-h-[60vh] bg-[url('/img/FOOTER.png')] bg-cover bg-center bg-no-repeat">
-          <div className="absolute inset-0 bg-black/60" />
+          <div className="absolute inset-0 bg-black/10 pointer-events-none" />
           <Footer />
         </footer>
         {/*INICIO FOOTER*/} 
