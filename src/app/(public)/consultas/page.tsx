@@ -46,17 +46,19 @@ export default function consultas() {
 
 
   return (
-    <section className="form-card" role="region" aria-labelledby="form-title">
+     <section className="form-card" role="region" aria-labelledby="form-title">
       <h2 className="form-title">Consultas, Sugerencias, Reclamos y Felicitaciones</h2>
       <p className="helper" >Completa el formulario y selecciona el tipo de solicitud.</p>
 
       {/* <!-- Formulario CSR --> */}
-      <form id="csr-form"  onSubmit={onSubmit} noValidate>
+      <form id="csr-form" ref={formRef} onSubmit={onSubmit} noValidate>
         {/* <!-- Tipo de solicitud --> */}
         <div className="field">
           <label className="field-label">Tipo de solicitud</label>
-          <select id="tipo" name="tipo" required>
-            <option defaultValue={"Selecciona una opción"}>Selecciona una opción</option>
+          <select id="tipo" name="tipo" required defaultValue="">
+            <option value="" disabled>
+              Selecciona una opción
+            </option>
             <option value="consulta">Consulta</option>
             <option value="sugerencia">Sugerencia</option>
             <option value="reclamo">Reclamo</option>

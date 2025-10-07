@@ -94,9 +94,9 @@ export const Footer = () => {
                     <div className='flex flex-1 items-start justify-start mt-10'>  
                         <ul className="footer-menu">
                             <li className="m-2"><a href="/consultas">CONSULTAS</a></li>
-                            <li className="m-2"><a href="opiniones.html">SUGERENCIAS</a></li>
-                            <li className="m-2"><a href="opiniones.html">RECLAMOS</a></li>
-                            <li className="m-2"><a href="opiniones.html">FELICITACIONES</a></li>
+                            <li className="m-2"><a href="/sugerencias">SUGERENCIAS</a></li>
+                            <li className="m-2"><a href="/reclamos">RECLAMOS</a></li>
+                            <li className="m-2"><a href="/felicitaciones">FELICITACIONES</a></li>
                             <li className="m-2"><a href="footer/TRANSPARENCIA.html">TRANSPARENCIA</a></li>
                             <li className="m-2"><a href="footer/prevencion_del_delito.html">MODELO DE PREVENCIÓN DEL DELITO</a></li>
                         </ul>    

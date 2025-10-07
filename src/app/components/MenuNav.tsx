@@ -8,12 +8,14 @@ export const MenuNav = () => {
         <nav className="sticky top-0 bg-black/40 text-white backdrop-blur h-auto">
             <div className="mx-auto max-w-7xl flex items-center">
                 <div className="flex-1 shrink-0 px-4 py-2 m-2">
-                    <Image 
-                        src="/img/logoudec.png"
-                        width={130}
-                        height={50}
-                        alt="Universidad de Concepción"                        
-                    />
+                    <Link href="/home/main">
+                        <Image 
+                            src="/img/logoudec.png"
+                            width={130}
+                            height={50}
+                            alt="Universidad de Concepción"                    
+                        />
+                    </Link>
                 </div>
                 <ul className="flex-1 flex justify-center gap-5 tracking-wide font-semibold text-xs"> 
                     <li className="group relative">

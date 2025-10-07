@@ -3,7 +3,7 @@
 import { useRef, useState, useEffect, FormEvent } from "react";
 
 
-export default function Sugerencias() {
+export default function Felicitaciones() {
   const formRef = useRef<HTMLFormElement>(null);
   const [ok, setOk] = useState(false);
   const [sending, setSending] = useState(false);
