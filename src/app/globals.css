@@ -64,6 +64,23 @@ body {
 }
 
 @layer components {
+  .abono {
+    @apply grid 
+    min-h-[15vh] 
+    bg-black 
+    justify-center 
+    content-center 
+    px-6 
+    py-10;
+  }
+
+  .abono iframe {
+    @apply mx-auto 
+      h-auto 
+      w-full 
+      max-w-[580px];
+  }
+
   .contact-list {
     @apply list-none 
       p-0 
@@ -130,10 +147,130 @@ body {
   }
 
   .video {
-    @apply aspect-video w-[720px] max-w-[960px] rounded-2xl;
+    @apply aspect-video 
+      w-[720px] 
+      max-w-[960px] 
+      rounded-2xl;
   }
 
   .video-texto {
-    @apply justify-self-start self-start -ml-20 mt-25 text-white text-[15px] text-justify max-w-[480px] w-[420px];
+    @apply justify-self-start 
+      self-start 
+      -ml-20 
+      mt-25 
+      text-white 
+      text-[15px] 
+      text-justify 
+      max-w-[480px] 
+      w-[420px];
+  }
+
+  .galeria {
+    @apply min-h-[60vh] 
+      bg-black
+      text-white
+      pt-14
+      pb-14
+      pl-10
+      pr-10;
+  }
+
+  .items-galeria {
+    @apply grid 
+      grid-cols-3
+    text-yellow-400 
+      mx-auto
+      max-w-[var(--max-wrap)] 
+      [gap:8px_10px] 
+      no-underline;
+  }
+
+  .item-galeria {
+    @apply flex
+      flex-col
+      items-center
+      m-[30px];
+  }
+
+  .form-card {
+    @apply mt-[34px] 
+      mx-auto
+      w-[min(920px,100%)]
+      bg-gradient-to-b from-[#3f3f3f] to-[#2f2f2f]
+      rounded-[32px]
+      py-[34px] px-[clamp(18px,4vw,48px)]
+      shadow-[var(--shadow)]
+      relative
+      after:content-[''] after:absolute after:inset-0
+      after:rounded-[32px]
+      after:shadow-[inset_0_0_0_1px_rgba(255,255,255,.06)]
+      after:pointer-events-none
+      text-white;
+  }
+
+  .form-title {
+    @apply text-center 
+      font-semibold 
+      tracking-[0.2px] 
+      mt-[2px] 
+      mb-[26px]
+      text-[2rem];
+  }
+
+  .helper {
+    @apply mt-3
+      text-center 
+      text-[0.9rem]
+      text-gray-400;
+  }
+
+  .field {
+    @apply grid grid-cols-[200px_1fr] items-center gap-[14px] my-[14px];
+  }
+
+  .field-label {
+    @apply text-[1.35rem] font-semibold;
+  }
+
+  .field-input {
+    @apply h-[56px] 
+      border-0 
+      rounded-full 
+      px-[22px] 
+      text-[1.05rem]
+      bg-[#fff7fb] 
+      text-[#222] outline-none
+      shadow-[inset_0_1px_0_rgba(0,0,0,.08)]
+      placeholder:text-[#888];
+  }
+
+  #tipo {
+    @apply bg-white text-black rounded-xs h-7;
+  }
+
+  .btn-send {
+    @apply block 
+      mt-[20px] 
+      mx-auto
+      py-[10px] 
+      px-[42px] 
+      h-[54px]
+      rounded-full 
+      border-2 
+      border-white         
+      bg-[#581911] 
+      text-white 
+      font-extrabold 
+      tracking-[0.6px]
+      shadow-[0_8px_24px_rgba(0,0,0,.25)]
+      cursor-pointer
+      transition-[transform,box-shadow,background-color] 
+      duration-[120ms] ease-in-out
+      hover:-translate-y-px 
+      hover:bg-[var(--accent-dark)] 
+      hover:shadow-[0_12px_28px_rgba(0,0,0,.3)]
+      focus-visible:outline-[3px] 
+      focus-visible:outline-white/60 
+      focus-visible:outline-offset-2;
   }
 }

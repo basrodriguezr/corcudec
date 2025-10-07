@@ -5,12 +5,12 @@ import Link from "next/link";
 
 export const MenuNav = () => {
     return (
-        <nav className="sticky top-0 bg-black/50 text-white backdrop-blur h-auto">
+        <nav className="sticky top-0 bg-black/40 text-white backdrop-blur h-auto">
             <div className="mx-auto max-w-7xl flex items-center">
                 <div className="flex-1 shrink-0 px-4 py-2 m-2">
                     <Image 
                         src="/img/logoudec.png"
-                        width={165}
+                        width={130}
                         height={50}
                         alt="Universidad de Concepción"                        
                     />
@@ -31,11 +31,11 @@ export const MenuNav = () => {
                         Elencos
                         </Link>
                         <div className="pointer-events-none absolute left-1/2 top-full hidden -translate-x-1/2 group-hover:block group-focus-within:block">
-                        <div className="mt-2 min-w-64 rounded-md bg-black/90 ring-1 ring-white/10 shadow-xl p-2 text-sm pointer-events-auto">
-                            <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Orquesta Sinfónica UdeC</Link>
-                            <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Coro Sinfónico UdeC</Link>
-                            <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Directores Destacados</Link>
-                        </div>
+                            <div className="mt-2 min-w-64 rounded-md bg-black/90 ring-1 ring-white/10 shadow-xl p-2 text-sm pointer-events-auto">
+                                <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Orquesta Sinfónica UdeC</Link>
+                                <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Coro Sinfónico UdeC</Link>
+                                <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Directores Destacados</Link>
+                            </div>
                         </div>
                     </li>
                     <li className="group relative">
@@ -43,14 +43,14 @@ export const MenuNav = () => {
                         Teatro Udec
                         </Link>
                         <div className="pointer-events-none absolute left-1/2 top-full hidden -translate-x-1/2 group-hover:block group-focus-within:block">
-                        <div className="mt-2 min-w-64 rounded-md bg-black/90 ring-1 ring-white/10 shadow-xl p-2 text-sm pointer-events-auto">
-                            <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Historia</Link>
-                            <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Programas Emblemáticos</Link>
-                            <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Lunes Cinematográficos</Link>
-                            <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Ópera</Link>
-                            <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Teatro en el Teatro</Link>
-                            <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Arriendos</Link>
-                        </div>
+                            <div className="mt-2 min-w-64 rounded-md bg-black/90 ring-1 ring-white/10 shadow-xl p-2 text-sm pointer-events-auto">
+                                <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Historia</Link>
+                                <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Programas Emblemáticos</Link>
+                                <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Lunes Cinematográficos</Link>
+                                <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Ópera</Link>
+                                <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Teatro en el Teatro</Link>
+                                <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Arriendos</Link>
+                            </div>
                         </div>
                     </li>
                     <li className="group relative">

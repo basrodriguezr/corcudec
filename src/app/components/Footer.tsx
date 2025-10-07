@@ -2,8 +2,6 @@
 
 import Image from 'next/image'
 import React from 'react'
-import Link from "next/link";
-
 
 export const Footer = () => {
     return (
@@ -95,7 +93,7 @@ export const Footer = () => {
                     {/*Inicio Menu*/}
                     <div className='flex flex-1 items-start justify-start mt-10'>  
                         <ul className="footer-menu">
-                            <li className="m-2"><a href="opiniones.html">CONSULTAS</a></li>
+                            <li className="m-2"><a href="/consultas">CONSULTAS</a></li>
                             <li className="m-2"><a href="opiniones.html">SUGERENCIAS</a></li>
                             <li className="m-2"><a href="opiniones.html">RECLAMOS</a></li>
                             <li className="m-2"><a href="opiniones.html">FELICITACIONES</a></li>
