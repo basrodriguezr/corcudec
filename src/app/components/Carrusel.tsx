@@ -1,48 +1,110 @@
 "use client";
 
 import Image from "next/image";
-import {Swiper, SwiperSlide} from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, EffectCoverflow } from "swiper/modules";
 
 import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+import "swiper/css/effect-coverflow";
 
-type Slide = { src: string; alt: string; caption?: string };
+type Slide = {
+  src: string;
+  alt: string;
+  href: string;
+  tag?: string;
+};
 
 const slides: Slide[] = [
-  { src: "/img/VIBRA.webp",   alt: "VIBRA"   },
-  { src: "/img/HABLE.webp",   alt: "HABLE"   },
-  { src: "/img/GAVIOTA.webp", alt: "GAVIOTA" },
-  { src: "/img/PASION.webp",  alt: "PASION"  },
-  { src: "/img/VIBRA.webp",   alt: "VIBRA"   },
-  { src: "/img/HABLE.webp",   alt: "HABLE"   },
-  { src: "/img/GAVIOTA.webp", alt: "GAVIOTA" },
-  { src: "/img/PASION.webp",  alt: "PASION"  },
-  { src: "/img/VIBRA.webp",   alt: "VIBRA"   },
-  { src: "/img/HABLE.webp",   alt: "HABLE"   },
-  { src: "/img/GAVIOTA.webp", alt: "GAVIOTA" },
-  { src: "/img/PASION.webp",  alt: "PASION"  },
+  {
+    src: "/img/HABLE.webp",
+    alt: "Hable con ella",
+    href: "https://ticketplus.cl/events/hable-con-ella",
+    tag: "Temporada 2025",
+  },
+  {
+    src: "/img/VIBRA.webp",
+    alt: "Vibra con la orquesta",
+    href: "https://ticketplus.cl/events/vibra-con-la-orquesta",
+    tag: "Temporada popular",
+  },
+  {
+    src: "/img/GAVIOTA.webp",
+    alt: "La gaviota",
+    href: "https://ticketplus.cl/events/la-gaviota",
+    tag: "Teatro musical",
+  },
+  {
+    src: "/img/PASION.webp",
+    alt: "Pasión y ritmo",
+    href: "https://ticketplus.cl/events/pasion-y-ritmo",
+    tag: "Gira nacional",
+  },
+  {
+    src: "/img/VIBRA.webp",
+    alt: "Vibra con la orquesta",
+    href: "https://ticketplus.cl/events/vibra-con-la-orquesta-octubre",
+    tag: "Temporada popular",
+  },
+  {
+    src: "/img/HABLE.webp",
+    alt: "Hable con ella",
+    href: "https://ticketplus.cl/events/hable-con-ella-octubre",
+    tag: "Temporada 2025",
+  },
+  {
+    src: "/img/GAVIOTA.webp",
+    alt: "La gaviota",
+    href: "https://ticketplus.cl/events/la-gaviota-noviembre",
+    tag: "Teatro musical",
+  },
+  {
+    src: "/img/PASION.webp",
+    alt: "Pasión y ritmo",
+    href: "https://ticketplus.cl/events/pasion-y-ritmo-noviembre",
+    tag: "Gira nacional",
+  },
 ];
 
-export const Carrusel=() => {
+export const Carrusel = () => {
   return (
-    <div className="relative w-full py-8 h-auto">
+    <div className="relative w-full py-10 sm:py-12 -mt-20">
       <Swiper
-          className="event-swiper px-2"
-            slidesPerView={1}
-            spaceBetween={30}
-            loop={true}
+        modules={[Autoplay, EffectCoverflow]}
+        className="event-swiper"
+        effect="coverflow"
+        grabCursor
+        centeredSlides
+        slidesPerView="auto"
+        coverflowEffect={{ rotate: 0, stretch: 0, depth: 120, modifier: 2, slideShadows: false }}
+        spaceBetween={56}
+        loop
+        autoplay={{ delay: 6500, disableOnInteraction: false }}
+        breakpoints={{
+          0: { spaceBetween: 28 },
+          640: { spaceBetween: 40 },
+          1024: { spaceBetween: 56 },
+        }}
       >
-        {slides.map((e, i) => (
-          <SwiperSlide key={i} className="!w-[260px] sm:!w-[320px] lg:!w-[380px]">
-            <article className="rounded-[22px] overflow-hidden bg-black/40 backdrop-blur-sm shadow-2xl ring-1 ring-white/10">
-              <div className="relative aspect-[3/4]">
-                <Image src={e.src} alt={e.alt} fill className="object-fill" />
-              </div>
-            </article>
+        {slides.map((slide, index) => (
+          <SwiperSlide key={slide.href} className="event-slide">
+            <a
+              href={slide.href}
+              className="event-card"
+              target="_blank"
+              rel="noreferrer"
+              aria-label={slide.tag ? `${slide.tag} - ${slide.alt}` : slide.alt}
+            >
+              <Image
+                src={slide.src}
+                alt={slide.alt}
+                fill
+                className="event-card__image"
+                priority={index < 3}
+              />
+            </a>
           </SwiperSlide>
         ))}
       </Swiper>
     </div>
   );
-}
+};

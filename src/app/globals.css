@@ -6,6 +6,9 @@ body {
 
 /* === Carrusel estilo “tarjeta central grande / vecinas chicas” === */
 .event-swiper {
+  width: min(1080px, 100%);
+  margin-inline: auto;
+  padding-inline: clamp(0.75rem, 4vw, 2.5rem);
   overflow: visible; /* deja ver sombras/bordes fuera del carril */
   cursor: grab;
 }
@@ -14,22 +17,39 @@ body {
 }
 
 .event-swiper .swiper-wrapper {
-  align-items: center; /* centra verticalmente las tarjetas */
+  align-items: stretch; /* que todas las tarjetas midan lo mismo  */
 }
 
 /* estado base: más pequeñas y con menos opacidad */
 .event-swiper .swiper-slide {
-  transform: scale(0.86);
+  width: clamp(200px, 26vw, 320px) !important;
+  height: auto !important;
+  transform: scale(0.78);
   opacity: 0.55;
-  transition: transform 0.35s ease, opacity 0.35s ease, filter 0.35s ease;
+  transition: transform 0.4s ease, opacity 0.4s ease, filter 0.4s ease;
   will-change: transform;
+  display: flex;
+  align-items: stretch;
 }
 
 /* vecinas inmediatas un poco más grandes */
 .event-swiper .swiper-slide-prev,
 .event-swiper .swiper-slide-next {
-  transform: scale(0.93);
+  transform: scale(0.9);
   opacity: 0.85;
+}
+
+/* segunda fila de vecinas */
+.event-swiper .swiper-slide-next + .swiper-slide,
+.event-swiper .swiper-slide-prev + .swiper-slide {
+  transform: scale(0.84);
+  opacity: 0.7;
+}
+
+.event-swiper .swiper-slide-next + .swiper-slide + .swiper-slide,
+.event-swiper .swiper-slide-prev + .swiper-slide + .swiper-slide {
+  transform: scale(0.76);
+  opacity: 0.45;
 }
 
 /* activa (centro) a tamaño completo */
@@ -63,9 +83,53 @@ body {
   pointer-events: none;
 }
 
+.event-card__image {
+  object-fit: cover;
+}
+
+.event-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 28px;
+  box-shadow: 0 22px 40px rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  isolation: isolate;
+  text-decoration: none;
+  color: inherit;
+}
+
+.event-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.65) 0%,
+    rgba(0, 0, 0, 0.35) 45%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.event-card:hover::after,
+.event-card:focus-visible::after {
+  opacity: 1;
+}
+
+.event-card:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.7);
+  outline-offset: 4px;
+}
+
 @layer components {
   .abono {
-    @apply grid 
+    @apply grid
     min-h-[15vh] 
     bg-black 
     justify-center 
