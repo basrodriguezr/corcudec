@@ -4,7 +4,7 @@ export const Multimedia = () => {
       <div className="video-contenedor">
         <iframe className="video" src="https://www.youtube-nocookie.com/embed/D-ipnOJ9fIU?start=935" title="YouTube video"></iframe>
       </div>
-      <div className="video-texto">
+      <div className="texto-contenedor">
         <p>
           &ldquo;Lorem ipsum dolor sit amet&rdquo;
           <br/><br/>

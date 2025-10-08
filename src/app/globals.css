@@ -338,3 +338,23 @@ body {
       focus-visible:outline-offset-2;
   }
 }
+
+@media (max-width: 1024px) {
+  
+  .multimedia {
+    @apply grid-cols-1;
+  }
+
+  .video-contenedor {
+
+    @apply -mx-5;
+  }
+
+  .video {
+    @apply w-full;
+  }
+
+  .video-texto {
+    @apply justify-self-center self-start ml-0 mt-0 w-full;
+  }
+}
