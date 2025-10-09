@@ -196,7 +196,7 @@ body {
       hover:bg-white/10;
   }
 
-  .multimedia {
+  /* .multimedia {
     @apply min-h-[55vh] 
       bg-[url('/img/seccion3.webp')] 
       max-w-[var(--max-wrap)] 
@@ -209,24 +209,25 @@ body {
       p-5
       text-white
       text-sm;
-  }
+  } */
 
-  .texto-contenedor {
-    @apply min-w-[35vh] w-[35vh];
+  .multimedia {
+    @apply relative mx-auto flex w-full max-w-[var(--max-wrap)] flex-col items-center gap-8 bg-[url('/img/seccion3.webp')] bg-cover bg-center px-4 py-16 text-center text-white text-base;
   }
 
   .video-contenedor {
-    @apply justify-self-center;
+    @apply flex w-full max-w-[720px] justify-center;
   }
 
   .video {
-    @apply aspect-video 
-      w-[720px] 
-      max-w-[960px] 
-      rounded-2xl;
+    @apply aspect-video w-full rounded-2xl shadow-[0_24px_60px_rgba(0,0,0,0.45)];
   }
 
-  .video-texto {
+  .texto-contenedor {
+    @apply w-full max-w-[640px] text-center text-base leading-relaxed;
+  }
+
+  /* .video-texto {
     @apply justify-self-start 
       self-start 
       -ml-20 
@@ -236,9 +237,13 @@ body {
       text-justify 
       max-w-[480px] 
       w-[420px];
-  }
+  } */
 
   .galeria {
+    @apply w-full bg-black py-16 text-white;
+  }
+
+  /* .galeria {
     @apply min-h-[60vh] 
       bg-black
       text-white
@@ -246,16 +251,17 @@ body {
       pb-14
       pl-10
       pr-10;
-  }
+  } */
 
   .items-galeria {
-    @apply grid 
+    @apply mx-auto grid w-full max-w-[var(--max-wrap)] grid-cols-1 gap-10 px-4 no-underline;
+    /* @apply grid 
       grid-cols-3
     text-yellow-400 
       mx-auto
       max-w-[var(--max-wrap)] 
       [gap:8px_10px] 
-      no-underline;
+      no-underline; */
   }
 
   .item-galeria {
@@ -512,21 +518,39 @@ body {
     font-weight: 600;
   }
 
-  @media (max-width: 1024px) {
+  @media (min-width: 768px) {
     .multimedia {
-      @apply grid-cols-1;
+      @apply gap-12 px-8;
+    }
+
+    .texto-contenedor {
+      @apply text-lg;
+    }
+
+    .items-galeria {
+      @apply grid-cols-2;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .multimedia {
+      @apply grid grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] items-center gap-14 px-12 text-left;
     }
 
     .video-contenedor {
-      @apply -mx-5;
+      @apply justify-self-center;
     }
 
-    .video {
-      @apply w-full;
+    .texto-contenedor {
+      @apply max-w-[420px] text-left;
     }
 
-    .video-texto {
-      @apply justify-self-center self-start ml-0 mt-0 w-full;
+    .items-galeria {
+      @apply grid-cols-3 gap-12 px-10;
+    }
+
+    .item-galeria {
+      @apply gap-8;
     }
   }
 }

@@ -6,37 +6,42 @@ import React from 'react'
 export const Footer = () => {
     return (
         <>           
-            {/*Footer Content*/}
-            <div >
+             {/*Footer Content*/}
+            <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-12 pt-12">
                 {/*Footer grid*/}
-                <div className='flex flex-row'>
+                <div className="flex flex-col items-center gap-12 text-center lg:flex-row lg:items-start lg:justify-between lg:text-left">
                     {/*Inicio logos*/}
-                    <div className='flex flex-1 place-items-baseline justify-end mt-10'>  
-                        <Image src={"/img/ICONOS/logo_udec.png"} width={175} height={70} alt='Universidad de Concepción - Corporación Cultural' className="m-5"/>
-                        <Image src={"/img/ICONOS/logo_gob.png"} width={90} height={70} alt='Ministerio de las Culturas, las Artes y el Patrimonio' className="m-5"/>
+                    <div className="flex w-full max-w-xs flex-col items-center gap-6 lg:max-w-none lg:items-start">
+                        <div className="flex flex-wrap items-center justify-center gap-6 lg:justify-start">
+                            <Image src={"/img/ICONOS/logo_udec.png"} width={175} height={70} alt='Universidad de Concepción - Corporación Cultural' className="h-auto w-[175px] max-w-full"/>
+                            <Image src={"/img/ICONOS/logo_gob.png"} width={90} height={70} alt='Ministerio de las Culturas, las Artes y el Patrimonio' className="h-auto w-[90px] max-w-full"/>
+                        </div>
                     </div>
                     {/*Fin logos*/}
 
                     {/*Inicio Contacto*/}
-                     <div className='flex flex-1 items-center justify-center mt-10'>  
-                        <ul className="contact-list">
-                            <li className="flex items-start content-start justify-center gap-2 mb-2.5 font-[14px]">
+                    <div className="flex w-full max-w-md flex-col items-center gap-5">
+                        <ul className="contact-list flex w-full flex-col items-center gap-4 text-sm lg:items-start">
+                            <li className="flex flex-row items-center gap-2 lg:flex-row lg:items-center">
                                 <span className="icon">
                                     { MailIcon() }
                                 </span>
                                 <a href="mailto:contacto@corcudec.cl" className="text-white hover:underline underline-offset-4 decoration-white/60 break-words">CONTACTO@CORCUDEC.CL</a>
                             </li>
-                            <li className="flex items-center justify-center gap-2 mb-2.5 font-[14px]">
+                            <li className="flex flex-row items-center gap-2 lg:flex-row lg:items-center">
                                 <span className="icon">
                                     { PhoneIcon() }
-                                    
                                 </span>
-                                <a href="tel:+56412243536">412-243-536</a> / <a href="tel:+56412249155">412-249-155</a>
+                                <div>
+                                    <a href="tel:+56412243536" className="hover:underline underline-offset-4 decoration-white/60">412-243-536</a>
+                                    <span className="mx-1">/</span>
+                                    <a href="tel:+56412249155" className="hover:underline underline-offset-4 decoration-white/60">412-249-155</a>
+                                </div>
                             </li>
-                            <li className="mb-2.5 font-[14px]">  
-                                <div className="flex items-center justify-center gap-2 ">
+                            <li className="flex w-full flex-col items-center gap-4 lg:items-start">
+                                <div className="flex flex-row items-center gap-2 lg:flex-row lg:items-center lg:gap-3">
                                     <span className="icon">
-                                        { LocationIcon() }                                       
+                                        { LocationIcon() }
                                     </span>
                                     <a
                                         href="https://www.google.com/maps?q=O%27Higgins%20660%2C%20Concepci%C3%B3n&z=16"
@@ -46,40 +51,40 @@ export const Footer = () => {
                                         title="Abrir en Google Maps"
                                     >
                                         O’HIGGINS 660 - CONCEPCIÓN
-                                    </a>                   
-                                </div> 
-                                <div className="flex items-center justify-center gap-2 mt-3">
+                                    </a>
+                                </div>
+                                <div className="flex w-full justify-center lg:justify-start">
                                     <iframe
                                         // usa embed; también sirve q=...&output=embed si prefieres
                                         src="https://www.google.com/maps?q=O%27Higgins%20660%2C%20Concepci%C3%B3n&output=embed&z=16"
-                                        width="300"
-                                        height="150"
+                                        width="320"
+                                        height="180"
                                         loading="lazy"
                                         referrerPolicy="no-referrer-when-downgrade"
-                                        className="rounded-2xl border border-white/20 shadow-xl"
+                                        className="lg:w-full md:w-[75%] rounded-2xl border border-white/20 shadow-xl"
                                         title="Mapa O'Higgins 660 - Concepción"
                                     />
                                 </div>
-                                <div className="social-row">
+                                <div className="social-row w-full justify-center lg:justify-start">
                                     { FacebookIcon() }
                                     { InstagramIcon() }
                                     { YoutubeIcon() }
-                                </div>                             
+                                </div>
                             </li>
                         </ul>
                     </div>
                     {/*Fin Contacto*/}
 
                     {/*Inicio Menu*/}
-                    <div className='flex flex-1 items-start justify-start mt-10'>  
-                        <ul className="footer-menu">
-                            <li className="m-2"><a href="/consultas">CONSULTAS</a></li>
-                            <li className="m-2"><a href="/sugerencias">SUGERENCIAS</a></li>
-                            <li className="m-2"><a href="/reclamos">RECLAMOS</a></li>
-                            <li className="m-2"><a href="/felicitaciones">FELICITACIONES</a></li>
-                            <li className="m-2"><a href="/transparencia">TRANSPARENCIA</a></li>
-                            <li className="m-2"><a href="/modeloPrevencionDelito">MODELO DE PREVENCIÓN DEL DELITO</a></li>
-                        </ul>    
+                    <div className="flex w-full max-w-xs flex-col items-center gap-2 lg:items-start">
+                        <ul className="footer-menu flex flex-col gap-2">
+                            <li><a href="/consultas">CONSULTAS</a></li>
+                            <li><a href="/sugerencias">SUGERENCIAS</a></li>
+                            <li><a href="/reclamos">RECLAMOS</a></li>
+                            <li><a href="/felicitaciones">FELICITACIONES</a></li>
+                            <li><a href="/transparencia">TRANSPARENCIA</a></li>
+                            <li><a href="/modeloPrevencionDelito">MODELO DE PREVENCIÓN DEL DELITO</a></li>
+                        </ul>
                     </div>
                     {/*Fin Menu*/}
                 </div>
@@ -92,6 +97,7 @@ export const Footer = () => {
         </>
   )
 }
+
 
 const MailIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
