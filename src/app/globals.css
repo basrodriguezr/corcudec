@@ -128,6 +128,9 @@ body {
 }
 
 @layer components {
+  body {
+    @apply font-sans;
+  }
   .abono {
     @apply grid
     min-h-[15vh] 
@@ -336,5 +339,170 @@ body {
       focus-visible:outline-[3px] 
       focus-visible:outline-white/60 
       focus-visible:outline-offset-2;
+  }
+
+  .historia-section {
+    @apply max-w-[1100px] 
+      mx-auto 
+      my-[60px] 
+      px-5 
+      mt-0
+      leading-[1.7] 
+      text-base 
+      text-[#222];
+  }
+
+  .contenedor-transparencia {
+    @apply flex
+      flex-col
+      min-h-screen 
+      bg-white 
+      bg-no-repeat
+      /* bg-[url('/img/seccion3.webp')]  */
+      [background-image:url('/img/TEXTURA/NUBE1.png'),url('/img/TEXTURA/NUBE2.png'),url('/img/TEXTURA/NUBE3.png')]
+      [background-position:-30%_18%,78%_32%,146%_82%]
+      [background-size:600px,600px,600px];
+  }
+
+  .historia-titulo {
+    @apply inline-block 
+      relative 
+      mb-[30px]
+      mt-[30px];
+  }
+
+  .historia-titulo > span {
+    /* si tu Tailwind permite @apply con valores arbitrarios, deja la línea de text-[...] */
+    @apply bg-[#504e4f] text-white font-bold text-[clamp(0.8rem,3vw,1.2rem)]
+           px-5 py-2 relative z-[2] whitespace-nowrap;
+  }
+
+  /* el ::before hay que dejarlo como CSS normal */
+  .historia-titulo::before {
+    content: "";
+    position: absolute;
+    top: -14px;
+    left: -14px;
+    width: 25%;
+    height: 140%;
+    background-color: #581911;
+    z-index: 1;
+  }
+
+  .historia-texto {
+    @apply flex 
+      flex-col;
+  }
+
+  .historia-texto .ver-mas-btn {
+    @apply mt-3;
+  }
+
+  .historia-texto .ver-mas-btn {
+    @apply inline-flex
+      mt-3
+      leading-4;
+  }
+
+  .historia-texto p {
+    @apply mb-5 mt-5 
+      text-justify
+      text-base font-[system-ui];
+  }
+
+  .titulo-pagina {
+    @apply max-w-[1100]
+      mt-7 mb-2
+      mr-auto ml-auto
+      pt-0 pb-0
+      pr-5 pl-5;
+  }
+
+  .titulo-pagina {
+    @apply text-[clamp(20px,3.8vw,42px)] 
+      text-[#581911] 
+      leading-[1.15];
+  }
+
+  .titulo {
+    @apply text-[clamp(20px,3.8vw,42px)] 
+      text-[#581911] 
+      leading-[1.15]
+      font-semibold 
+      mb-2
+      mt-0;
+  }
+
+  .ver-mas-btn {
+    @apply bg-transparent 
+      border 
+      border-[#2c2b2b] 
+      text-[#2c2b2b]
+      text-[15px] 
+      py-0.5 px-2.5
+      ml-auto mt-3
+      cursor-pointer 
+      inline-flex 
+      items-center 
+      gap-2
+      font-sans 
+      uppercase 
+      bg-clip-padding 
+      select-none
+      hover:bg-black
+      hover:text-white
+      hover:transition-[0.3s]
+      active:bg-transparent
+      active:text-black
+      active:outline-none;
+  }
+
+  .accordion-btn {
+    background: #e6f0ff;
+    border: 2px solid #cce0ff;
+    color: #003366;
+    font-weight: bold;
+    padding: 15px;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    font-size: 16px;
+    position: relative;
+  }
+
+  .accordion-btn::after {
+    content: "\25BC";
+    /* flecha hacia abajo */
+    position: absolute;
+    right: 20px;
+    transition: transform 0.3s;
+  }
+
+  .accordion-btn.active::after {
+    transform: rotate(180deg);
+    /* gira la flecha */
+  }
+
+  .accordion-content {
+    display: none;
+    border: 2px solid #cce0ff;
+    border-top: none;
+    padding: 15px;
+  }
+
+  .accordion-content ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .accordion-content li {
+    margin: 8px 0;
+  }
+
+  .accordion-content a {
+    text-decoration: none;
+    color: #003366;
+    font-weight: 600;
   }
 }

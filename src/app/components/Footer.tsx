@@ -97,8 +97,8 @@ export const Footer = () => {
                             <li className="m-2"><a href="/sugerencias">SUGERENCIAS</a></li>
                             <li className="m-2"><a href="/reclamos">RECLAMOS</a></li>
                             <li className="m-2"><a href="/felicitaciones">FELICITACIONES</a></li>
-                            <li className="m-2"><a href="footer/TRANSPARENCIA.html">TRANSPARENCIA</a></li>
-                            <li className="m-2"><a href="footer/prevencion_del_delito.html">MODELO DE PREVENCIÓN DEL DELITO</a></li>
+                            <li className="m-2"><a href="/transparencia">TRANSPARENCIA</a></li>
+                            <li className="m-2"><a href="/modeloPrevencionDelito">MODELO DE PREVENCIÓN DEL DELITO</a></li>
                         </ul>    
                     </div>
                     {/*Fin Menu*/}
