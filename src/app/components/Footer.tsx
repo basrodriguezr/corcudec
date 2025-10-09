@@ -22,35 +22,21 @@ export const Footer = () => {
                         <ul className="contact-list">
                             <li className="flex items-start content-start justify-center gap-2 mb-2.5 font-[14px]">
                                 <span className="icon">
-                                    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-                                        <path d="M3 7l9 6 9-6" fill="none" stroke="currentColor" strokeWidth="1.7"
-                                            strokeLinecap="round" strokeLinejoin="round" />
-                                        <rect x="3" y="5" width="18" height="14" rx="2" ry="2" fill="none" stroke="currentColor"
-                                            strokeWidth="1.7" />
-                                    </svg>
+                                    { MailIcon() }
                                 </span>
                                 <a href="mailto:contacto@corcudec.cl" className="text-white hover:underline underline-offset-4 decoration-white/60 break-words">CONTACTO@CORCUDEC.CL</a>
                             </li>
                             <li className="flex items-center justify-center gap-2 mb-2.5 font-[14px]">
                                 <span className="icon">
-                                    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-                                        <path
-                                            d="M22 16.92v2a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.12 3.2 2 2 0 0 1 4.11 1h2a2 2 0 0 1 2 1.72c.13.98.36 1.93.69 2.83a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.25-1.25a2 2 0 0 1 2.11-.45c.9.33 1.85.56 2.83.69A2 2 0 0 1 22 16.92z"
-                                            fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round"
-                                            strokeLinejoin="round" />
-                                    </svg>
+                                    { PhoneIcon() }
+                                    
                                 </span>
                                 <a href="tel:+56412243536">412-243-536</a> / <a href="tel:+56412249155">412-249-155</a>
                             </li>
                             <li className="mb-2.5 font-[14px]">  
                                 <div className="flex items-center justify-center gap-2 ">
                                     <span className="icon">
-                                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-                                            <path d="M12 21s-7-6.16-7-11a7 7 0 1 1 14 0c0 4.84-7 11-7 11z" fill="none"
-                                                stroke="currentColor" strokeWidth="1.7" strokeLinecap="round"
-                                                strokeLinejoin="round" />
-                                            <circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" strokeWidth="1.7" />
-                                        </svg>
+                                        { LocationIcon() }                                       
                                     </span>
                                     <a
                                         href="https://www.google.com/maps?q=O%27Higgins%20660%2C%20Concepci%C3%B3n&z=16"
@@ -75,15 +61,9 @@ export const Footer = () => {
                                     />
                                 </div>
                                 <div className="social-row">
-                                    <a className="social" href="https://www.facebook.com/corcudec" target="_blank" rel="noopener">
-                                        FB
-                                    </a>
-                                    <a className="social" href="https://www.instagram.com/corcudec/?hl=es" target="_blank" rel="noopener">
-                                        IG
-                                    </a>
-                                    <a className="social" href="https://www.youtube.com/@corcudec1647" target="_blank" rel="noopener">
-                                        YT
-                                    </a>
+                                    { FacebookIcon() }
+                                    { InstagramIcon() }
+                                    { YoutubeIcon() }
                                 </div>                             
                             </li>
                         </ul>
@@ -106,11 +86,46 @@ export const Footer = () => {
             </div>
             <hr className='w-[min(80%,980px)] h-[2px] bg-white/70 border-0 mx-auto mt-[18px] mb-4 to-transparent '></hr>
             <center>
-                <p>© 2025 Corporación Cultural Universidad de Concepción</p>
+                <p>© {new Date().getFullYear()} Corporación Cultural Universidad de Concepción</p>
                 <p>Todos los derechos reservados</p>
             </center>
         </>
   )
 }
 
+const MailIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+    </svg>
+);
+const PhoneIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+    </svg>
+);
+const LocationIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+        <circle cx="12" cy="10" r="3"></circle>
+    </svg>
+);
+const FacebookIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+    </svg>
+);
+const InstagramIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+    </svg>
+);
+const YoutubeIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path>
+        <path d="m10 15 5-3-5-3z"></path>
+    </svg>
+);
 
