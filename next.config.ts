@@ -9,6 +9,12 @@ const nextConfig: NextConfig = {
     // domains: ['cdn.midominio.cl', 'mi-otro-cdn.com']
   },
   output: 'standalone',
+  async redirects() {
+    return [
+      { source: '/', destination: '/home/main', permanent: false },
+      // o: { source: '/', destination: '/transparencia', permanent: false },
+    ];
+  },
 };
 
 export default nextConfig;
