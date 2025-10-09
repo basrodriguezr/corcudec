@@ -4,7 +4,7 @@ import { Acordeon } from "@/app/components/Acordeon";
 import Image from "next/image";
 import { useState } from "react";
 
-export default function modeloPrevencionDelito() {
+export default function ModeloPrevencionDelito() {
   return (
     <>
           <div className="contenedor-transparencia">

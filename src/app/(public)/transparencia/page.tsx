@@ -4,7 +4,7 @@ import { Acordeon } from "@/app/components/Acordeon";
 import Image from "next/image";
 import { useState } from "react";
 
-export default function transparencia() {
+export default function Transparencia() {
   const [verMasAbierto, setVerMasAbierto] = useState(false);
   return (
     <>

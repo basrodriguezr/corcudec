@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const page = () => {
+export const Elencos = () => {
   return (
     <div>page</div>
   )
