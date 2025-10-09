@@ -72,7 +72,7 @@ export const MenuNav = () => {
                                         {item.title}
                                     </Link>
                                     {item.subItems && (
-                                        <div className={`absolute left-1/2 top-full -translate-x-1/2 mt-2 transition-opacity duration-300 ease-in-out ${openDesktopMenu === item.id ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+                                        <div className={`absolute left-1/2 top-full -translate-x-1/2 mt-2 transition-opacity duration-300 ease-in-out z-auto ${openDesktopMenu === item.id ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
                                             <div className="min-w-56 rounded-md bg-black ring-1 ring-white/10 shadow-xl p-2 text-md">
                                                 {item.subItems.map(subItem => (
                                                     <Link key={subItem.title} href={subItem.href} onClick={() => setOpenDesktopMenu(null)} className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">{subItem.title}</Link>
