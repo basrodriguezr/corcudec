@@ -206,7 +206,13 @@ body {
       gap-8 
       items-center 
       text-left 
-      p-5;
+      p-5
+      text-white
+      text-sm;
+  }
+
+  .texto-contenedor {
+    @apply min-w-[35vh] w-[35vh];
   }
 
   .video-contenedor {

@@ -15,10 +15,10 @@ export default function MainLayout({ children }: Readonly<{ children: React.Reac
         {/*INICIO CABECERA*/}
         <header className="relative flex min-h-[50vh] flex-col overflow-hidden bg-[url('/img/violonchelista.png')] bg-cover bg-center bg-no-repeat">
           <div className="absolute inset-0 bg-black/55" />
-          <div className="relative z-10">
+          <div className="relative z-20">
             <MenuNav />
           </div>
-          <div id="carrusel" className="relative z-10 flex flex-1 items-center justify-end pb-10 pt-12 sm:pb-16">
+          <div id="carrusel" className="relative z-0 flex flex-1 items-center justify-end pb-10 pt-12 sm:pb-16">
             <Carrusel />
           </div>
         </header>
@@ -31,7 +31,7 @@ export default function MainLayout({ children }: Readonly<{ children: React.Reac
         {/*FIN CUERPO*/} 
 
         {/*INICIO FOOTER*/} 
-        <footer className="relative min-h-[60vh] bg-[url('/img/FOOTER.png')] bg-cover bg-center bg-no-repeat">
+        <footer className="relative min-h-[40vh] bg-[url('/img/FOOTER.png')] bg-cover bg-center bg-no-repeat">
           <div className="absolute inset-0 bg-black/10 pointer-events-none" />
           <Footer />
         </footer>
