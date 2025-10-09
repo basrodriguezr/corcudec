@@ -7,7 +7,7 @@ export const Footer = () => {
     return (
         <>           
              {/*Footer Content*/}
-            <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-12 pt-12">
+            <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-6 pt-12">
                 {/*Footer grid*/}
                 <div className="flex flex-col items-center gap-12 text-center lg:flex-row lg:items-start lg:justify-between lg:text-left">
                     {/*Inicio logos*/}
@@ -65,7 +65,7 @@ export const Footer = () => {
                                         title="Mapa O'Higgins 660 - Concepción"
                                     />
                                 </div>
-                                <div className="social-row w-full justify-center lg:justify-start">
+                                <div className="social-row w-full justify-center lg:justify-center">
                                     { FacebookIcon() }
                                     { InstagramIcon() }
                                     { YoutubeIcon() }
