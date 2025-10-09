@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Elencos = () => {
+export default function Elencos(){
   return (
     <div>page</div>
   )
