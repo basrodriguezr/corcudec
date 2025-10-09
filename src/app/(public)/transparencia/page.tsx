@@ -30,17 +30,17 @@ export default function Transparencia() {
                 <div  id="bloque-ver-mas" className={verMasAbierto ? "block" : "hidden"}>
                     <p>
                         <strong>Misión</strong><br/>
-                        “La Corporación Cultural Universidad de Concepción es una institución que promueve el acceso a
+                        La Corporación Cultural Universidad de Concepción es una institución que promueve el acceso a
                         la cultura y las artes posicionando a la Universidad como un actor relevante en la vinculación
                         con la comunidad. Es un espacio de fomento y desarrollo de las Artes en sus diferentes
-                        manifestaciones."
+                        manifestaciones.
                     </p>
                     <p>
                         <strong>Visión</strong><br/>
-                        "Ser una Corporación Cultural líder a nivel nacional e internacional, reconocida por su aporte a
+                        Ser una Corporación Cultural líder a nivel nacional e internacional, reconocida por su aporte a
                         las culturas, las artes y el desarrollo de la comunidad y del pensamiento, a través de la
                         creación y difusión de actividades culturales de alta calidad, la formación de nuevos artistas y
-                        la generación de nuevos públicos que conformen una audiencia permanente”.
+                        la generación de nuevos públicos que conformen una audiencia permanente.
                     </p>
                 </div>
                  <button

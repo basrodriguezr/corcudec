@@ -1,8 +1,6 @@
 'use client'
 import { Footer } from "@/app/components";
-import { Acordeon } from "@/app/components/Acordeon";
 import Image from "next/image";
-import { useState } from "react";
 
 export default function ModeloPrevencionDelito() {
   return (
