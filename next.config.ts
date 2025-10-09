@@ -8,13 +8,7 @@ const nextConfig: NextConfig = {
     // o más simple:
     // domains: ['cdn.midominio.cl', 'mi-otro-cdn.com']
   },
-  output: 'standalone',
-  async redirects() {
-    return [
-      { source: '/', destination: '/home/main', permanent: false },
-      // o: { source: '/', destination: '/transparencia', permanent: false },
-    ];
-  },
+  output: 'standalone'
 };
 
 export default nextConfig;
