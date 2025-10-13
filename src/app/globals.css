@@ -212,7 +212,7 @@ body {
   } */
 
   .multimedia {
-    @apply relative mx-auto flex w-full max-w-[var(--max-wrap)] flex-col items-center gap-8 bg-[url('/img/seccion3.webp')] bg-cover bg-center px-4 py-16 text-center text-white text-base;
+    @apply relative mx-auto flex w-full max-w-[var(--max-wrap)] flex-col items-center gap-8 bg-cover bg-center px-4 py-16 text-center text-white text-base;
   }
 
   .video-contenedor {

@@ -16,49 +16,49 @@ type Slide = {
 
 const slides: Slide[] = [
   {
-    src: "/img/HABLE.webp",
+    src: "/corcudec/img/HABLE.webp",
     alt: "Hable con ella",
     href: "https://ticketplus.cl/events/hable-con-ella",
     tag: "Temporada 2025",
   },
   {
-    src: "/img/VIBRA.webp",
+    src: "/corcudec/img/VIBRA.webp",
     alt: "Vibra con la orquesta",
     href: "https://ticketplus.cl/events/vibra-con-la-orquesta",
     tag: "Temporada popular",
   },
   {
-    src: "/img/GAVIOTA.webp",
+    src: "/corcudec/img/GAVIOTA.webp",
     alt: "La gaviota",
     href: "https://ticketplus.cl/events/la-gaviota",
     tag: "Teatro musical",
   },
   {
-    src: "/img/PASION.webp",
+    src: "/corcudec/img/PASION.webp",
     alt: "Pasión y ritmo",
     href: "https://ticketplus.cl/events/pasion-y-ritmo",
     tag: "Gira nacional",
   },
   {
-    src: "/img/VIBRA.webp",
+    src: "/corcudec/img/VIBRA.webp",
     alt: "Vibra con la orquesta",
     href: "https://ticketplus.cl/events/vibra-con-la-orquesta-octubre",
     tag: "Temporada popular",
   },
   {
-    src: "/img/HABLE.webp",
+    src: "/corcudec/img/HABLE.webp",
     alt: "Hable con ella",
     href: "https://ticketplus.cl/events/hable-con-ella-octubre",
     tag: "Temporada 2025",
   },
   {
-    src: "/img/GAVIOTA.webp",
+    src: "/corcudec/img/GAVIOTA.webp",
     alt: "La gaviota",
     href: "https://ticketplus.cl/events/la-gaviota-noviembre",
     tag: "Teatro musical",
   },
   {
-    src: "/img/PASION.webp",
+    src: "/corcudec/img/PASION.webp",
     alt: "Pasión y ritmo",
     href: "https://ticketplus.cl/events/pasion-y-ritmo-noviembre",
     tag: "Gira nacional",
