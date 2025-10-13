@@ -1,6 +1,6 @@
 import { Abonos, Galeria, Multimedia } from "../../components";
 
-export default function main(){
+export default function Main(){
     return (
         <>
             <Abonos/>  

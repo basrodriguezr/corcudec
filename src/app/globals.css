@@ -6,7 +6,7 @@ body {
 
 /* === Carrusel estilo “tarjeta central grande / vecinas chicas” === */
 .event-swiper {
-  width: min(1080px, 100%);
+  width: min(1280, 100%);
   margin-inline: auto;
   padding-inline: clamp(0.75rem, 4vw, 2.5rem);
   overflow: visible; /* deja ver sombras/bordes fuera del carril */
@@ -128,6 +128,9 @@ body {
 }
 
 @layer components {
+  body {
+    @apply font-sans;
+  }
   .abono {
     @apply grid
     min-h-[15vh] 
@@ -193,7 +196,7 @@ body {
       hover:bg-white/10;
   }
 
-  .multimedia {
+  /* .multimedia {
     @apply min-h-[55vh] 
       bg-[url('/img/seccion3.webp')] 
       max-w-[var(--max-wrap)] 
@@ -203,21 +206,28 @@ body {
       gap-8 
       items-center 
       text-left 
-      p-5;
+      p-5
+      text-white
+      text-sm;
+  } */
+
+  .multimedia {
+    @apply relative mx-auto flex w-full max-w-[var(--max-wrap)] flex-col items-center gap-8 bg-[url('/img/seccion3.webp')] bg-cover bg-center px-4 py-16 text-center text-white text-base;
   }
 
   .video-contenedor {
-    @apply justify-self-center;
+    @apply flex w-full max-w-[720px] justify-center;
   }
 
   .video {
-    @apply aspect-video 
-      w-[720px] 
-      max-w-[960px] 
-      rounded-2xl;
+    @apply aspect-video w-full rounded-2xl shadow-[0_24px_60px_rgba(0,0,0,0.45)];
   }
 
-  .video-texto {
+  .texto-contenedor {
+    @apply w-full max-w-[640px] text-center text-base leading-relaxed;
+  }
+
+  /* .video-texto {
     @apply justify-self-start 
       self-start 
       -ml-20 
@@ -227,9 +237,13 @@ body {
       text-justify 
       max-w-[480px] 
       w-[420px];
-  }
+  } */
 
   .galeria {
+    @apply w-full bg-black py-16 text-white;
+  }
+
+  /* .galeria {
     @apply min-h-[60vh] 
       bg-black
       text-white
@@ -237,16 +251,17 @@ body {
       pb-14
       pl-10
       pr-10;
-  }
+  } */
 
   .items-galeria {
-    @apply grid 
+    @apply mx-auto grid w-full max-w-[var(--max-wrap)] grid-cols-1 gap-10 px-4 no-underline;
+    /* @apply grid 
       grid-cols-3
     text-yellow-400 
       mx-auto
       max-w-[var(--max-wrap)] 
       [gap:8px_10px] 
-      no-underline;
+      no-underline; */
   }
 
   .item-galeria {
@@ -336,6 +351,207 @@ body {
       focus-visible:outline-[3px] 
       focus-visible:outline-white/60 
       focus-visible:outline-offset-2;
+  }
+
+  .historia-section {
+    @apply max-w-[1100px] 
+      mx-auto 
+      my-[60px] 
+      px-5 
+      mt-0
+      leading-[1.7] 
+      text-base 
+      text-[#222];
+  }
+
+  .contenedor-transparencia {
+    @apply flex
+      flex-col
+      min-h-screen 
+      bg-white 
+      bg-no-repeat
+      /* bg-[url('/img/seccion3.webp')]  */
+      [background-image:url('/img/TEXTURA/NUBE1.png'),url('/img/TEXTURA/NUBE2.png'),url('/img/TEXTURA/NUBE3.png')]
+      [background-position:-30%_18%,78%_32%,146%_82%]
+      [background-size:600px,600px,600px];
+  }
+
+  .historia-titulo {
+    @apply inline-block 
+      relative 
+      mb-[30px]
+      mt-[30px];
+  }
+
+  .historia-titulo > span {
+    /* si tu Tailwind permite @apply con valores arbitrarios, deja la línea de text-[...] */
+    @apply bg-[#504e4f] text-white font-bold text-[clamp(0.8rem,3vw,1.2rem)]
+           px-5 py-2 relative z-[2] whitespace-nowrap;
+  }
+
+  /* el ::before hay que dejarlo como CSS normal */
+  .historia-titulo::before {
+    content: "";
+    position: absolute;
+    top: -14px;
+    left: -14px;
+    width: 25%;
+    height: 140%;
+    background-color: #581911;
+    z-index: 1;
+  }
+
+  .historia-texto {
+    @apply flex 
+      flex-col;
+  }
+
+  .historia-texto .ver-mas-btn {
+    @apply mt-3;
+  }
+
+  .historia-texto .ver-mas-btn {
+    @apply inline-flex
+      mt-3
+      leading-4;
+  }
+
+  .historia-texto p {
+    @apply mb-5 mt-5 
+      text-justify
+      text-base font-[system-ui];
+  }
+
+  .titulo-pagina {
+    @apply max-w-[1100]
+      mt-7 mb-2
+      mr-auto ml-auto
+      pt-0 pb-0
+      pr-5 pl-5;
+  }
+
+  .titulo-pagina {
+    @apply text-[clamp(20px,3.8vw,42px)] 
+      text-[#581911] 
+      leading-[1.15];
+  }
+
+  .titulo {
+    @apply text-[clamp(20px,3.8vw,42px)] 
+      text-[#581911] 
+      leading-[1.15]
+      font-semibold 
+      mb-2
+      mt-0;
+  }
+
+  .ver-mas-btn {
+    @apply bg-transparent 
+      border 
+      border-[#2c2b2b] 
+      text-[#2c2b2b]
+      text-[15px] 
+      py-0.5 px-2.5
+      ml-auto mt-3
+      cursor-pointer 
+      inline-flex 
+      items-center 
+      gap-2
+      font-sans 
+      uppercase 
+      bg-clip-padding 
+      select-none
+      hover:bg-black
+      hover:text-white
+      hover:transition-[0.3s]
+      active:bg-transparent
+      active:text-black
+      active:outline-none;
+  }
+
+  .accordion-btn {
+    background: #e6f0ff;
+    border: 2px solid #cce0ff;
+    color: #003366;
+    font-weight: bold;
+    padding: 15px;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    font-size: 16px;
+    position: relative;
+  }
+
+  .accordion-btn::after {
+    content: "\25BC";
+    /* flecha hacia abajo */
+    position: absolute;
+    right: 20px;
+    transition: transform 0.3s;
+  }
+
+  .accordion-btn.active::after {
+    transform: rotate(180deg);
+    /* gira la flecha */
+  }
+
+  .accordion-content {
+    display: none;
+    border: 2px solid #cce0ff;
+    border-top: none;
+    padding: 15px;
+  }
+
+  .accordion-content ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .accordion-content li {
+    margin: 8px 0;
+  }
+
+  .accordion-content a {
+    text-decoration: none;
+    color: #003366;
+    font-weight: 600;
+  }
+
+  @media (min-width: 768px) {
+    .multimedia {
+      @apply gap-12 px-8;
+    }
+
+    .texto-contenedor {
+      @apply text-lg;
+    }
+
+    .items-galeria {
+      @apply grid-cols-2;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .multimedia {
+      @apply grid grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] items-center gap-14 px-12 text-left;
+    }
+
+    .video-contenedor {
+      @apply justify-self-center;
+    }
+
+    .texto-contenedor {
+      @apply max-w-[420px] text-left;
+    }
+
+    .items-galeria {
+      @apply grid-cols-3 gap-12 px-10;
+    }
+
+    .item-galeria {
+      @apply gap-8;
+    }
   }
 }
 

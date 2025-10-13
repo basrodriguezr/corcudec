@@ -1,9 +1,7 @@
-import { Abonos, Galeria, Multimedia } from "../../components";
+import React from 'react'
 
-export default function main(){
-    return (
-        <>
-     
-        </>
-    )
+export default function QuienesSomos(){
+  return (
+    <div>page</div>
+  )
 }

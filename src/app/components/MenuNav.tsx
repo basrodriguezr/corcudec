@@ -1,88 +1,128 @@
 'use client'
 
+import { useState, useRef, useEffect } from 'react';
 import Image from "next/image";
 import Link from "next/link";
 
+const menuItems = [
+    { id: 'corcudec', title: 'CORCUDEC', href: '#', subItems: [
+        { title: 'Quiénes Somos', href: '#' }, { title: 'Equipo', href: '#' }, { title: 'Alianzas', href: '#' }
+    ]},
+    { id: 'elencos', title: 'Elencos', href: '#', subItems: [
+        { title: 'Orquesta Sinfónica UdeC', href: '#' }, { title: 'Coro Sinfónico UdeC', href: '#' }, { title: 'Directores Destacados', href: '#' }
+    ]},
+    { id: 'teatro', title: 'Teatro Udec', href: '#', subItems: [
+        { title: 'Historia', href: '#' }, { title: 'Programas Emblemáticos', href: '#' }, { title: 'Arriendos', href: '#' }
+    ]},
+    { id: 'programacion', title: 'Programación', href: '#', subItems: [
+        { title: 'Temporada Sinfónica', href: '#' }, { title: 'D’Camara', href: '#' }, { title: 'Lírica en Primera Fila', href: '#' }, { title: 'Lunes Cinematográficos', href: '#' }, { title: 'Temporada de Teatro', href: '#' }
+    ]},
+    { id: 'abonos', title: 'Abonos', href: '#' },
+    { id: 'noticias', title: 'NOTICIAS', href: '#' },
+];
+
 export const MenuNav = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [openDesktopMenu, setOpenDesktopMenu] = useState<string | null>(null);
+    const [openMobileSubMenu, setOpenMobileSubMenu] = useState<string | null>(null);
+    const navRef = useRef<HTMLElement>(null);
+
+    const handleDesktopMenuToggle = (e: React.MouseEvent, id: string) => {
+        e.preventDefault();
+        setOpenDesktopMenu(openDesktopMenu === id ? null : id);
+    };
+
+    const handleMobileSubMenuToggle = (e: React.MouseEvent, id: string) => {
+        e.preventDefault();
+        setOpenMobileSubMenu(openMobileSubMenu === id ? null : id);
+    };
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (navRef.current && !navRef.current.contains(event.target as Node)) {
+                setOpenDesktopMenu(null);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
     return (
-        <nav className="sticky top-0 bg-black/40 text-white backdrop-blur h-auto">
-            <div className="mx-auto max-w-7xl flex items-center">
-                <div className="flex-1 shrink-0 px-4 py-2 m-2">
-                    <Link href="/home/main">
-                        <Image 
-                            src="/img/logoudec.png"
-                            width={130}
-                            height={50}
-                            alt="Universidad de Concepción"                    
-                        />
-                    </Link>
+        <nav className="sticky top-0 bg-black/40 text-white backdrop-blur z-[120]" ref={navRef}>
+            <div className="mx-auto max-w-7xl px-4">
+                <div className="flex h-20 items-center justify-between">
+
+                    <div className="flex-shrink-0">
+                        <Link href="/home/main" onClick={() => { setIsMenuOpen(false); setOpenDesktopMenu(null); }}>
+                            <Image src="/img/logoudec.png" width={130} height={50} alt="Universidad de Concepción" />
+                        </Link>
+                    </div>
+
+                    <div className="hidden md:block">
+                         <ul className="flex items-center justify-center gap-5"> 
+                            {menuItems.map((item) => (
+                                <li key={item.id} className="relative">
+                                    <Link 
+                                        href={item.href} 
+                                        onClick={(e) => item.subItems && handleDesktopMenuToggle(e, item.id)}
+                                        className="inline-flex items-center px-2 py-6 hover:text-amber-400 whitespace-nowrap uppercase text-sm font-semibold tracking-wide"
+                                    >
+                                        {item.title}
+                                    </Link>
+                                    {item.subItems && (
+                                        <div className={`absolute left-0 top-full mt-2 transition-opacity duration-300 ease-in-out z-[130]  ${openDesktopMenu === item.id ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+                                            <div className="min-w-56 rounded-md bg-black ring-1 ring-white/10 shadow-xl p-2 text-md">
+                                                {item.subItems.map(subItem => (
+                                                    <Link key={subItem.title} href={subItem.href} onClick={() => setOpenDesktopMenu(null)} className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">{subItem.title}</Link>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    <div className="-mr-2 flex md:hidden">
+                        <button onClick={() => setIsMenuOpen(!isMenuOpen)} type="button" className="inline-flex items-center justify-center rounded-md p-2 text-gray-200 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                            <span className="sr-only">Abrir menú principal</span>
+                            {isMenuOpen ? ( <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg> ) 
+                                        : ( <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" /></svg> )}
+                        </button>
+                    </div>
                 </div>
-                <ul className="flex-1 flex justify-center gap-5 tracking-wide font-semibold text-xs"> 
-                    <li className="group relative">
-                        <Link href="#" className="inline-flex items-center px-2 py-6 hover:text-amber-400 whitespace-nowrap uppercase text-sm">CORCUDEC</Link>
-                        <div className="pointer-events-none absolute left-1/2 top-full hidden -translate-x-1/2 group-hover:block group-focus-within:block">
-                            <div className="mt-2 min-w-56 rounded-md bg-black/90 ring-1 ring-white/10 shadow-xl p-2 text-md pointer-events-auto">
-                                <Link href="/corcudec/quienessomos" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Quiénes Somos</Link>
-                                <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Equipo</Link>
-                                <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Alianzas</Link>
-                            </div>
-                        </div>
-                    </li>
-                    <li className="group relative">
-                        <Link href="#" className="inline-flex items-center px-2 py-6 hover:text-amber-400 whitespace-nowrap uppercase text-sm">
-                        Elencos
-                        </Link>
-                        <div className="pointer-events-none absolute left-1/2 top-full hidden -translate-x-1/2 group-hover:block group-focus-within:block">
-                            <div className="mt-2 min-w-64 rounded-md bg-black/90 ring-1 ring-white/10 shadow-xl p-2 text-sm pointer-events-auto">
-                                <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Orquesta Sinfónica UdeC</Link>
-                                <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Coro Sinfónico UdeC</Link>
-                                <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Directores Destacados</Link>
-                            </div>
-                        </div>
-                    </li>
-                    <li className="group relative">
-                        <Link href="#" className="inline-flex items-center px-2 py-6 hover:text-amber-400 whitespace-nowrap uppercase text-sm">
-                        Teatro Udec
-                        </Link>
-                        <div className="pointer-events-none absolute left-1/2 top-full hidden -translate-x-1/2 group-hover:block group-focus-within:block">
-                            <div className="mt-2 min-w-64 rounded-md bg-black/90 ring-1 ring-white/10 shadow-xl p-2 text-sm pointer-events-auto">
-                                <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Historia</Link>
-                                <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Programas Emblemáticos</Link>
-                                <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Lunes Cinematográficos</Link>
-                                <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Ópera</Link>
-                                <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Teatro en el Teatro</Link>
-                                <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Arriendos</Link>
-                            </div>
-                        </div>
-                    </li>
-                    <li className="group relative">
-                        <Link href="#" className="inline-flex items-center px-2 py-6 hover:text-amber-400 whitespace-nowrap uppercase text-sm">
-                            Programación
-                        </Link>
-                        <div className="pointer-events-none absolute left-1/2 top-full hidden -translate-x-1/2 group-hover:block group-focus-within:block">
-                        <div className="mt-2 min-w-64 rounded-md bg-black/90 ring-1 ring-white/10 shadow-xl p-2 text-sm pointer-events-auto">
-                            <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Temporada Sinfónica</Link>
-                            <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">D’Camara</Link>
-                            <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Lírica en Primera Fila</Link>
-                            <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Lunes Cinematográficos</Link>
-                            <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Temporada de Teatro</Link>
-                        </div>
-                        </div>
-                    </li>
-
-                    <li>
-                        <Link href="#" className="inline-flex items-center px-2 py-6 hover:text-amber-400 whitespace-nowrap uppercase text-sm">
-                            Abonos
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="#" className="inline-flex items-center px-2 py-6 hover:text-amber-400 whitespace-nowrap uppercase text-sm">
-                            NOTICIAS
-                        </Link>
-                    </li>
-                </ul>
-
             </div>
+
+            {isMenuOpen && (
+                <div className="md:hidden">
+                    <div className="space-y-1 px-2 pt-2 pb-3 sm:px-3">
+                        {menuItems.map(item => (
+                            <div key={item.id}>
+                                <Link 
+                                    href={item.href} 
+                                    onClick={(e) => item.subItems && handleMobileSubMenuToggle(e, item.id)} 
+                                    className="w-full flex justify-between items-center rounded-md px-3 py-2 text-base font-semibold text-white hover:bg-gray-700 text-left"
+                                >
+                                    <span>{item.title}</span>
+                                </Link>
+
+                                {openMobileSubMenu === item.id && item.subItems && (
+                                    // MODIFICACIÓN: Se reintroducen las clases para el fondo negro del submenú
+                                    <div className="bg-black rounded-md mt-1 p-2 space-y-1 pl-4">
+                                        {item.subItems.map(subItem => (
+                                            <Link key={subItem.title} href={subItem.href} onClick={() => setIsMenuOpen(false)} className="block rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+                                                {subItem.title}
+                                            </Link>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
         </nav>
-    )
+    );
 }

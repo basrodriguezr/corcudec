@@ -67,7 +67,7 @@ const slides: Slide[] = [
 
 export const Carrusel = () => {
   return (
-    <div className="relative w-full py-10 sm:py-12 -mt-20">
+    <div className="relative z-0 w-full py-10 sm:py-12 -mt-20">
       <Swiper
         modules={[EffectCoverflow]}
         className="event-swiper"
