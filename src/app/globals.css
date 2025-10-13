@@ -338,3 +338,13 @@ body {
       focus-visible:outline-offset-2;
   }
 }
+
+.bg-nubes-multiple {
+  background-image:
+    url('/img/TEXTURA/NUBE1.png'),
+    url('/img/TEXTURA/NUBE2.png'),
+    url('/img/TEXTURA/NUBE3.png');
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-position: -30% 18%, 78% 32%, 146% 82%;
+  background-size: 600px, 600px, 600px;
+}

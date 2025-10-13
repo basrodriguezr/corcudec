@@ -69,7 +69,7 @@ export const Carrusel = () => {
   return (
     <div className="relative w-full py-10 sm:py-12 -mt-20">
       <Swiper
-        modules={[Autoplay, EffectCoverflow]}
+        modules={[EffectCoverflow]}
         className="event-swiper"
         effect="coverflow"
         grabCursor

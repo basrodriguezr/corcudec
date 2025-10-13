@@ -22,7 +22,7 @@ export const MenuNav = () => {
                         <Link href="#" className="inline-flex items-center px-2 py-6 hover:text-amber-400 whitespace-nowrap uppercase text-sm">CORCUDEC</Link>
                         <div className="pointer-events-none absolute left-1/2 top-full hidden -translate-x-1/2 group-hover:block group-focus-within:block">
                             <div className="mt-2 min-w-56 rounded-md bg-black/90 ring-1 ring-white/10 shadow-xl p-2 text-md pointer-events-auto">
-                                <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Quiénes Somos</Link>
+                                <Link href="/corcudec/quienessomos" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Quiénes Somos</Link>
                                 <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Equipo</Link>
                                 <Link href="#" className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">Alianzas</Link>
                             </div>
