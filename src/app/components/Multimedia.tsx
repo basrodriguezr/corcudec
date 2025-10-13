@@ -1,6 +1,6 @@
 export const Multimedia = () => {
   return (
-    <div className='multimedia'>
+    <div className='multimedia bg-[url("/corcudec/img/seccion3.webp")]'>
       <div className="video-contenedor">
         <iframe className="video" src="https://www.youtube-nocookie.com/embed/D-ipnOJ9fIU?start=935" title="YouTube video"></iframe>
       </div>
