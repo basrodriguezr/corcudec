@@ -1,15 +1,16 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export",  // <=== enables static exports
-  reactStrictMode: true,
+  output: "export",  // <=== enables static exports  
   images: {
+    unoptimized: true,
     remotePatterns: [
       { protocol: 'https', hostname: 'www.corcudec.cl' },
     ],
     // o más simple:
     // domains: ['cdn.midominio.cl', 'mi-otro-cdn.com']
-  }
+  },
+  trailingSlash: true,
 };
 
 export default nextConfig;
