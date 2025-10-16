@@ -36,7 +36,6 @@ export const MenuNav = () => {
         e.preventDefault();
         setOpenMobileSubMenu(openMobileSubMenu === id ? null : id);
     };
-    
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (navRef.current && !navRef.current.contains(event.target as Node)) {
@@ -50,10 +49,10 @@ export const MenuNav = () => {
     }, []);
 
     return (
-        <nav className="sticky top-0 bg-black/40 text-white backdrop-blur z-50" ref={navRef}>
+        <nav className="sticky top-0 bg-black/40 text-white backdrop-blur z-[120]" ref={navRef}>
             <div className="mx-auto max-w-7xl px-4">
                 <div className="flex h-20 items-center justify-between">
-                    
+
                     <div className="flex-shrink-0">
                         <Link href="/home/main" onClick={() => { setIsMenuOpen(false); setOpenDesktopMenu(null); }}>
                             <Image src="/img/logoudec.png" width={130} height={50} alt="Universidad de Concepción" />
@@ -72,7 +71,7 @@ export const MenuNav = () => {
                                         {item.title}
                                     </Link>
                                     {item.subItems && (
-                                        <div className={`absolute left-1/2 top-full -translate-x-1/2 mt-2 transition-opacity duration-300 ease-in-out ${openDesktopMenu === item.id ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+                                        <div className={`absolute left-0 top-full mt-2 transition-opacity duration-300 ease-in-out z-[130]  ${openDesktopMenu === item.id ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
                                             <div className="min-w-56 rounded-md bg-black ring-1 ring-white/10 shadow-xl p-2 text-md">
                                                 {item.subItems.map(subItem => (
                                                     <Link key={subItem.title} href={subItem.href} onClick={() => setOpenDesktopMenu(null)} className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">{subItem.title}</Link>
