@@ -18,12 +18,16 @@ type FetchState = "LOADING" | "LOADED" | "ERROR";
 const API_URL = DRUPAL_HOSTNAME + DRUPAL_ROUTES.PAGINAS;
 
 // 2. Función de Obtención de Datos
-export async function fetchPaginas(): Promise<PageData[]> {
+export const fetchPaginas = async () => {
+	// export async function fetchPaginas(): Promise<PageData[]> {
+	// 	const requestOptions = {
+	// 		method: "GET",
+	// 		headers: { "Content-Type": "application/json" }
+	// 	};
 	const requestOptions = {
 		method: "GET",
 		headers: { "Content-Type": "application/json" }
 	};
-
 	try {
 		const response = await fetch(API_URL, requestOptions);
 
