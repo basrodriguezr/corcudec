@@ -9,9 +9,8 @@ export const metadata: Metadata = {
 };
 
 export default function MainLayout({ children }: Readonly<{ children: React.ReactNode }> ) {
-  return (
-    <html lang="es">
-      <body className="bg-neutral-950 text-white">
+  return (    
+      <div className="bg-neutral-950 text-white">
         {/*INICIO CABECERA*/}
         <header className="relative flex min-h-[50vh] flex-col overflow-hidden bg-white bg-nubes-multiple">
           <div className="absolute inset-0" />
@@ -34,7 +33,6 @@ export default function MainLayout({ children }: Readonly<{ children: React.Reac
           <Footer />
         </footer>
         {/*INICIO FOOTER*/} 
-      </body>
-    </html>
+      </div>    
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 import { CORCUDEC_ROUTE } from '@/config/global';
 
@@ -71,10 +72,10 @@ export const Footer = () => {
                                     { InstagramIcon() }
                                     { YoutubeIcon() }
                                 </div>
+
                             </li>
-                        </ul>
+                        </ul>                        
                     </div>
-                    {/*Fin Contacto*/}
 
                     {/*Inicio Menu*/}
                     <div className="flex w-full max-w-xs flex-col items-center gap-2 lg:items-start">
@@ -83,15 +84,14 @@ export const Footer = () => {
                             <li><a href={CORCUDEC_ROUTE + "/transparencia"}>TRANSPARENCIA</a></li>
                             <li><a href={CORCUDEC_ROUTE + "/modeloPrevencionDelito"}>MODELO DE PREVENCIÓN DEL DELITO</a></li>
                         </ul>
+
                     </div>
-                    {/*Fin Menu*/}
                 </div>
-            </div>
-            <hr className='w-[min(80%,980px)] h-[2px] bg-white/70 border-0 mx-auto mt-[18px] mb-4 to-transparent '></hr>
-            <center>
-                <p>© {new Date().getFullYear()} Corporación Cultural Universidad de Concepción</p>
-                <p>Todos los derechos reservados</p>
-            </center>
+                
+                <div className="mt-12 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
+                    <p>© {new Date().getFullYear()} Corporación Cultural Universidad de Concepción. Todos los derechos reservados.</p>
+                </div>
+            </div>            
         </>
     )
 }

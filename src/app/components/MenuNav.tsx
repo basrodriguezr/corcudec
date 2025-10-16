@@ -6,20 +6,38 @@ import Link from "next/link";
 import { CORCUDEC_ROUTE } from '@/config/global';
 
 const menuItems = [
-    { id: 'corcudec', title: 'CORCUDEC', href: '#', subItems: [
-        { title: 'Quiénes Somos', href: CORCUDEC_ROUTE + '/quienessomos/' }, { title: 'Equipo', href: '#' }, { title: 'Alianzas', href: '#' }
-    ]},
-    { id: 'elencos', title: 'Elencos', href: '#', subItems: [
-        { title: 'Orquesta Sinfónica UdeC', href: '#' }, { title: 'Coro Sinfónico UdeC', href: '#' }, { title: 'Directores Destacados', href: '#' }
-    ]},
-    { id: 'teatro', title: 'Teatro Udec', href: '#', subItems: [
-        { title: 'Historia', href: '#' }, { title: 'Programas Emblemáticos', href: '#' }, { title: 'Arriendos', href: '#' }
-    ]},
-    { id: 'programacion', title: 'Programación', href: '#', subItems: [
-        { title: 'Temporada Sinfónica', href: '#' }, { title: 'D’Camara', href: '#' }, { title: 'Lírica en Primera Fila', href: '#' }, { title: 'Lunes Cinematográficos', href: '#' }, { title: 'Temporada de Teatro', href: '#' }
-    ]},
-    { id: 'abonos', title: 'Abonos', href: '#' },
-    { id: 'noticias', title: 'NOTICIAS', href: '#' },
+    {
+        id: 'corcudec', title: 'CORCUDEC', href: '#', subItems: [
+            { title: 'Quiénes Somos', href: CORCUDEC_ROUTE + '/quienessomos/' },
+            { title: 'Equipo', href: CORCUDEC_ROUTE + '/equipo/' },
+            { title: 'Alianzas', href: CORCUDEC_ROUTE + '/alianzas/' }
+        ]
+    },
+    {
+        id: 'elencos', title: 'Elencos', href: '#', subItems: [
+            { title: 'Orquesta Sinfónica UdeC', href: CORCUDEC_ROUTE + '/orquesta/' },
+            { title: 'Coro Sinfónico UdeC', href: CORCUDEC_ROUTE + '/elencos/' },
+            { title: 'Directores Destacados', href: CORCUDEC_ROUTE + '/directores' }
+        ]
+    },
+    {
+        id: 'teatro', title: 'Teatro Udec', href: '#', subItems: [
+            { title: 'Historia', href: CORCUDEC_ROUTE + '/teatro/' },
+            { title: 'Programas Emblemáticos', href: CORCUDEC_ROUTE + '/programas/' },
+            { title: 'Arriendos', href: CORCUDEC_ROUTE + '/arriendos/' }
+        ]
+    },
+    {
+        id: 'programacion', title: 'Programación', href: '#', subItems: [
+            { title: 'Temporada Sinfónica', href: CORCUDEC_ROUTE + '/temporada/' },
+            { title: 'D’Camara', href: CORCUDEC_ROUTE + '/camara/' },
+            { title: 'Lírica en Primera Fila', href: CORCUDEC_ROUTE + '/lirica/' },
+            { title: 'Lunes Cinematográficos', href: CORCUDEC_ROUTE + '/lunescinematograficos/' },
+            { title: 'Temporada de Teatro', href: CORCUDEC_ROUTE + '/temporada/' }
+        ]
+    },
+    { id: 'abonos', title: 'Abonos', href: CORCUDEC_ROUTE + '/abonos/' },
+    { id: 'noticias', title: 'NOTICIAS', href: CORCUDEC_ROUTE + '/noticias/' },
 ];
 
 export const MenuNav = () => {
@@ -37,7 +55,6 @@ export const MenuNav = () => {
         e.preventDefault();
         setOpenMobileSubMenu(openMobileSubMenu === id ? null : id);
     };
-
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (navRef.current && !navRef.current.contains(event.target as Node)) {
@@ -62,11 +79,11 @@ export const MenuNav = () => {
                     </div>
 
                     <div className="hidden md:block">
-                        <ul className="flex items-center justify-center gap-5"> 
+                        <ul className="flex items-center justify-center gap-5">
                             {menuItems.map((item) => (
                                 <li key={item.id} className="relative">
-                                    <Link 
-                                        href={item.href} 
+                                    <Link
+                                        href={item.href}
                                         onClick={(e) => item.subItems && handleDesktopMenuToggle(e, item.id)}
                                         className="inline-flex items-center px-2 py-6 hover:text-amber-400 whitespace-nowrap uppercase text-sm font-semibold tracking-wide"
                                     >
@@ -89,8 +106,8 @@ export const MenuNav = () => {
                     <div className="-mr-2 flex md:hidden">
                         <button onClick={() => setIsMenuOpen(!isMenuOpen)} type="button" className="inline-flex items-center justify-center rounded-md p-2 text-gray-200 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                             <span className="sr-only">Abrir menú principal</span>
-                            {isMenuOpen ? ( <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg> ) 
-                                        : ( <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" /></svg> )}
+                            {isMenuOpen ? (<svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>)
+                                : (<svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" /></svg>)}
                         </button>
                     </div>
                 </div>
@@ -101,9 +118,9 @@ export const MenuNav = () => {
                     <div className="space-y-1 px-2 pt-2 pb-3 sm:px-3">
                         {menuItems.map(item => (
                             <div key={item.id}>
-                                <Link 
-                                    href={item.href} 
-                                    onClick={(e) => item.subItems && handleMobileSubMenuToggle(e, item.id)} 
+                                <Link
+                                    href={item.href}
+                                    onClick={(e) => item.subItems && handleMobileSubMenuToggle(e, item.id)}
                                     className="w-full flex justify-between items-center rounded-md px-3 py-2 text-base font-semibold text-white hover:bg-gray-700 text-left"
                                 >
                                     <span>{item.title}</span>
