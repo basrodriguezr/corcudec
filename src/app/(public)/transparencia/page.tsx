@@ -3,7 +3,6 @@ import { Footer } from "@/app/components";
 import { Acordeon } from "@/app/components/Acordeon";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { DRUPAL_HOSTNAME, DRUPAL_ROUTES } from '@/config/global';
 import { fetchPaginas, PageData } from "@/app/components/Pagina";
 
 // Estados para seguimiento de carga y posibles errores
