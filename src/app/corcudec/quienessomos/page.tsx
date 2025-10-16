@@ -1,7 +1,8 @@
-import React from 'react'
-
-export default function QuienesSomos() {
-  return (
-    <div>Quienes somos?</div>
-  )
+import { SolicitudPagina } from "@/app/components/PaginaPlana";
+// Componente principal de la vista, ahora usa el componente reutilizable
+export default function MostrarPagina() {
+	// Código Página 
+	const IdPagina = "88";
+	//mostramos el resultado
+	return <SolicitudPagina IdPage={IdPagina} />;
 }

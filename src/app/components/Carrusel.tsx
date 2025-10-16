@@ -28,7 +28,7 @@ interface RawSlideData {
   published: boolean;
 }
 
-const API_URL = DRUPAL_HOSTNAME + DRUPAL_ROUTES.CARRUSEL;
+const API_URL = DRUPAL_HOSTNAME + DRUPAL_ROUTES.CARRUSELES;
 
 // 2. Función de Obtención de Datos
 async function fetchCarrusel(): Promise<Slide[]> {

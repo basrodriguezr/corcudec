@@ -9,18 +9,18 @@ import { fetchPaginas, PageData } from "@/app/components/Pagina";
 // Estados para seguimiento de carga y posibles errores
 type FetchState = 'LOADING' | 'LOADED' | 'ERROR';
 
-// URL de la API (definida fuera del componente)
-const API_URL = DRUPAL_HOSTNAME + DRUPAL_ROUTES.PAGINAS;
+const IdPagina = "82" //id página transparencia
 
 export default function MostrarPagina() {
   const [pagina, setPagina] = useState<PageData[]>([]);
   const [status, setStatus] = useState<FetchState>('LOADING');
+  const [verMasAbierto, setVerMasAbierto] = useState(false);
 
   useEffect(() => {
     const loadPaginas = async () => {
       setStatus('LOADING');
       try {
-        const data = await fetchPaginas();
+        const data = await fetchPaginas(IdPagina);
         setPagina(data); // data puede ser un objeto o undefined
         setStatus('LOADED');
       } catch (error) {
@@ -50,28 +50,49 @@ export default function MostrarPagina() {
     );
   }
 
-  const currentPage = pagina.find(page => page.title === "Transparencia");
-  if (!currentPage) {
-    return (
-      <div className="flex justify-center items-center h-48 text-lg font-semibold text-orange-500">
-        El contenido Transparencia no fue encontrado en la API.
-      </div>
-    );
-  }
+  const pageContent = pagina[0];
+  const hasHiddenContent = pageContent.hidden !== null && pageContent.hidden.trim() !== "";
 
   return (
     <>
       <main className="contenedor-transparencia">
         <section className="historia-section">
           <div className="titulo-pagina">
-            <h1 className="titulo">{currentPage.title}</h1>
+            <h1 className="titulo">{pagina[0].title}</h1>
           </div>
-          <h2 className="historia-titulo"><span>{currentPage.text}</span></h2>
+          <h2 className="historia-titulo"><span>{pagina[0].text}</span></h2>
           <figure>
-            <Image src={currentPage.image} width={1060} height={360} alt="Transparencia" />
+            <Image src={pagina[0].image} width={1060} height={360} alt="Transparencia" />
           </figure>
           <div className="historia-texto">
-            <div dangerouslySetInnerHTML={{ __html: currentPage.content }} />
+            <div dangerouslySetInnerHTML={{ __html: pagina[0].content }} />
+            {hasHiddenContent && (
+              <>
+                {/* Contenido oculto: Se ajustan las clases para una transición suave */}
+                <div 
+                  id="bloque-ver-mas" 
+                  className={`transition-all duration-500 ease-in-out overflow-hidden ${verMasAbierto ? "max-h-[2000px] opacity-100 mt-4" : "max-h-0 opacity-0"}`}
+                  aria-hidden={!verMasAbierto}
+                >
+                  <div dangerouslySetInnerHTML={{ __html: pageContent.hidden }} />
+                </div>
+                
+                {/* Botón para alternar la visibilidad */}
+                <button
+                  type="button"
+                  onClick={() => setVerMasAbierto(v => !v)}
+                  className="ver-mas-btn inline-flex items-center gap-2 rounded-md border border-gray-300 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-300"
+                  aria-expanded={verMasAbierto}
+                  aria-controls="bloque-ver-mas"
+                >
+                  {verMasAbierto ? "Ver menos" : "Ver más"}
+                  <span
+                    className={`transition-transform duration-300 ${verMasAbierto ? "rotate-180" : ""}`}
+                    aria-hidden
+                  >▼</span>
+                </button>
+              </>
+            )}
           </div>
         </section>
         <section className="relative w-full max-w-full mx-auto mt-auto">

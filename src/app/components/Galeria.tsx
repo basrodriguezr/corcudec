@@ -66,7 +66,7 @@ export const Galeria = () => {
   if (status === 'LOADING') {
     return (
       <div className="flex justify-center items-center h-48 text-lg font-semibold text-gray-700">
-        Cargando Pagina...
+        Cargando elemento...
       </div>
     );
   }
@@ -75,7 +75,7 @@ export const Galeria = () => {
   if (status === 'ERROR' || !navs) {
     return (
       <div className="flex justify-center items-center h-48 text-lg font-semibold text-red-500">
-        No se pudo cargar la Pagina.
+        No se pudo cargar los elementos.
       </div>
     );
   }

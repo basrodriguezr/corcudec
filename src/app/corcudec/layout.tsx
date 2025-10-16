@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { Carrusel, MenuNav, Footer } from "../components";
-import "../globals.css";
+import type { ReactNode } from "react";
+import { MenuNav } from "../components";
 
 export const metadata: Metadata = {
   title: "Corporación Cultural Universidad de Concepción",
@@ -8,31 +8,22 @@ export const metadata: Metadata = {
   icons: "https://www.corcudec.cl/favicon/favicon-32x32.png?ver=202306091143",
 };
 
-export default function MainLayout({ children }: Readonly<{ children: React.ReactNode }> ) {
-  return (    
-      <div className="bg-neutral-950 text-white">
-        {/*INICIO CABECERA*/}
-        <header className="relative flex min-h-[50vh] flex-col overflow-hidden bg-white bg-nubes-multiple">
-          <div className="absolute inset-0" />
-          <div className="relative z-10">
-            <MenuNav />
-          </div>
+export default function PublicLayout({
+  children,
+}: Readonly<{ children: ReactNode }>) {
+  return (
+    <div className="min-h-screen bg-[url('/corcudec/img/seccion2.png')] bg-cover bg-center bg-no-repeat">
+      {/*INICIO CABECERA*/}
+      <header className="relative flex flex-col overflow-hidden bg-gradient-to-r from-neutral-100 via-neutral-700 to-black text-white opacity-60">
+        <div className="relative z-10">
+          <MenuNav />
+        </div>
+      </header>
+      {/*FIN CABECERA*/}
 
-          {/*INICIO CUERPO*/}
-          <main className="bg-white text-neutral-900">
-            {children}
-          </main>
-          {/*FIN CUERPO*/}
-
-        </header>
-        {/*FIN CABECERA*/}
-
-        {/*INICIO FOOTER*/} 
-        <footer className="relative min-h-[60vh] bg-[url('/corcudec/img/FOOTER.png')] bg-cover bg-center bg-no-repeat">
-          <div className="absolute inset-0 bg-black/10 pointer-events-none" />
-          <Footer />
-        </footer>
-        {/*INICIO FOOTER*/} 
-      </div>    
+      {/*INICIO CUERPO*/}
+      <main>{children}</main>
+      {/*FIN CUERPO*/}
+    </div>
   );
 }

@@ -8,6 +8,7 @@ export interface PageData {
 	text: string;
 	image: string;
 	content: string;
+	hidden: string;
 	published: boolean; // 💡 Corrección: Usar 'boolean' con minúscula
 }
 
@@ -15,10 +16,10 @@ export interface PageData {
 type FetchState = "LOADING" | "LOADED" | "ERROR";
 
 // URL de la API (definida fuera del componente)
-const API_URL = DRUPAL_HOSTNAME + DRUPAL_ROUTES.PAGINAS;
+const API_URL = DRUPAL_HOSTNAME + DRUPAL_ROUTES.PAGINA;
 
 // 2. Función de Obtención de Datos
-export const fetchPaginas = async () => {
+export const fetchPaginas = async (value : string) => {
 	// export async function fetchPaginas(): Promise<PageData[]> {
 	// 	const requestOptions = {
 	// 		method: "GET",
@@ -29,7 +30,7 @@ export const fetchPaginas = async () => {
 		headers: { "Content-Type": "application/json" }
 	};
 	try {
-		const response = await fetch(API_URL, requestOptions);
+		const response = await fetch(API_URL + value, requestOptions);
 
 		if (!response.ok) {
 			throw new Error(`HTTP error! status: ${response.status}`);
