@@ -3,10 +3,11 @@
 import { useState, useRef, useEffect } from 'react';
 import Image from "next/image";
 import Link from "next/link";
+import { CORCUDEC_ROUTE } from '@/config/global';
 
 const menuItems = [
     { id: 'corcudec', title: 'CORCUDEC', href: '#', subItems: [
-        { title: 'Quiénes Somos', href: '#' }, { title: 'Equipo', href: '#' }, { title: 'Alianzas', href: '#' }
+        { title: 'Quiénes Somos', href: CORCUDEC_ROUTE + '/quienessomos/' }, { title: 'Equipo', href: '#' }, { title: 'Alianzas', href: '#' }
     ]},
     { id: 'elencos', title: 'Elencos', href: '#', subItems: [
         { title: 'Orquesta Sinfónica UdeC', href: '#' }, { title: 'Coro Sinfónico UdeC', href: '#' }, { title: 'Directores Destacados', href: '#' }
@@ -55,12 +56,12 @@ export const MenuNav = () => {
 
                     <div className="flex-shrink-0">
                         <Link href="/home/main" onClick={() => { setIsMenuOpen(false); setOpenDesktopMenu(null); }}>
-                            <Image src="/img/logoudec.png" width={130} height={50} alt="Universidad de Concepción" />
+                            <Image src={CORCUDEC_ROUTE + "/img/logoudec.png"} width={130} height={50} alt="Universidad de Concepción" />
                         </Link>
                     </div>
 
                     <div className="hidden md:block">
-                         <ul className="flex items-center justify-center gap-5"> 
+                        <ul className="flex items-center justify-center gap-5"> 
                             {menuItems.map((item) => (
                                 <li key={item.id} className="relative">
                                     <Link 

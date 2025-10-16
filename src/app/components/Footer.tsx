@@ -3,33 +3,34 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { CORCUDEC_ROUTE } from '@/config/global';
 
 export const Footer = () => {
     return (
         <>           
-             {/*Footer Content*/}
+            {/*Footer Content*/}
             <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-6 pt-12">
                 {/*Footer grid*/}
                 <div className="flex flex-col items-center gap-12 text-center lg:flex-row lg:items-start lg:justify-between lg:text-left">
                     {/*Inicio logos*/}
                     <div className="flex w-full max-w-xs flex-col items-center gap-6 lg:max-w-none lg:items-start">
                         <div className="flex flex-wrap items-center justify-center gap-6 lg:justify-start">
-                            <Image src={"/img/ICONOS/logo_udec.png"} width={175} height={70} alt='Universidad de Concepción - Corporación Cultural' className="h-auto w-[175px] max-w-full"/>
-                            <Image src={"/img/ICONOS/logo_gob.png"} width={90} height={70} alt='Ministerio de las Culturas, las Artes y el Patrimonio' className="h-auto w-[90px] max-w-full"/>
+                            <Image src={CORCUDEC_ROUTE + "/img/ICONOS/logo_udec.png"} width={175} height={70} alt='Universidad de Concepción - Corporación Cultural' className="h-auto w-[175px] max-w-full"/>
+                            <Image src={CORCUDEC_ROUTE + "/img/ICONOS/logo_gob.png"} width={90} height={70} alt='Ministerio de las Culturas, las Artes y el Patrimonio' className="h-auto w-[90px] max-w-full"/>
                         </div>
                     </div>
                     {/*Fin logos*/}
 
                     {/*Inicio Contacto*/}
                     <div className="flex w-full max-w-md flex-col items-center gap-5">
-                        <ul className="contact-list flex w-full flex-col items-center gap-4 text-sm lg:items-start">
-                            <li className="flex flex-row items-center gap-2 lg:flex-row lg:items-center">
+                        <ul className="contact-list flex w-full flex-col items-center gap-4 text-sm">
+                            <li className="flex flex-row gap-2 lg:flex-row">
                                 <span className="icon">
                                     { MailIcon() }
                                 </span>
                                 <a href="mailto:contacto@corcudec.cl" className="text-white hover:underline underline-offset-4 decoration-white/60 break-words">CONTACTO@CORCUDEC.CL</a>
                             </li>
-                            <li className="flex flex-row items-center gap-2 lg:flex-row lg:items-center">
+                            <li className="flex flex-row gap-2 lg:flex-row">
                                 <span className="icon">
                                     { PhoneIcon() }
                                 </span>
@@ -39,7 +40,7 @@ export const Footer = () => {
                                     <a href="tel:+56412249155" className="hover:underline underline-offset-4 decoration-white/60">412-249-155</a>
                                 </div>
                             </li>
-                            <li className="flex w-full flex-col items-center gap-4 lg:items-start">
+                            <li className="flex w-full flex-col items-center gap-4">
                                 <div className="flex flex-row items-center gap-2 lg:flex-row lg:items-center lg:gap-3">
                                     <span className="icon">
                                         { LocationIcon() }
@@ -86,12 +87,9 @@ export const Footer = () => {
                     {/*Inicio Menu*/}
                     <div className="flex w-full max-w-xs flex-col items-center gap-2 lg:items-start">
                         <ul className="footer-menu flex flex-col gap-2">
-                            <li><a href="/consultas">CONSULTAS</a></li>
-                            <li><a href="/sugerencias">SUGERENCIAS</a></li>
-                            <li><a href="/reclamos">RECLAMOS</a></li>
-                            <li><a href="/felicitaciones">FELICITACIONES</a></li>
-                            <li><a href="/transparencia">TRANSPARENCIA</a></li>
-                            <li><a href="/modeloPrevencionDelito">MODELO DE PREVENCIÓN DEL DELITO</a></li>
+                            <li><a href={CORCUDEC_ROUTE + "/contactanos"}>CONTÁCTENOS</a></li>
+                            <li><a href={CORCUDEC_ROUTE + "/transparencia"}>TRANSPARENCIA</a></li>
+                            <li><a href={CORCUDEC_ROUTE + "/modeloPrevencionDelito"}>MODELO DE PREVENCIÓN DEL DELITO</a></li>
                         </ul>
 
                     </div>
@@ -107,7 +105,7 @@ export const Footer = () => {
                 <p>Todos los derechos reservados</p>
             </center>
         </>
-  )
+    )
 }
 
 
