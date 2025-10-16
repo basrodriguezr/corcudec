@@ -29,15 +29,15 @@ const menuItems = [
     },
     {
         id: 'programacion', title: 'Programación', href: '#', subItems: [
-            { title: 'Temporada Sinfónica', href: '#' },
-            { title: 'D’Camara', href: '#' },
-            { title: 'Lírica en Primera Fila', href: '#' },
-            { title: 'Lunes Cinematográficos', href: '#' },
-            { title: 'Temporada de Teatro', href: '#' }
+            { title: 'Temporada Sinfónica', href: CORCUDEC_ROUTE + '/temporada/' },
+            { title: 'D’Camara', href: CORCUDEC_ROUTE + '/camara/' },
+            { title: 'Lírica en Primera Fila', href: CORCUDEC_ROUTE + '/lirica/' },
+            { title: 'Lunes Cinematográficos', href: CORCUDEC_ROUTE + '/lunescinematograficos/' },
+            { title: 'Temporada de Teatro', href: CORCUDEC_ROUTE + '/temporada/' }
         ]
     },
-    { id: 'abonos', title: 'Abonos', href: '#' },
-    { id: 'noticias', title: 'NOTICIAS', href: '#' },
+    { id: 'abonos', title: 'Abonos', href: CORCUDEC_ROUTE + '/abonos/' },
+    { id: 'noticias', title: 'NOTICIAS', href: CORCUDEC_ROUTE + '/noticias/' },
 ];
 
 export const MenuNav = () => {

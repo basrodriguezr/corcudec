@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function Orquesta() {
     return (
-        <div>page</div>
+        <div>Pagina de la orquesta</div>
     )
 }

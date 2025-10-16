@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function Equipo(){  
+export default function Equipo() {
   return (
-    <div>page</div>
+    <div>Pagina del equipo</div>
   )
 }
