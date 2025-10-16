@@ -74,14 +74,7 @@ export const Footer = () => {
                                 </div>
 
                             </li>
-                        </ul>
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3193.383181822811!2d-73.0526388236173!3d-36.8331191722384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9669b5d0db004071%3A0x34a8e3427958443!2sTeatro%20Universidad%20de%20Concepci%C3%B3n!5e0!3m2!1ses-419!2scl!4v1728416684611!5m2!1ses-419!2scl"
-                            className="w-full h-40 mt-4 rounded-lg border border-gray-700 shadow-lg"
-                            loading="lazy"
-                            referrerPolicy="no-referrer-when-downgrade"
-                            title="Mapa O'Higgins 660 - Concepción"
-                        />
+                        </ul>                        
                     </div>
 
                     {/*Inicio Menu*/}
@@ -98,12 +91,7 @@ export const Footer = () => {
                 <div className="mt-12 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
                     <p>© {new Date().getFullYear()} Corporación Cultural Universidad de Concepción. Todos los derechos reservados.</p>
                 </div>
-            </div>
-            <hr className='w-[min(80%,980px)] h-[2px] bg-white/70 border-0 mx-auto mt-[18px] mb-4 to-transparent '></hr>
-            <center>
-                <p>© {new Date().getFullYear()} Corporación Cultural Universidad de Concepción</p>
-                <p>Todos los derechos reservados</p>
-            </center>
+            </div>            
         </>
     )
 }

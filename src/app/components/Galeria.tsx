@@ -13,7 +13,7 @@ type GaleriaItem = {
 
 const GALERIA_ITEMS: GaleriaItem[] = [
   {
-    href: '/Nav/elencos/coro',
+    href: '/corcudec/elencos',
     title: 'Nuestros elencos',
     image: '/corcudec/img/Galeria/f1.png',
     alt: 'Nuestros elencos',
@@ -27,7 +27,7 @@ const GALERIA_ITEMS: GaleriaItem[] = [
     highlight: true,
   },
   {
-    href: '/Nav/teatro_udec/historia',
+    href: '/corcudec/teatro',
     title: 'Historia',
     image: '/corcudec/img/Galeria/f3.png',
     alt: 'Historia',

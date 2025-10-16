@@ -7,7 +7,7 @@ import { CORCUDEC_ROUTE } from '@/config/global';
 
 const menuItems = [
     { id: 'corcudec', title: 'CORCUDEC', href: '#', subItems: [
-        { title: 'Quiénes Somos', href: CORCUDEC_ROUTE + '/quienessomos/' }, { title: 'Equipo', href: '#' }, { title: 'Alianzas', href: '#' }
+        { title: 'Quiénes Somos', href: CORCUDEC_ROUTE + '/quienessomos/' }, { title: 'Equipo', href: CORCUDEC_ROUTE + '/equipo/' }, { title: 'Alianzas', href: CORCUDEC_ROUTE + '/alianzas/' }
     ]},
     { id: 'elencos', title: 'Elencos', href: '#', subItems: [
         { title: 'Orquesta Sinfónica UdeC', href: '#' }, { title: 'Coro Sinfónico UdeC', href: '#' }, { title: 'Directores Destacados', href: '#' }
