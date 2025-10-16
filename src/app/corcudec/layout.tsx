@@ -18,17 +18,18 @@ export default function MainLayout({ children }: Readonly<{ children: React.Reac
           <div className="relative z-10">
             <MenuNav />
           </div>
+
+          {/*INICIO CUERPO*/}
+          <main className="bg-white text-neutral-900">
+            {children}
+          </main>
+          {/*FIN CUERPO*/}
+
         </header>
         {/*FIN CABECERA*/}
 
-        {/*INICIO CUERPO*/}
-        <main className="bg-white text-neutral-900">
-          {children}
-        </main>
-        {/*FIN CUERPO*/} 
-
         {/*INICIO FOOTER*/} 
-        <footer className="relative min-h-[60vh] bg-[url('/img/FOOTER.png')] bg-cover bg-center bg-no-repeat">
+        <footer className="relative min-h-[60vh] bg-[url('/corcudec/img/FOOTER.png')] bg-cover bg-center bg-no-repeat">
           <div className="absolute inset-0 bg-black/10 pointer-events-none" />
           <Footer />
         </footer>

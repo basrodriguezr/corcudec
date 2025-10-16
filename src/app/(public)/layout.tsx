@@ -12,7 +12,7 @@ export default function PublicLayout({
   children,
 }: Readonly<{ children: ReactNode }>) {
   return (
-    <div className="min-h-screen bg-[url('/img/seccion2.png')] bg-cover bg-center bg-no-repeat">
+    <div className="min-h-screen bg-[url('/corcudec/img/seccion2.png')] bg-cover bg-center bg-no-repeat">
       {/*INICIO CABECERA*/}
       <header className="relative flex flex-col overflow-hidden bg-gradient-to-r from-neutral-100 via-neutral-700 to-black text-white opacity-60">
         <div className="relative z-10">

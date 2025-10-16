@@ -1,75 +1,113 @@
 "use client";
 
+import { useState, useEffect } from "react"; // 💡 useEffect es necesario para el fetching de datos
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectCoverflow } from "swiper/modules";
+import { DRUPAL_HOSTNAME, DRUPAL_ROUTES } from '@/config/global';
 
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 
+// 1. Definición de Tipos
 type Slide = {
   src: string;
   alt: string;
   href: string;
   tag?: string;
+  publish: boolean;
 };
 
-const slides: Slide[] = [
-  {
-    src: "/corcudec/img/HABLE.webp",
-    alt: "Hable con ella",
-    href: "https://ticketplus.cl/events/hable-con-ella",
-    tag: "Temporada 2025",
-  },
-  {
-    src: "/corcudec/img/VIBRA.webp",
-    alt: "Vibra con la orquesta",
-    href: "https://ticketplus.cl/events/vibra-con-la-orquesta",
-    tag: "Temporada popular",
-  },
-  {
-    src: "/corcudec/img/GAVIOTA.webp",
-    alt: "La gaviota",
-    href: "https://ticketplus.cl/events/la-gaviota",
-    tag: "Teatro musical",
-  },
-  {
-    src: "/corcudec/img/PASION.webp",
-    alt: "Pasión y ritmo",
-    href: "https://ticketplus.cl/events/pasion-y-ritmo",
-    tag: "Gira nacional",
-  },
-  {
-    src: "/corcudec/img/VIBRA.webp",
-    alt: "Vibra con la orquesta",
-    href: "https://ticketplus.cl/events/vibra-con-la-orquesta-octubre",
-    tag: "Temporada popular",
-  },
-  {
-    src: "/corcudec/img/HABLE.webp",
-    alt: "Hable con ella",
-    href: "https://ticketplus.cl/events/hable-con-ella-octubre",
-    tag: "Temporada 2025",
-  },
-  {
-    src: "/corcudec/img/GAVIOTA.webp",
-    alt: "La gaviota",
-    href: "https://ticketplus.cl/events/la-gaviota-noviembre",
-    tag: "Teatro musical",
-  },
-  {
-    src: "/corcudec/img/PASION.webp",
-    alt: "Pasión y ritmo",
-    href: "https://ticketplus.cl/events/pasion-y-ritmo-noviembre",
-    tag: "Gira nacional",
-  },
-];
+interface RawSlideData {
+  id: string;
+  title: string;
+  image: string;
+  description: string;
+  url: string;
+  tag?: string;
+  published: boolean;
+}
 
+const API_URL = DRUPAL_HOSTNAME + DRUPAL_ROUTES.CARRUSEL;
+
+// 2. Función de Obtención de Datos
+async function fetchCarrusel(): Promise<Slide[]> {
+  const requestOptions = {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  };
+
+  try {
+    const response = await fetch(API_URL, requestOptions);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const result = (await response.json()) as RawSlideData[];
+
+    return result.map((item) => ({
+      src: item.image,
+      alt: item.title,
+      href: item.url,
+      tag: item.tag,
+      publish: item.published,
+    }));
+  } catch (error) {
+    console.error("Error al obtener los datos de Drupal:", error);
+    return []; // Devolver un array vacío en caso de error
+  }
+}
+
+// Estados para seguimiento de carga y posibles errores
+type FetchState = 'LOADING' | 'LOADED' | 'ERROR';
+
+// 3. Componente Principal
 export const Carrusel = () => {
+  // Inicializa el estado con un array vacío y usa nombres claros
+  const [slides, setSlides] = useState<Slide[]>([]);
+  const [status, setStatus] = useState<FetchState>('LOADING');
+
+  // 💡 Lógica Corregida: Usar useEffect para hacer el fetching
+  useEffect(() => {
+    // La función que se ejecuta al montar el componente
+    const loadSlides = async () => {
+      setStatus('LOADING');
+      try {
+        const data = await fetchCarrusel();
+        setSlides(data);
+        setStatus('LOADED');
+      } catch (error) {
+        setStatus('ERROR');
+        // El error es mostrado en fechCarrusel, pero seguimos el estado
+      }
+    };
+    loadSlides();
+  }, []);
+
+  // Manejo del estado de carga (mientras slides es null)
+  if (status === 'LOADING') {
+    return (
+      <div className="flex justify-center items-center h-48 text-lg font-semibold text-gray-700">
+        Cargando carrusel...
+      </div>
+    );
+  }
+
+  // Manejo de estado sin datos (si el array está vacío)
+  if (status === 'ERROR' || slides.length === 0) {
+    // Show a general error if the fetch failed OR if data was loaded but the array is empty
+    return (
+      <div className="flex justify-center items-center h-48 text-lg font-semibold text-red-500">
+        No se encontraron elementos para el carrusel.
+      </div>
+    );
+  }
+
+  // Renderizado del Carrusel
   return (
     <div className="relative z-0 w-full py-10 sm:py-12 -mt-20">
       <Swiper
-        modules={[EffectCoverflow]}
+        modules={[Autoplay, EffectCoverflow]}
         className="event-swiper"
         effect="coverflow"
         grabCursor
@@ -89,7 +127,7 @@ export const Carrusel = () => {
           <SwiperSlide key={slide.href} className="event-slide">
             <a
               href={slide.href}
-              className="event-card"
+              className={`event-card ${(slide.publish==true ? "flex": "hidden")}` }
               target="_blank"
               rel="noreferrer"
               aria-label={slide.tag ? `${slide.tag} - ${slide.alt}` : slide.alt}

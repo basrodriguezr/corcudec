@@ -15,13 +15,13 @@ const GALERIA_ITEMS: GaleriaItem[] = [
   {
     href: '/Nav/elencos/coro',
     title: 'Nuestros elencos',
-    image: '/img/Galeria/f1.png',
+    image: '/corcudec/img/Galeria/f1.png',
     alt: 'Nuestros elencos',
   },
   {
     href: 'https://www.youtube.com/@corcudec1647',
     title: 'Galería multimedia',
-    image: '/img/Galeria/f2.png',
+    image: '/corcudec/img/Galeria/f2.png',
     alt: 'Galería multimedia',
     target: '_blank',
     highlight: true,
@@ -29,7 +29,7 @@ const GALERIA_ITEMS: GaleriaItem[] = [
   {
     href: '/Nav/teatro_udec/historia',
     title: 'Historia',
-    image: '/img/Galeria/f3.png',
+    image: '/corcudec/img/Galeria/f3.png',
     alt: 'Historia',
   },
 ]

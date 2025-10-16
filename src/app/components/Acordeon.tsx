@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 export const Acordeon = () => {
     const [open, setOpen] = useState(false);
   return (
-     <>
+    <>
       <button
         onClick={() => setOpen(!open)}
         className={`accordion-btn ${open ? "active" : ""}`}
