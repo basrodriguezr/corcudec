@@ -7,4 +7,6 @@ export const DRUPAL_ROUTES = {
     CARRUSEL: '/api/carruseles',
     MULTIMEDIA: '/api/multimedia',
     PAGINAS: '/api/paginas',
+    GALERIA: '/api/galeria',
+    NAVS: '/api/nav',
 } as const;
