@@ -47,18 +47,6 @@ export const SolicitudPagina = ({ IdPage }: { IdPage: string }) => {
         );
     }
 
-    const currentPage = pagina.find(
-        (page) => page.title === "Modelo de Prevencion del Delito"
-    );
-    if (!currentPage) {
-        return (
-            <div className="flex justify-center items-center h-48 text-lg font-semibold text-orange-500">
-                El contenido Modelo de Prevencion del Delito no fue encontrado en la
-                API.
-            </div>
-        );
-    }
-
     const pageContent = pagina[0];
     const hasHiddenContent =
         pageContent.hidden !== null && pageContent.hidden.trim() !== "";
@@ -68,21 +56,21 @@ export const SolicitudPagina = ({ IdPage }: { IdPage: string }) => {
             <div className="contenedor-transparencia">
                 <section className="historia-section">
                     <div className="titulo-pagina">
-                        <h1 className="titulo">{currentPage.title}</h1>
+                        <h1 className="titulo">{pageContent.title}</h1>
                     </div>
                     <h2 className="historia-titulo">
-                        <span>{currentPage.text}</span>
+                        <span>{pageContent.text}</span>
                     </h2>
                     <figure>
                         <Image
-                            src={currentPage.image}
+                            src={pageContent.image}
                             width={1060}
                             height={360}
-                            alt="Transparencia"
+                            alt={pageContent.title}
                         />
                     </figure>
                     <div className="historia-texto">
-                        <div dangerouslySetInnerHTML={{ __html: currentPage.content }} />
+                        <div dangerouslySetInnerHTML={{ __html: pageContent.content }} />
                         {hasHiddenContent && (
                             <>
                                 {/* Contenido oculto: Se ajustan las clases para una transición suave */}
