@@ -14,15 +14,15 @@ export default function PublicLayout({
   return (
     <div className="min-h-screen bg-[url('/corcudec/img/seccion2.png')] bg-cover bg-center bg-no-repeat">
       {/*INICIO CABECERA*/}
-      <header className="relative flex flex-col overflow-hidden bg-gradient-to-r from-neutral-100 via-neutral-700 to-black text-white opacity-60">
-        <div className="relative z-10">
+      <header className="relative flex flex-col overflow-visible bg-gradient-to-r from-neutral-100 via-neutral-700 to-black text-white opacity-100 z-100">
+        <div className="relative">
           <MenuNav />
         </div>
       </header>
       {/*FIN CABECERA*/}
 
       {/*INICIO CUERPO*/}
-      <main>{children}</main>
+      {children}
       {/*FIN CUERPO*/}
     </div>
   );

@@ -29,14 +29,14 @@ const menuItems = [
     },
     {
         id: 'programacion', title: 'Programación', href: '#', subItems: [
-            { title: 'Temporada Sinfónica', href: CORCUDEC_ROUTE + '/temporada/' },
+            { title: 'Temporada Sinfónica', href: CORCUDEC_ROUTE + '/sinfonica/' },
             { title: 'D’Camara', href: CORCUDEC_ROUTE + '/camara/' },
             { title: 'Lírica en Primera Fila', href: CORCUDEC_ROUTE + '/lirica/' },
             { title: 'Lunes Cinematográficos', href: CORCUDEC_ROUTE + '/lunescinematograficos/' },
             { title: 'Temporada de Teatro', href: CORCUDEC_ROUTE + '/temporada/' }
         ]
     },
-    { id: 'abonos', title: 'Abonos', href: CORCUDEC_ROUTE + '/abonos/' },
+    { id: 'abonos', title: 'Abonos', href: '/abonos/' },
     { id: 'noticias', title: 'NOTICIAS', href: CORCUDEC_ROUTE + '/noticias/' },
 ];
 
@@ -78,7 +78,7 @@ export const MenuNav = () => {
                         </Link>
                     </div>
 
-                    <div className="hidden md:block">
+                    <div className="hidden lg:block">
                         <ul className="flex items-center justify-center gap-5">
                             {menuItems.map((item) => (
                                 <li key={item.id} className="relative">
@@ -103,7 +103,7 @@ export const MenuNav = () => {
                         </ul>
                     </div>
 
-                    <div className="-mr-2 flex md:hidden">
+                    <div className="-mr-2 flex lg:hidden">
                         <button onClick={() => setIsMenuOpen(!isMenuOpen)} type="button" className="inline-flex items-center justify-center rounded-md p-2 text-gray-200 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                             <span className="sr-only">Abrir menú principal</span>
                             {isMenuOpen ? (<svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>)
@@ -114,7 +114,7 @@ export const MenuNav = () => {
             </div>
 
             {isMenuOpen && (
-                <div className="md:hidden">
+                <div className="lg:hidden">
                     <div className="space-y-1 px-2 pt-2 pb-3 sm:px-3">
                         {menuItems.map(item => (
                             <div key={item.id}>
