@@ -10,14 +10,6 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 
 // 1. Definición de Tipos
-type Slide = {
-  src: string;
-  alt: string;
-  href: string;
-  tag?: string;
-  publish: boolean;
-};
-
 interface RawSlideData {
   id: string;
   title: string;
@@ -31,7 +23,7 @@ interface RawSlideData {
 const API_URL = DRUPAL_HOSTNAME + DRUPAL_ROUTES.CARRUSELES;
 
 // 2. Función de Obtención de Datos
-async function fetchCarrusel(): Promise<Slide[]> {
+async function fetchCarrusel(): Promise<RawSlideData[]> {
   const requestOptions = {
     method: "GET",
     headers: { "Content-Type": "application/json" },
@@ -45,13 +37,8 @@ async function fetchCarrusel(): Promise<Slide[]> {
     }
     const result = (await response.json()) as RawSlideData[];
 
-    return result.map((item) => ({
-      src: item.image,
-      alt: item.title,
-      href: item.url,
-      tag: item.tag,
-      publish: item.published,
-    }));
+    return result;
+
   } catch (error) {
     console.error("Error al obtener los datos de Drupal:", error);
     return []; // Devolver un array vacío en caso de error
@@ -64,7 +51,7 @@ type FetchState = 'LOADING' | 'LOADED' | 'ERROR';
 // 3. Componente Principal
 export const Carrusel = () => {
   // Inicializa el estado con un array vacío y usa nombres claros
-  const [slides, setSlides] = useState<Slide[]>([]);
+  const [slides, setSlides] = useState<RawSlideData[]>([]);
   const [status, setStatus] = useState<FetchState>('LOADING');
 
   // 💡 Lógica Corregida: Usar useEffect para hacer el fetching
@@ -113,7 +100,7 @@ export const Carrusel = () => {
         grabCursor
         centeredSlides
         slidesPerView="auto"
-        coverflowEffect={{ rotate: 0, stretch: 0, depth: 120, modifier: 2, slideShadows: false }}
+        coverflowEffect={{ rotate: 0, stretch: 0, depth: 120, modifier: 3, slideShadows: false }}
         spaceBetween={56}
         loop
         autoplay={{ delay: 6500, disableOnInteraction: false }}
@@ -124,21 +111,18 @@ export const Carrusel = () => {
         }}
       >
         {slides.map((slide, index) => (
-          <SwiperSlide key={slide.href} className="event-slide">
+          <SwiperSlide key={index+slide.url} className="event-slide">
             <a
-              href={slide.href}
-              className={`event-card ${(slide.publish==true ? "flex": "hidden")}` }
+              href={slide.url}
+              className="event-card"
               target="_blank"
               rel="noreferrer"
-              aria-label={slide.tag ? `${slide.tag} - ${slide.alt}` : slide.alt}
+              aria-label={slide.tag ? `${slide.tag} - ${slide.title}` : slide.title}
             >
-              <Image
-                src={slide.src}
-                alt={slide.alt}
-                fill
-                className="event-card__image"
-                priority={index < 3}
-              />
+              <img src={slide.image} alt={slide.title} className="event-card__image"/>
+              <div className="text-center m-5">
+                <div dangerouslySetInnerHTML={{ __html: slide.description }} />
+              </div>
             </a>
           </SwiperSlide>
         ))}

@@ -2,7 +2,6 @@
 
 import { useRef, useState, useEffect, FormEvent } from "react";
 
-
 export default function Consultas() {
   const formRef = useRef<HTMLFormElement>(null);
   const [ok, setOk] = useState(false);
@@ -82,7 +81,7 @@ export default function Consultas() {
         <div className="field">
           <label className="field-label">Teléfono (opcional)</label>
           <input className="field-input" id="telefono" name="telefono" type="tel" inputMode="tel" placeholder="+569 55555555"
-                 pattern="^\+?\s?(\d{2,3})?\s?\d{7,12}$"/>
+            pattern="^\+?\s?(\d{2,3})?\s?\d{7,12}$"/>
         </div>
 
         {/* <!-- Asunto --> */}
@@ -112,7 +111,7 @@ export default function Consultas() {
             ok ? "opacity-100" : "opacity-0 pointer-events-none"
           }`}
         >
-         ¡Gracias! Recibimos tu solicitud. Te contactaremos pronto.
+          ¡Gracias! Recibimos tu solicitud. Te contactaremos pronto.
         </div>
       {/* <div id="ok" className="helper hidden">
         

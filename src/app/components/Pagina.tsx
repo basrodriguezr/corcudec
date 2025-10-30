@@ -1,4 +1,3 @@
-
 import { DRUPAL_HOSTNAME, DRUPAL_ROUTES } from "@/config/global";
 
 // 1. Tipos: Definimos las estructuras de datos
@@ -9,7 +8,12 @@ export interface PageData {
 	image: string;
 	content: string;
 	hidden: string;
-	published: boolean; // 💡 Corrección: Usar 'boolean' con minúscula
+	gallery: {
+		gallery_url: string;
+		gallery_alt: string;
+		gallery_text: string;
+	}[];
+	published: boolean;
 }
 
 // Estados para seguimiento de carga y posibles errores

@@ -15,8 +15,11 @@ export const SolicitudSeccion = ({ IdSeccion }: { IdSeccion: string }) => {
 		setStatus("LOADING");
 		try {
 			const data = await fetchSecciones(id);
-			setSeccion(data); // data puede ser un objeto o undefined
-			setStatus("LOADED");
+
+			if (data.length > 0) {
+				setSeccion(data); // data puede ser un objeto o undefined
+				setStatus("LOADED");
+			} else setStatus("ERROR");
 		} catch (error) {
 			setStatus("ERROR");
 			// No es necesario loguear aquí, ya se hace en fetchCarrusel
@@ -27,28 +30,23 @@ export const SolicitudSeccion = ({ IdSeccion }: { IdSeccion: string }) => {
 		loadSecciones(IdSeccion);
 	}, [IdSeccion, loadSecciones]); // CORRECTO: El array vacío [] asegura que se ejecute solo al montar.
 
-	// ## Manejo de Estados de Carga y Error
-
-	if (status === "LOADING") {
-		return (
-			<div className="flex justify-center items-center h-48 text-lg font-semibold text-gray-700">
-				Cargando Sección...
-			</div>
-		);
-	}
-
-	// 💡 Optimización: Si el estado es ERROR o si el contenido es undefined después de cargar
-	if (status === "ERROR" || !seccion) {
-		return (
-			<div className="flex justify-center items-center h-48 text-lg font-semibold text-red-500">
-				No se pudo cargar la Sección.
-			</div>
-		);
-	}
-
 	if (seccion.length > 0) {
-		//const hasImageContent = sectionContent.image !== null && sectionContent.image.trim() !== "";
-		//const hasHiddenContent = sectionContent.hidden !== null && sectionContent.hidden.trim() !== "";
+		// Manejo de Estados de Carga y Error
+		if (status === "LOADING") {
+			return (
+				<div className="flex justify-center items-center h-48 text-lg font-semibold text-gray-700">
+					Cargando Sección...
+				</div>
+			);
+		}
+		// 💡 Optimización: Si el estado es ERROR o si el contenido es undefined después de cargar
+		if (status === "ERROR" || !seccion) {
+			return (
+				<div className="flex justify-center items-center h-48 text-lg font-semibold text-red-500">
+					No se pudo cargar la Sección.
+				</div>
+			);
+		}
 		return (
 			<>
 				{seccion.map((sectionContent) => (
@@ -112,27 +110,28 @@ export const SolicitudSeccion = ({ IdSeccion }: { IdSeccion: string }) => {
 									</>
 								)}
 						</div>
-                        <div className="historia-galeria">
-                            {sectionContent.gallery?.length > 0 && (
-                                sectionContent.gallery.map((galeria) => (
-                                    <div key={galeria.gallery_alt} className="galeria-item">
-                                        <figure>
-                                            <Image
-                                                src={galeria.gallery_url}
-                                                width={200}
-                                                height={200}
-                                                alt={galeria.gallery_alt}
-                                            />
-                                        </figure>
-                                        <h4>
-                                            <div dangerouslySetInnerHTML={{
-                                                __html : galeria.gallery_text
-                                            }}/>
-                                        </h4>
-                                    </div>
-                                ))
-                            )}
-                        </div>
+						<div className="historia-galeria">
+							{sectionContent.gallery?.length > 0 &&
+								sectionContent.gallery.map((galeria) => (
+									<div key={galeria.gallery_alt} className="galeria-item">
+										<figure>
+											<Image
+												src={galeria.gallery_url}
+												width={200}
+												height={200}
+												alt={galeria.gallery_alt}
+											/>
+										</figure>
+										<h4>
+											<div
+												dangerouslySetInnerHTML={{
+													__html: galeria.gallery_text
+												}}
+											/>
+										</h4>
+									</div>
+								))}
+						</div>
 					</section>
 				))}
 			</>

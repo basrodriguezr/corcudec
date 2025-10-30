@@ -1,9 +1,24 @@
 import { SolicitudPagina } from "@/app/components/PaginaPlana";
+import { Footer } from "@/app/components";
+
+const PAGE_ID = "90";
+const SECTION_ID = "corcudec-alianzas";
+
 // Componente principal de la vista, ahora usa el componente reutilizable
 export default function MostrarPagina() {
-	// Código Página 
-	const IdPagina = "90";
-	const section = "alianzas";
 	//mostramos el resultado
-	return <SolicitudPagina IdPage={IdPagina} IdSection={section}/>;
+	return (
+		<>
+			<main className="bg-white text-neutral-900">
+				<div className="contenedor-transparencia">
+					<SolicitudPagina IdPage={PAGE_ID} IdSection={SECTION_ID} />
+				</div>
+			</main>
+			
+			<footer className="relative min-h-[60vh] bg-[url('/corcudec/img/FOOTER.png')] bg-cover bg-center bg-no-repeat text-white">
+				<div className="absolute inset-0 pointer-events-none" />
+				<Footer />
+			</footer>
+		</>
+	);
 }

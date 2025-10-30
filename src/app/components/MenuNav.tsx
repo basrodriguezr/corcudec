@@ -8,36 +8,37 @@ import { CORCUDEC_ROUTE } from '@/config/global';
 const menuItems = [
     {
         id: 'corcudec', title: 'CORCUDEC', href: '#', subItems: [
-            { title: 'Quiénes Somos', href: CORCUDEC_ROUTE + '/quienessomos/' },
-            { title: 'Equipo', href: CORCUDEC_ROUTE + '/equipo/' },
-            { title: 'Alianzas', href: CORCUDEC_ROUTE + '/alianzas/' }
+            { title: 'Quiénes Somos', href: '/quienessomos/' },
+            { title: 'Equipo', href: '/equipo/' },
+            { title: 'Alianzas', href: '/alianzas/' }
         ]
     },
     {
         id: 'elencos', title: 'Elencos', href: '#', subItems: [
-            { title: 'Orquesta Sinfónica UdeC', href: CORCUDEC_ROUTE + '/orquesta/' },
-            { title: 'Coro Sinfónico UdeC', href: CORCUDEC_ROUTE + '/elencos/' },
-            { title: 'Directores Destacados', href: CORCUDEC_ROUTE + '/directores' }
+            { title: 'Orquesta Sinfónica UdeC', href: '/orquesta/' },
+            { title: 'Coro Sinfónico UdeC', href: '/coro/' },
+            { title: 'Directores Destacados', href: '/directores/' }
         ]
     },
     {
         id: 'teatro', title: 'Teatro Udec', href: '#', subItems: [
-            { title: 'Historia', href: CORCUDEC_ROUTE + '/teatro/' },
-            { title: 'Programas Emblemáticos', href: CORCUDEC_ROUTE + '/programas/' },
-            { title: 'Arriendos', href: CORCUDEC_ROUTE + '/arriendos/' }
+            { title: 'Historia', href: '/historia/' },
+            { title: 'Programas Emblemáticos', href: '/programas/' },
+            { title: 'Arriendos', href: '/arriendos/' }
         ]
     },
     {
         id: 'programacion', title: 'Programación', href: '#', subItems: [
-            { title: 'Temporada Sinfónica', href: CORCUDEC_ROUTE + '/sinfonica/' },
-            { title: 'D’Camara', href: CORCUDEC_ROUTE + '/camara/' },
-            { title: 'Lírica en Primera Fila', href: CORCUDEC_ROUTE + '/lirica/' },
-            { title: 'Lunes Cinematográficos', href: CORCUDEC_ROUTE + '/lunescinematograficos/' },
-            { title: 'Temporada de Teatro', href: CORCUDEC_ROUTE + '/temporada/' }
+            { title: 'Temporada Sinfónica', href: '/sinfonica/' },
+            { title: 'D’Camara', href: '/camara/' },
+            { title: 'Lírica en Primera Fila', href: '/lirica/' },
+            { title: 'Lunes Cinematográficos', href: '/lunescinematograficos/' },
+            { title: 'Temporada de Teatro', href: '/temporada/' },
+            { title: 'Ópera', href: '/opera/' }
         ]
     },
     { id: 'abonos', title: 'Abonos', href: '/abonos/' },
-    { id: 'noticias', title: 'NOTICIAS', href: CORCUDEC_ROUTE + '/noticias/' },
+    { id: 'noticias', title: 'NOTICIAS', href: '/noticias/principal/' },
 ];
 
 export const MenuNav = () => {
@@ -93,7 +94,7 @@ export const MenuNav = () => {
                                         <div className={`absolute left-0 top-full mt-2 transition-opacity duration-300 ease-in-out z-[130]  ${openDesktopMenu === item.id ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
                                             <div className="min-w-56 rounded-md bg-black ring-1 ring-white/10 shadow-xl p-2 text-md">
                                                 {item.subItems.map(subItem => (
-                                                    <Link key={subItem.title} href={subItem.href} onClick={() => setOpenDesktopMenu(null)} className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">{subItem.title}</Link>
+                                                    <Link key={subItem.title} href={`/${item.id+subItem.href}`} onClick={() => setOpenDesktopMenu(null)} className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">{subItem.title}</Link>
                                                 ))}
                                             </div>
                                         </div>
@@ -130,7 +131,7 @@ export const MenuNav = () => {
                                     // MODIFICACIÓN: Se reintroducen las clases para el fondo negro del submenú
                                     <div className="bg-black rounded-md mt-1 p-2 space-y-1 pl-4">
                                         {item.subItems.map(subItem => (
-                                            <Link key={subItem.title} href={subItem.href} onClick={() => setIsMenuOpen(false)} className="block rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+                                            <Link key={subItem.title} href={`/${item.id+subItem.href}`} onClick={() => setIsMenuOpen(false)} className="block rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
                                                 {subItem.title}
                                             </Link>
                                         ))}

@@ -2,27 +2,20 @@
 
 import Image from "next/image";
 import { useState, useEffect, useCallback } from "react";
-import { fetchPaginas, PageData } from "@/app/components/Pagina";
-import { SolicitudSeccion } from "@/app/components/Secciones";
+import { fetchNews, NewsData } from "@/app/components/Noticia";
 
 // Estados para seguimiento de carga y posibles errores
 type FetchState = "LOADING" | "LOADED" | "ERROR";
 
-export const SolicitudPagina = ({
-	IdPage,
-	IdSection = ""
-}: {
-	IdPage: string;
-	IdSection?: string;
-}) => {
-	const [pagina, setPagina] = useState<PageData[]>([]);
+export const SolicitudNoticia = ({ IdPage }: { IdPage: string }) => {
+	const [pagina, setPagina] = useState<NewsData[]>([]);
 	const [status, setStatus] = useState<FetchState>("LOADING");
 	const [verMasAbierto, setVerMasAbierto] = useState(false);
 
 	const loadPaginas = useCallback(async (id: string) => {
 		setStatus("LOADING");
 		try {
-			const data = await fetchPaginas(id);
+			const data = await fetchNews(id);
 
 			if (data.length > 0) {
 				setPagina(data); // data puede ser un objeto o undefined
@@ -60,11 +53,6 @@ export const SolicitudPagina = ({
 	const hasHiddenContent =
 		pageContent.hidden !== null && pageContent.hidden.trim() !== "";
 
-	const sectionContent = (
-		<SolicitudSeccion IdSeccion={IdSection}></SolicitudSeccion>
-	);
-	const hasSectionContent = sectionContent !== null;
-
 	return (
 		<>
 			<section className="historia-section">
@@ -72,7 +60,7 @@ export const SolicitudPagina = ({
 					<h1 className="titulo">{pageContent.title}</h1>
 				</div>
 				<h2 className="historia-titulo">
-					<span>{pageContent.text}</span>
+					<span>{pageContent.date.toString()}</span>
 				</h2>
 				{pageContent.image !== null && pageContent.image.trim() !== "" && (
 					<figure>
@@ -123,7 +111,6 @@ export const SolicitudPagina = ({
 					)}
 				</div>
 			</section>
-			{hasSectionContent && sectionContent}
 		</>
 	);
 };

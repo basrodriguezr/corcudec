@@ -84,14 +84,14 @@ body {
 }
 
 .event-card__image {
-  object-fit: cover;
+  padding: 15px;
 }
 
 .event-card {
   position: relative;
   display: block;
   width: 100%;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 2 / 3;
   overflow: hidden;
   border-radius: 28px;
   box-shadow: 0 22px 40px rgba(0, 0, 0, 0.55);
@@ -99,6 +99,7 @@ body {
   isolation: isolate;
   text-decoration: none;
   color: inherit;
+  background-color: black;
 }
 
 .event-card::after {
@@ -411,8 +412,7 @@ body {
 
   .contenedor-transparencia {
     @apply flex
-      flex-col
-      min-h-screen 
+      flex-col 
       bg-white 
       bg-no-repeat
       [background-image:url('/corcudec/img/TEXTURA/NUBE1.png'),url('/corcudec/img/TEXTURA/NUBE2.png'),url('/corcudec/img/TEXTURA/NUBE3.png')]
@@ -429,7 +429,7 @@ body {
   .historia-titulo > span {
     /* si tu Tailwind permite @apply con valores arbitrarios, deja la línea de text-[...] */
     @apply bg-[#504e4f] text-white font-bold text-[clamp(0.8rem,3vw,1.2rem)]
-           px-5 py-2 relative z-[2] whitespace-nowrap;
+      px-5 py-2 relative z-[2] whitespace-nowrap;
   }
 
   /* el ::before hay que dejarlo como CSS normal */
@@ -565,6 +565,38 @@ body {
     font-weight: 600;
   }
 
+  .historia-galeria{
+    @apply grid 
+      grid-cols-1
+      md:grid-cols-2
+      gap-x-5
+      gap-y-8
+      mb-5;
+  }
+
+  .galeria-item{
+    @apply grid 
+      grid-cols-3
+      gap-4
+      items-center;
+  }
+
+  .galeria-item img{
+    @apply w-[100%]
+      aspect-square
+      object-cover
+      rounded-md
+      block
+      max-w-[100%];
+  }
+
+  .galeria-item h4{
+    @apply font-semibold
+      text-2xl
+      leading-[1.2]
+      col-span-2;
+  }
+
   @media (min-width: 768px) {
     .multimedia {
       @apply gap-12 px-8;
@@ -601,35 +633,7 @@ body {
     }
   }
 
-  .historia-galeria{
-    @apply grid 
-      grid-cols-1
-      md:grid-cols-2
-      gap-x-5
-      gap-y-8
-      mb-5;
-  }
-
-  .galeria-item{
-    @apply grid 
-      grid-cols-3
-      gap-4
-      items-center;
-  }
-
-  .galeria-item img{
-    @apply w-[100%]
-      aspect-square
-      object-cover
-      rounded-md
-      block
-      max-w-[100%];
-  }
-
-  .galeria-item h4{
-    @apply font-semibold
-      text-2xl
-      leading-[1.2]
-      col-span-2;
+  #turnkey-credit{
+    display: none;
   }
 }

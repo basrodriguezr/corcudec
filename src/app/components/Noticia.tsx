@@ -1,9 +1,10 @@
 import { DRUPAL_HOSTNAME, DRUPAL_ROUTES } from "@/config/global";
 
 // 1. Tipos: Definimos las estructuras de datos
-export interface SeccionData {
+export interface NewsData {
 	id: string;
 	title: string;
+	date: Date;
 	image: string;
 	content: string;
 	hidden: string;
@@ -11,15 +12,15 @@ export interface SeccionData {
 		gallery_url: string;
 		gallery_alt: string;
 		gallery_text: string;
-	}[];
+	}[]; 
 	published: boolean;
 }
 
 // URL de la API (definida fuera del componente)
-const API_URL = DRUPAL_HOSTNAME + DRUPAL_ROUTES.SECCION;
+const API_URL = DRUPAL_HOSTNAME + DRUPAL_ROUTES.NOTICIA;
 
 // 2. Función de Obtención de Datos
-export const fetchSecciones = async (value : string) => {
+export const fetchNews = async (value : string) => {
 	const requestOptions = {
 		method: "GET",
 		headers: { "Content-Type": "application/json" }
@@ -27,12 +28,11 @@ export const fetchSecciones = async (value : string) => {
 	try {
 		const response = await fetch(API_URL + value, requestOptions);
 
-		console.log(response);
 		if (!response.ok) {
-			throw Error(`HTTP error! status: ${response.status}`);
+			throw new Error(`HTTP error! status: ${response.status}`);
 		}
 		// Asumimos que la API retorna un ÚNICO objeto MultimediaData
-		const result = (await response.json()) as SeccionData[];
+		const result = (await response.json()) as NewsData[];
 
 		return result;
 	} catch (error) {
