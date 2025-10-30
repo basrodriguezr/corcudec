@@ -1,6 +1,7 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
+import { CORCUDEC_ROUTE } from '@/config/global'
 
 type GaleriaItem = {
   href: string
@@ -13,7 +14,7 @@ type GaleriaItem = {
 
 const GALERIA_ITEMS: GaleriaItem[] = [
   {
-    href: '/corcudec/elencos',
+    href: `${CORCUDEC_ROUTE}/elencos`,
     title: 'Nuestros elencos',
     image: '/img/Galeria/f1.png',
     alt: 'Nuestros elencos',
@@ -27,7 +28,7 @@ const GALERIA_ITEMS: GaleriaItem[] = [
     highlight: true,
   },
   {
-    href: '/corcudec/teatro',
+    href: `${CORCUDEC_ROUTE}/teatro`,
     title: 'Historia',
     image: '/img/Galeria/f3.png',
     alt: 'Historia',
