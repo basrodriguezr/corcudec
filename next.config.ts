@@ -21,14 +21,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
- output: "export",
+  output: "export",
   reactStrictMode: true,
-  basePath: "/corcudec",
+  // basePath: "/corcudec",
   trailingSlash: true,
   images: {
     unoptimized: true,
     remotePatterns: [
-      { protocol: 'https', hostname: 'www.corcudec.cl' },
+      { protocol: "https", hostname: "www.corcudec.cl" },
     ],
   },
 };

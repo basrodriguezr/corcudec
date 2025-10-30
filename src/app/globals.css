@@ -84,14 +84,14 @@ body {
 }
 
 .event-card__image {
-  padding: 15px;
+  object-fit: cover;
 }
 
 .event-card {
   position: relative;
   display: block;
   width: 100%;
-  aspect-ratio: 2 / 3;
+  aspect-ratio: 3 / 4;
   overflow: hidden;
   border-radius: 28px;
   box-shadow: 0 22px 40px rgba(0, 0, 0, 0.55);
@@ -99,7 +99,6 @@ body {
   isolation: isolate;
   text-decoration: none;
   color: inherit;
-  background-color: black;
 }
 
 .event-card::after {
