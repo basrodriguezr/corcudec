@@ -23,8 +23,8 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
  output: "export",
   reactStrictMode: true,
-  basePath: "/corcudec",
-  trailingSlash: true,
+  // basePath: "/corcudec",
+  // trailingSlash: true,
   images: {
     unoptimized: true,
     remotePatterns: [

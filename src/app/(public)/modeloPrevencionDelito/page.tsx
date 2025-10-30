@@ -41,7 +41,7 @@ async function fetchPaginas(): Promise<PageData[]> {
   } catch (error) {
     console.error("Error al obtener los datos de Drupal:", error);
     // Corrección: Devuelve 'undefined' explícitamente si falla (o throw error)
-    return []; 
+    return [];
   }
 }
 
@@ -65,7 +65,7 @@ export default function MostrarPagina() {
   }, []); // CORRECTO: El array vacío [] asegura que se ejecute solo al montar.
 
   // ## Manejo de Estados de Carga y Error
-  
+
   if (status === 'LOADING') {
     return (
       <div className="flex justify-center items-center h-48 text-lg font-semibold text-gray-700">
@@ -94,25 +94,25 @@ export default function MostrarPagina() {
 
   return (
     <>
-          <div className="contenedor-transparencia">
-            
-            <section className="historia-section">
-              <div className="titulo-pagina">
-                <h1 className="titulo">{currentPage.title}</h1>
-              </div>
-              <h2 className="historia-titulo"><span>{currentPage.text}</span></h2>
-                  <figure>
-                      <Image src={currentPage.image} width={1060} height={360} alt="Transparencia"/>
-                  </figure>
-                  <div className="historia-texto">
-                    <div dangerouslySetInnerHTML={{ __html: currentPage.content }} />
-                </div>
-            </section>
+      <div className="contenedor-transparencia">
+
+        <section className="historia-section">
+          <div className="titulo-pagina">
+            <h1 className="titulo">{currentPage.title}</h1>
           </div>
-          <footer className="relative min-h-[60vh] bg-[url('/corcudec/img/FOOTER.png')] bg-cover bg-center bg-no-repeat text-white">
-              <div className="absolute inset-0 pointer-events-none" />
-              <Footer />
-          </footer>
-        </> 
+          <h2 className="historia-titulo"><span>{currentPage.text}</span></h2>
+          <figure>
+            <Image src={currentPage.image} width={1060} height={360} alt="Transparencia" />
+          </figure>
+          <div className="historia-texto">
+            <div dangerouslySetInnerHTML={{ __html: currentPage.content }} />
+          </div>
+        </section>
+      </div>
+      <footer className="relative min-h-[60vh] bg-[url('/img/FOOTER.png')] bg-cover bg-center bg-no-repeat text-white">
+        <div className="absolute inset-0 pointer-events-none" />
+        <Footer />
+      </footer>
+    </>
   )
 }
