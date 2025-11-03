@@ -38,7 +38,7 @@ const menuItems = [
         ]
     },
     { id: 'abonos', title: 'Abonos', href: '/abonos/' },
-    { id: 'noticias', title: 'NOTICIAS', href: '/noticias/principal/' },
+    /*{ id: 'noticias', title: 'NOTICIAS', href: '/noticias/principal/' },*/
 ];
 
 export const MenuNav = () => {

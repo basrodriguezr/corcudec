@@ -81,7 +81,7 @@ export const Footer = () => {
                         <ul className="footer-menu flex flex-col gap-2">
                             <li><a href={CORCUDEC_ROUTE + "/contactanos"}>CONTÁCTENOS</a></li>
                             <li><a href={CORCUDEC_ROUTE + "/transparencia"}>TRANSPARENCIA</a></li>
-                            <li><a href={CORCUDEC_ROUTE + "/modeloPrevencionDelito"}>MODELO DE PREVENCIÓN DEL DELITO</a></li>
+                            {/* <li><a href={CORCUDEC_ROUTE + "/modeloPrevencionDelito"}>MODELO DE PREVENCIÓN DEL DELITO</a></li> */}
                         </ul>
 
                     </div>

@@ -451,7 +451,7 @@ body {
   .historia-titulo {
     @apply inline-block 
       relative 
-      mb-[30px];
+      my-[20px];
   }
 
   .historia-titulo > span {
