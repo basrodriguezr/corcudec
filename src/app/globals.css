@@ -354,6 +354,35 @@ body {
       focus-visible:outline-offset-2;
   }
 
+  .btn-url {
+    @apply inline-block px-6 py-3 font-semibold text-center align-middle transition-all duration-300 ease-in-out rounded-lg shadow-md cursor-pointer whitespace-nowrap;
+    @apply text-white bg-blue-600 hover:bg-blue-700 active:bg-blue-800;
+    @apply shadow-lg hover:shadow-xl;
+  }
+
+  .btn-url:focus {
+    @apply outline-none ring-4 ring-blue-300;
+  }
+
+  .btn-url:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
+  .btn-url2 {
+    @apply inline-block px-6 py-3 font-semibold text-center align-middle transition-all duration-300 ease-in-out rounded-lg shadow-md cursor-pointer whitespace-nowrap;
+    @apply bg-transparent border-2 border-black text-black;
+    @apply hover:bg-gray-100 hover:text-black active:bg-gray-200;
+    @apply shadow-none hover:shadow-md;
+  }
+
+  .btn-url2:focus {
+    @apply outline-none ring-4 ring-black;
+  }
+
+  .btn-url2:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
   @media (max-width: 900px) {
     .form-card {
       padding-inline: clamp(18px, 6vw, 40px);

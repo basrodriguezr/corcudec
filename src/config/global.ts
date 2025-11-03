@@ -13,4 +13,6 @@ export const DRUPAL_ROUTES = {
     SECCION: '/api/secciones/',
     NOTICIAS: '/api/noticias',
     NOTICIA: '/api/noticia/',
+    GALERIAS: '/api/galerias',
+    GALERIA: '/api/galeria/',
 } as const;
