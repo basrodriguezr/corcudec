@@ -20,7 +20,7 @@ export default function PublicLayout({ children }: Readonly<{ children: ReactNod
       {/*FIN CABECERA*/}
 
       {/*INICIO CUERPO*/}
-      <main className="z-10">{children}</main>
+      {children}
       {/*FIN CUERPO*/}
     </div>
   );

@@ -1,8 +1,8 @@
 import { SolicitudPagina } from "@/app/components/PaginaPlana";
 import { Footer } from "@/app/components";
 
-const PAGE_ID = "88";
-const SECTION_ID = "corcudec-quienessomos";
+const PAGE_ID = "93";
+const SECTION_ID = "elencos-invitados";
 
 // Componente principal de la vista, ahora usa el componente reutilizable
 export default function MostrarPagina() {

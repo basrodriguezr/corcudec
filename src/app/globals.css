@@ -198,7 +198,7 @@ body {
 
   /* .multimedia {
     @apply min-h-[55vh] 
-      bg-[url('/corcudec/img/seccion3.webp')] 
+      bg-[url('/img/seccion3.webp')] 
       max-w-[var(--max-wrap)] 
       mx-auto
       grid 
@@ -400,10 +400,10 @@ body {
 
   .historia-section {
     @apply max-w-[1100px] 
+      w-full
       mx-auto 
-      my-[60px] 
-      px-5 
-      mt-0
+      mb-[20px] 
+      px-5
       leading-[1.7] 
       text-base 
       text-[#222];
@@ -411,11 +411,9 @@ body {
 
   .contenedor-transparencia {
     @apply flex
-      flex-col
-      min-h-screen 
+      flex-col 
       bg-white 
       bg-no-repeat
-      /* bg-[url('/img/seccion3.webp')]  */
       [background-image:url('/img/TEXTURA/NUBE1.png'),url('/img/TEXTURA/NUBE2.png'),url('/img/TEXTURA/NUBE3.png')]
       [background-position:-30%_18%,78%_32%,146%_82%]
       [background-size:600px,600px,600px];
@@ -424,14 +422,13 @@ body {
   .historia-titulo {
     @apply inline-block 
       relative 
-      mb-[30px]
-      mt-[30px];
+      mb-[30px];
   }
 
   .historia-titulo > span {
     /* si tu Tailwind permite @apply con valores arbitrarios, deja la línea de text-[...] */
     @apply bg-[#504e4f] text-white font-bold text-[clamp(0.8rem,3vw,1.2rem)]
-           px-5 py-2 relative z-[2] whitespace-nowrap;
+      px-5 py-2 relative z-[2] whitespace-nowrap;
   }
 
   /* el ::before hay que dejarlo como CSS normal */
@@ -448,16 +445,24 @@ body {
 
   .historia-texto {
     @apply flex 
-      flex-col;
+      flex-col
+      mb-4;
   }
 
-  .historia-texto .ver-mas-btn {
-    @apply mt-3;
+  .historia-texto div ul{
+    @apply list-disc
+      pl-5
+      font-[system-ui];
+  }
+
+  .historia-texto div h3{
+    @apply text-3xl 
+      font-bold
+      my-2;
   }
 
   .historia-texto .ver-mas-btn {
     @apply inline-flex
-      mt-3
       leading-4;
   }
 
@@ -471,12 +476,8 @@ body {
     @apply max-w-[1100]
       mt-7 mb-2
       mr-auto ml-auto
-      pt-0 pb-0
-      pr-5 pl-5;
-  }
-
-  .titulo-pagina {
-    @apply text-[clamp(20px,3.8vw,42px)] 
+      pt-0 pb-7
+      text-[clamp(20px,3.8vw,42px)] 
       text-[#581911] 
       leading-[1.15];
   }
@@ -491,13 +492,13 @@ body {
   }
 
   .ver-mas-btn {
-    @apply bg-transparent 
+    @apply bg-[#ffffffcc]
       border 
       border-[#2c2b2b] 
       text-[#2c2b2b]
       text-[15px] 
       py-0.5 px-2.5
-      ml-auto mt-3
+      ml-auto
       cursor-pointer 
       inline-flex 
       items-center 
@@ -563,6 +564,38 @@ body {
     font-weight: 600;
   }
 
+  .historia-galeria{
+    @apply grid 
+      grid-cols-1
+      md:grid-cols-2
+      gap-x-5
+      gap-y-8
+      mb-5;
+  }
+
+  .galeria-item{
+    @apply grid 
+      grid-cols-3
+      gap-4
+      items-center;
+  }
+
+  .galeria-item img{
+    @apply w-[100%]
+      aspect-square
+      object-cover
+      rounded-md
+      block
+      max-w-[100%];
+  }
+
+  .galeria-item h4{
+    @apply font-semibold
+      text-2xl
+      leading-[1.2]
+      col-span-2;
+  }
+
   @media (min-width: 768px) {
     .multimedia {
       @apply gap-12 px-8;
@@ -598,12 +631,8 @@ body {
       @apply gap-8;
     }
   }
-}
 
-.bg-nubes-multiple {
-  background-image: url("/img/TEXTURA/NUBE1.png"), url("/img/TEXTURA/NUBE2.png"),
-    url("/img/TEXTURA/NUBE3.png");
-  background-repeat: no-repeat, no-repeat, no-repeat;
-  background-position: -30% 18%, 78% 32%, 146% 82%;
-  background-size: 600px, 600px, 600px;
+  #turnkey-credit{
+    display: none;
+  }
 }

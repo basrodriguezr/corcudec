@@ -1,88 +1,102 @@
 'use client'
+import { SolicitudPagina } from "@/app/components/PaginaPlana";
 import { Footer } from "@/app/components";
-import { Acordeon } from "@/app/components/Acordeon";
-import Image from "next/image";
-import { useState, useEffect } from "react";
-import { DRUPAL_HOSTNAME, DRUPAL_ROUTES } from '@/config/global';
-import { fetchPaginas, PageData } from "@/app/components/Pagina";
+import { Acordeon, AcordeonRef } from "@/app/components/Acordeon";
 
-// Estados para seguimiento de carga y posibles errores
-type FetchState = 'LOADING' | 'LOADED' | 'ERROR';
+const PAGE_ID = "82";
+const SECTION_ID = "transparencia";
 
-// URL de la API (definida fuera del componente)
-const API_URL = DRUPAL_HOSTNAME + DRUPAL_ROUTES.PAGINAS;
-
+// Componente principal de la vista, ahora usa el componente reutilizable
 export default function MostrarPagina() {
-  const [pagina, setPagina] = useState<PageData[]>([]);
-  const [status, setStatus] = useState<FetchState>('LOADING');
-
-  useEffect(() => {
-    const loadPaginas = async () => {
-      setStatus('LOADING');
-      try {
-        const data = await fetchPaginas();
-        setPagina(data); // data puede ser un objeto o undefined
-        setStatus('LOADED');
-      } catch (error) {
-        setStatus('ERROR');
-        // No es necesario loguear aquí, ya se hace en fetchCarrusel
-      }
-    };
-    loadPaginas();
-  }, []); // CORRECTO: El array vacío [] asegura que se ejecute solo al montar.
-
-  // ## Manejo de Estados de Carga y Error
-
-  if (status === 'LOADING') {
-    return (
-      <div className="flex justify-center items-center h-48 text-lg font-semibold text-gray-700">
-        Cargando Pagina...
-      </div>
-    );
-  }
-
-  // 💡 Optimización: Si el estado es ERROR o si el contenido es undefined después de cargar
-  if (status === 'ERROR' || !pagina) {
-    return (
-      <div className="flex justify-center items-center h-48 text-lg font-semibold text-red-500">
-        No se pudo cargar la Pagina.
-      </div>
-    );
-  }
-
-  const currentPage = pagina.find(page => page.title === "Transparencia");
-  if (!currentPage) {
-    return (
-      <div className="flex justify-center items-center h-48 text-lg font-semibold text-orange-500">
-        El contenido Transparencia no fue encontrado en la API.
-      </div>
-    );
-  }
-
-  return (
-    <>
-      <main className="contenedor-transparencia">
-        <section className="historia-section">
-          <div className="titulo-pagina">
-            <h1 className="titulo">{currentPage.title}</h1>
-          </div>
-          <h2 className="historia-titulo"><span>{currentPage.text}</span></h2>
-          <figure>
-            <Image src={currentPage.image} width={1060} height={360} alt="Transparencia" />
-          </figure>
-          <div className="historia-texto">
-            <div dangerouslySetInnerHTML={{ __html: currentPage.content }} />
-          </div>
-        </section>
-        <section className="relative w-full max-w-full mx-auto mt-auto">
-          <Acordeon />
-        </section>
-      </main>
-      <footer className="relative min-h-[60vh] bg-[url('/corcudec/img/FOOTER.png')] bg-cover bg-center bg-no-repeat text-white">
-        <div className="absolute inset-0 pointer-events-none" />
-        <Footer />
-      </footer>
-    </>
-
-  )
+	const listaLinks: AcordeonRef[] = [
+		{
+			href: "https://www.corcudec.cl/archivos/otros-aportes-enero-2025.pdf",
+			target: "_blank",
+			rel: "noopener noreferrer",
+			text: "OTROS APORTES ENERO 2025 (.PDF)"
+		},
+		{
+			href: "https://www.corcudec.cl/archivos/otros-aportes-febrero-2025.pdf",
+			target: "_blank",
+			rel: "noopener noreferrer",
+			text: "OTROS APORTES FEBRERO 2025 (.PDF)"
+		},
+		{
+			href: "https://www.corcudec.cl/archivos/estatutos-corcudec.pdf",
+			target: "_blank",
+			rel: "noopener noreferrer",
+			text: "Estatutos corcudec (.PDF)"
+		},
+		{
+			href: "https://www.corcudec.cl/archivos/ingreso-fondos-publicos.pdf",
+			target: "_blank",
+			rel: "noopener noreferrer",
+			text: "Ingreso Fondos Públicos (.PDF)"
+		},
+		{
+			href: "https://www.corcudec.cl/archivos/estructura-organica-2025.pdf",
+			target: "_blank",
+			rel: "noopener noreferrer",
+			text: "Estructura Orgánica 2025 (.PDF)"
+		},
+		{
+			href: "https://www.corcudec.cl/archivos/otros-aportes-marzo-2025.pdf",
+			target: "_blank",
+			rel: "noopener noreferrer",
+			text: "Otros Aportes Marzo 2025 (.PDF)"
+		},
+		{
+			href: "https://www.corcudec.cl/archivos/responsable-gestion-y-administracion.pdf",
+			target: "_blank",
+			rel: "noopener noreferrer",
+			text: "Responsable Gestión y Administración (.PDF)"
+		},
+		{
+			href: "https://www.corcudec.cl/archivos/composicion-directorio-2025.pdf",
+			target: "_blank",
+			rel: "noopener noreferrer",
+			text: "Composición directorio 2025 (.PDF)"
+		},
+		{
+			href: "https://www.corcudec.cl/archivos/rex-578-aprueba-convenio-corcudec-2025.pdf",
+			target: "_blank",
+			rel: "noopener noreferrer",
+			text: "REX N° 578 Aprueba Convenio Corcudec 2025 (.PDF)"
+		},
+		{
+			href: "https://www.corcudec.cl/archivos/certificado-declaracion-de-intereses.pdf",
+			target: "_blank",
+			rel: "noopener noreferrer",
+			text: "Certificado Declaración de Intereses (.PDF)"
+		},
+		{
+			href: "https://www.corcudec.cl/archivos/procedimiento-contratacion-personal-2025.pdf",
+			target: "_blank",
+			rel: "noopener noreferrer",
+			text: "Procedimiento contratación personal 2025 (.PDF)"
+		},
+		{
+			href: "https://www.corcudec.cl/archivos/recurso-humanos-mincap-abril-2025.pdf",
+			target: "_blank",
+			rel: "noopener noreferrer",
+			text: "Recurso Humanos MINCAP abril 2025 (.PDF)"
+		}
+	];
+	const titulo = "Transparencia 2025";
+	//mostramos el resultado
+	return (
+		<>
+		<main className="bg-white text-neutral-900">
+			<div className="contenedor-transparencia">
+				<SolicitudPagina IdPage={PAGE_ID} IdSection={SECTION_ID}/>
+				<Acordeon links={listaLinks} texto={titulo}/>
+			</div>
+		</main>
+		
+		<footer className="relative min-h-[60vh] bg-[url('/img/FOOTER.png')] bg-cover bg-center bg-no-repeat text-white">
+			<div className="absolute inset-0 pointer-events-none" />
+			<Footer/>
+		</footer>
+		</>
+	);
 }

@@ -8,36 +8,37 @@ import { CORCUDEC_ROUTE } from '@/config/global';
 const menuItems = [
     {
         id: 'corcudec', title: 'CORCUDEC', href: '#', subItems: [
-            { title: 'Quiénes Somos', href: CORCUDEC_ROUTE + '/quienessomos/' },
-            { title: 'Equipo', href: CORCUDEC_ROUTE + '/equipo/' },
-            { title: 'Alianzas', href: CORCUDEC_ROUTE + '/alianzas/' }
+            { title: 'Quiénes Somos', href: '/quienessomos/' },
+            { title: 'Equipo', href: '/equipo/' },
+            { title: 'Alianzas', href: '/alianzas/' }
         ]
     },
     {
         id: 'elencos', title: 'Elencos', href: '#', subItems: [
-            { title: 'Orquesta Sinfónica UdeC', href: CORCUDEC_ROUTE + '/orquesta/' },
-            { title: 'Coro Sinfónico UdeC', href: CORCUDEC_ROUTE + '/elencos/' },
-            { title: 'Directores Destacados', href: CORCUDEC_ROUTE + '/directores' }
+            { title: 'Orquesta Sinfónica UdeC', href: '/orquesta/' },
+            { title: 'Coro Sinfónico UdeC', href: '/coro/' },
+            { title: 'Invitados Destacados', href: '/invitados/' }
         ]
     },
     {
         id: 'teatro', title: 'Teatro Udec', href: '#', subItems: [
-            { title: 'Historia', href: CORCUDEC_ROUTE + '/teatro/' },
-            { title: 'Programas Emblemáticos', href: CORCUDEC_ROUTE + '/programas/' },
-            { title: 'Arriendos', href: CORCUDEC_ROUTE + '/arriendos/' }
+            { title: 'Historia', href: '/historia/' },
+            { title: 'Programas Emblemáticos', href: '/programas/' },
+            { title: 'Arriendos', href: '/arriendos/' }
         ]
     },
     {
         id: 'programacion', title: 'Programación', href: '#', subItems: [
-            { title: 'Temporada Sinfónica', href: CORCUDEC_ROUTE + '/temporada/' },
-            { title: 'D’Camara', href: CORCUDEC_ROUTE + '/camara/' },
-            { title: 'Lírica en Primera Fila', href: CORCUDEC_ROUTE + '/lirica/' },
-            { title: 'Lunes Cinematográficos', href: CORCUDEC_ROUTE + '/lunescinematograficos/' },
-            { title: 'Temporada de Teatro', href: CORCUDEC_ROUTE + '/temporada/' }
+            { title: 'Temporada Sinfónica', href: '/sinfonica/' },
+            { title: 'D’Camara', href: '/camara/' },
+            { title: 'Lírica en Primera Fila', href: '/lirica/' },
+            { title: 'Lunes Cinematográficos', href: '/lunescinematograficos/' },
+            { title: 'Temporada de Teatro', href: '/temporada/' },
+            { title: 'Ópera', href: '/opera/' }
         ]
     },
-    { id: 'abonos', title: 'Abonos', href: CORCUDEC_ROUTE + '/abonos/' },
-    { id: 'noticias', title: 'NOTICIAS', href: CORCUDEC_ROUTE + '/noticias/' },
+    { id: 'abonos', title: 'Abonos', href: '/abonos/' },
+    { id: 'noticias', title: 'NOTICIAS', href: '/noticias/principal/' },
 ];
 
 export const MenuNav = () => {
@@ -78,7 +79,7 @@ export const MenuNav = () => {
                         </Link>
                     </div>
 
-                    <div className="hidden md:block">
+                    <div className="hidden lg:block">
                         <ul className="flex items-center justify-center gap-5">
                             {menuItems.map((item) => (
                                 <li key={item.id} className="relative">
@@ -93,7 +94,7 @@ export const MenuNav = () => {
                                         <div className={`absolute left-0 top-full mt-2 transition-opacity duration-300 ease-in-out z-[130]  ${openDesktopMenu === item.id ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
                                             <div className="min-w-56 rounded-md bg-black ring-1 ring-white/10 shadow-xl p-2 text-md">
                                                 {item.subItems.map(subItem => (
-                                                    <Link key={subItem.title} href={subItem.href} onClick={() => setOpenDesktopMenu(null)} className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">{subItem.title}</Link>
+                                                    <Link key={subItem.title} href={`/${item.id+subItem.href}`} onClick={() => setOpenDesktopMenu(null)} className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">{subItem.title}</Link>
                                                 ))}
                                             </div>
                                         </div>
@@ -103,7 +104,7 @@ export const MenuNav = () => {
                         </ul>
                     </div>
 
-                    <div className="-mr-2 flex md:hidden">
+                    <div className="-mr-2 flex lg:hidden">
                         <button onClick={() => setIsMenuOpen(!isMenuOpen)} type="button" className="inline-flex items-center justify-center rounded-md p-2 text-gray-200 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                             <span className="sr-only">Abrir menú principal</span>
                             {isMenuOpen ? (<svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>)
@@ -114,7 +115,7 @@ export const MenuNav = () => {
             </div>
 
             {isMenuOpen && (
-                <div className="md:hidden">
+                <div className="lg:hidden">
                     <div className="space-y-1 px-2 pt-2 pb-3 sm:px-3">
                         {menuItems.map(item => (
                             <div key={item.id}>
@@ -130,7 +131,7 @@ export const MenuNav = () => {
                                     // MODIFICACIÓN: Se reintroducen las clases para el fondo negro del submenú
                                     <div className="bg-black rounded-md mt-1 p-2 space-y-1 pl-4">
                                         {item.subItems.map(subItem => (
-                                            <Link key={subItem.title} href={subItem.href} onClick={() => setIsMenuOpen(false)} className="block rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+                                            <Link key={subItem.title} href={`/${item.id+subItem.href}`} onClick={() => setIsMenuOpen(false)} className="block rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
                                                 {subItem.title}
                                             </Link>
                                         ))}
