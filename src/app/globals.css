@@ -449,13 +449,13 @@ body {
       mb-4;
   }
 
-  .historia-texto div ul{
+  .historia-texto div ul {
     @apply list-disc
       pl-5
       font-[system-ui];
   }
 
-  .historia-texto div h3{
+  .historia-texto div h3 {
     @apply text-3xl 
       font-bold
       my-2;
@@ -564,7 +564,7 @@ body {
     font-weight: 600;
   }
 
-  .historia-galeria{
+  .historia-galeria {
     @apply grid 
       grid-cols-1
       md:grid-cols-2
@@ -573,14 +573,30 @@ body {
       mb-5;
   }
 
-  .galeria-item{
+  .abono-item {
+    @apply flex items-start gap-4;
+  }
+
+  .abono-item a {
+    @apply shrink-0;
+  }
+
+  .abono-item a figure {
+    @apply w-[200px] h-[200px] object-cover;
+  }
+
+  .abono-item a h4 {
+    @apply text-2xl font-semibold;
+  }
+
+  .galeria-item {
     @apply grid 
       grid-cols-3
       gap-4
       items-center;
   }
 
-  .galeria-item img{
+  .galeria-item img {
     @apply w-[100%]
       aspect-square
       object-cover
@@ -589,7 +605,7 @@ body {
       max-w-[100%];
   }
 
-  .galeria-item h4{
+  .galeria-item h4 {
     @apply font-semibold
       text-2xl
       leading-[1.2]
@@ -632,7 +648,36 @@ body {
     }
   }
 
-  #turnkey-credit{
+  #turnkey-credit {
     display: none;
+  }
+
+  .btn-url {
+    @apply inline-block px-6 py-3 font-semibold text-center align-middle transition-all duration-300 ease-in-out rounded-lg shadow-md cursor-pointer whitespace-nowrap;
+    @apply text-white bg-blue-600 hover:bg-blue-700 active:bg-blue-800;
+    @apply shadow-lg hover:shadow-xl;
+  }
+
+  .btn-url:focus {
+    @apply outline-none ring-4 ring-blue-300;
+  }
+
+  .btn-url:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
+  .btn-url2 {
+    @apply inline-block px-6 py-3 font-semibold text-center align-middle transition-all duration-300 ease-in-out rounded-lg shadow-md cursor-pointer whitespace-nowrap;
+    @apply bg-transparent border-2 border-black text-black;
+    @apply hover:bg-gray-100 hover:text-black active:bg-gray-200;
+    @apply shadow-none hover:shadow-md;
+  }
+
+  .btn-url2:focus {
+    @apply outline-none ring-4 ring-black;
+  }
+
+  .btn-url2:disabled {
+    @apply opacity-50 cursor-not-allowed;
   }
 }
