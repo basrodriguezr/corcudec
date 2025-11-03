@@ -17,7 +17,7 @@ const menuItems = [
         id: 'elencos', title: 'Elencos', href: '#', subItems: [
             { title: 'Orquesta Sinfónica UdeC', href: '/orquesta/' },
             { title: 'Coro Sinfónico UdeC', href: '/coro/' },
-            { title: 'Directores Destacados', href: '/directores/' }
+            { title: 'Invitados Destacados', href: '/invitados/' }
         ]
     },
     {

@@ -87,11 +87,11 @@ export default function MostrarNoticias() {
             <main className="bg-white text-neutral-900">
                 <div className="contenedor-transparencia">
                     <SolicitudPagina IdPage={PAGE_ID} IdSection={SECTION_ID} />
-                    {renderContent()}
+                    {/*renderContent()*/}
                 </div>
             </main>
 
-            <footer className="relative min-h-[60vh] bg-[url('/corcudec/img/FOOTER.png')] bg-cover bg-center bg-no-repeat text-white">
+            <footer className="relative min-h-[60vh] bg-[url('/img/FOOTER.png')] bg-cover bg-center bg-no-repeat text-white">
                 <div className="absolute inset-0 pointer-events-none" />
                 <Footer />
             </footer>

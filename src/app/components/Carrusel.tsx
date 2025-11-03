@@ -100,7 +100,7 @@ export const Carrusel = () => {
         grabCursor
         centeredSlides
         slidesPerView="auto"
-        coverflowEffect={{ rotate: 0, stretch: 0, depth: 120, modifier: 3, slideShadows: false }}
+        coverflowEffect={{ rotate: 0, stretch: 0, depth: 120, modifier: 2, slideShadows: false }}
         spaceBetween={56}
         loop
         autoplay={{ delay: 6500, disableOnInteraction: false }}
@@ -119,10 +119,13 @@ export const Carrusel = () => {
               rel="noreferrer"
               aria-label={slide.tag ? `${slide.tag} - ${slide.title}` : slide.title}
             >
-              <img src={slide.image} alt={slide.title} className="event-card__image"/>
-              <div className="text-center m-5">
-                <div dangerouslySetInnerHTML={{ __html: slide.description }} />
-              </div>
+              <Image
+                src={slide.image}
+                alt={slide.tag ? `${slide.tag} - ${slide.title}` : slide.title}
+                fill
+                className="event-card__image"
+                priority={index < 3}
+              />
             </a>
           </SwiperSlide>
         ))}

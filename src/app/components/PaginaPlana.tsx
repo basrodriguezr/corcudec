@@ -122,6 +122,28 @@ export const SolicitudPagina = ({
 						</>
 					)}
 				</div>
+				<div className="historia-galeria">
+					{pageContent.gallery?.length > 0 &&
+						pageContent.gallery.map((galeria) => (
+							<div key={galeria.gallery_alt} className="galeria-item">
+								<figure>
+									<Image
+										src={galeria.gallery_url}
+										width={200}
+										height={200}
+										alt={galeria.gallery_alt}
+									/>
+								</figure>
+								<h4>
+									<div
+										dangerouslySetInnerHTML={{
+											__html: galeria.gallery_text
+										}}
+									/>
+								</h4>
+							</div>
+						))}
+				</div>
 			</section>
 			{hasSectionContent && sectionContent}
 		</>
