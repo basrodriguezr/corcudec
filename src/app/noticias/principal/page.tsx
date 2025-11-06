@@ -1,10 +1,9 @@
 'use client'
 
 import { useState, useEffect, useCallback, useMemo } from "react";
-import { fetchNoticia, Noticias } from "@/app/components/Noticias"; 
-import { Acordeon, AcordeonRef } from "@/app/components/Acordeon";
-import { SolicitudPagina } from "@/app/components/PaginaPlana";
-import { Footer } from "@/app/components";
+import { fetchNoticia, Noticias } from "@/app/components/data/Noticias";
+import { Acordeon, AcordeonRef } from "@/app/components/base/AcordeonBase";
+import { Pagina, Footer } from "@/app/components";
 
 const PAGE_ID = "102";
 const SECTION_ID = "noticias-principal";
@@ -49,7 +48,7 @@ export default function MostrarNoticias() {
     // Esto previene recálculos innecesarios en cada render si otras partes del estado cambiaran.
     const linksAcordeon = useMemo(() => {
         return noticias.map(element => ({
-            href: `/noticias/${element.id}`,
+            href: `/noticias/${element.position}`,
             target: "",
             rel: "",
             text: `${element.date} - ${element.title}`,
@@ -67,7 +66,7 @@ export default function MostrarNoticias() {
         }
         if (error) {
             return (
-                <div className="flex justify-center items-center h-48 text-lg font-semibold text-red-500">
+                <div className="flex justify-center items-center h-48 text-lg font-semibold text-red-900">
 					No se pueden cargas más Noticias.
 				</div>
             );
@@ -86,8 +85,8 @@ export default function MostrarNoticias() {
         <>
             <main className="bg-white text-neutral-900">
                 <div className="contenedor-transparencia">
-                    <SolicitudPagina IdPage={PAGE_ID} IdSection={SECTION_ID} />
-                    {/*renderContent()*/}
+                    <Pagina IdPage={PAGE_ID} IdSection={SECTION_ID} />
+                    {renderContent()}
                 </div>
             </main>
 

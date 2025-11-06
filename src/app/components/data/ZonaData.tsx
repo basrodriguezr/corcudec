@@ -1,38 +1,33 @@
 import { DRUPAL_HOSTNAME, DRUPAL_ROUTES } from "@/config/global";
 
 // 1. Tipos: Definimos las estructuras de datos
-export interface NewsData {
-	id: string;
+export interface ZonaItem {
+	id: number;
 	title: string;
-	date: Date;
 	image: string;
-	content: string;
-	hidden: string;
-	gallery: {
-		gallery_url: string;
-		gallery_alt: string;
-		gallery_text: string;
-	}[]; 
+	alt: string;
+	href: string;
+	target: string;
 	published: boolean;
 }
 
 // URL de la API (definida fuera del componente)
-const API_URL = DRUPAL_HOSTNAME + DRUPAL_ROUTES.NOTICIA;
+const API_URL = DRUPAL_HOSTNAME + DRUPAL_ROUTES.ZONA;
 
 // 2. Función de Obtención de Datos
-export const fetchNews = async (value : string) => {
+export const fetchZona = async (): Promise<ZonaItem[]> => {
 	const requestOptions = {
 		method: "GET",
 		headers: { "Content-Type": "application/json" }
 	};
 	try {
-		const response = await fetch(API_URL + value, requestOptions);
+		const response = await fetch(API_URL, requestOptions);
 
 		if (!response.ok) {
-			throw new Error(`HTTP error! status: ${response.status}`);
+			throw Error(`HTTP error! status: ${response.status}`);
 		}
 		// Asumimos que la API retorna un ÚNICO objeto MultimediaData
-		const result = (await response.json()) as NewsData[];
+		const result = (await response.json()) as ZonaItem[];
 
 		return result;
 	} catch (error) {

@@ -1,5 +1,4 @@
-import { SolicitudPagina } from "@/app/components/PaginaPlana";
-import { Footer } from "@/app/components";
+import { Pagina, Footer } from "@/app/components";
 
 const PAGE_ID = "98";
 const SECTION_ID = "programacion-camara";
@@ -11,7 +10,7 @@ export default function MostrarPagina() {
 		<>
 			<main className="bg-white text-neutral-900">
 				<div className="contenedor-transparencia">
-					<SolicitudPagina IdPage={PAGE_ID} IdSection={SECTION_ID} />
+					<Pagina IdPage={PAGE_ID} IdSection={SECTION_ID} />
 				</div>
 			</main>
 			

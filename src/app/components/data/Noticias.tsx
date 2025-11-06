@@ -5,7 +5,8 @@ export interface Noticias {
 	id: string;
 	title: string;
 	date: Date;
-	published: boolean; // 💡 Corrección: Usar 'boolean' con minúscula
+	published: boolean;
+	position: number;
 }
 
 // URL de la API (definida fuera del componente)

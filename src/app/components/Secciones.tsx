@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState, useEffect, useCallback } from "react";
-import { fetchSecciones, SeccionData } from "@/app/components/Seccion";
+import { fetchSecciones, SeccionData } from "@/app/components/data/Seccion";
 
 // Estados para seguimiento de carga y posibles errores
 type FetchState = "LOADING" | "LOADED" | "ERROR";
@@ -21,6 +21,7 @@ export const SolicitudSeccion = ({ IdSeccion }: { IdSeccion: string }) => {
 				setStatus("LOADED");
 			} else setStatus("ERROR");
 		} catch (error) {
+			console.error(error);
 			setStatus("ERROR");
 			// No es necesario loguear aquí, ya se hace en fetchCarrusel
 		}
@@ -42,7 +43,7 @@ export const SolicitudSeccion = ({ IdSeccion }: { IdSeccion: string }) => {
 		// 💡 Optimización: Si el estado es ERROR o si el contenido es undefined después de cargar
 		if (status === "ERROR" || !seccion) {
 			return (
-				<div className="flex justify-center items-center h-48 text-lg font-semibold text-red-500">
+				<div className="flex justify-center items-center h-48 text-lg font-semibold text-red-900">
 					No se pudo cargar la Sección.
 				</div>
 			);

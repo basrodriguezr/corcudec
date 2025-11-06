@@ -1,50 +1,40 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect, useCallback } from "react";
-import { fetchNews, NewsData } from "@/app/components/Noticia";
+import { useState } from "react";
+import { SolicitudSeccion } from "@/app/components/Secciones";
 
-// Estados para seguimiento de carga y posibles errores
-type FetchState = "LOADING" | "LOADED" | "ERROR";
+// Definimos las estructuras de datos
+export interface PageData {
+	id: string;
+	title: string;
+	text: string;
+	image: string;
+	content: string;
+	hidden: string;
+	gallery: {
+		gallery_url: string;
+		gallery_alt: string;
+		gallery_text: string;
+	}[];
+	published: boolean;
+}
 
-export const SolicitudNoticia = ({ IdPage }: { IdPage: string }) => {
-	const [pagina, setPagina] = useState<NewsData[]>([]);
-	const [status, setStatus] = useState<FetchState>("LOADING");
+// Componente de Presentación
+export const SolicitudPagina = ({
+	pagina,
+	IdSection = ""
+}: {
+	pagina: PageData[];
+	IdSection?: string;
+}) => {
 	const [verMasAbierto, setVerMasAbierto] = useState(false);
 
-	const loadPaginas = useCallback(async (id: string) => {
-		setStatus("LOADING");
-		try {
-			const data = await fetchNews(id);
-
-			if (data.length > 0) {
-				setPagina(data); // data puede ser un objeto o undefined
-				setStatus("LOADED");
-			} else setStatus("ERROR");
-		} catch (error) {
-			setStatus("ERROR");
-			// No es necesario loguear aquí, ya se hace en fetchCarrusel
-		}
-	}, []);
-
-	useEffect(() => {
-		loadPaginas(IdPage);
-	}, [IdPage, loadPaginas]); // CORRECTO: El array vacío [] asegura que se ejecute solo al montar.
-
-	// Manejo de Estados de Carga y Error
-	if (status === "LOADING") {
+	// Manejo de estado sin datos (si el array está vacío) - Se puede mover a este nivel para que sea más robusto
+	if (pagina.length === 0) {
 		return (
 			<div className="flex justify-center items-center h-48 text-lg font-semibold text-gray-700">
-				Cargando Pagina...
-			</div>
-		);
-	}
-
-	// Optimización: Si el estado es ERROR o si el contenido es undefined después de cargar
-	if (status === "ERROR" || !pagina) {
-		return (
-			<div className="flex justify-center items-center h-48 text-lg font-semibold text-red-500">
-				No se pudo cargar la Pagina.
+				No se encontraron los elementos de la página.
 			</div>
 		);
 	}
@@ -52,6 +42,12 @@ export const SolicitudNoticia = ({ IdPage }: { IdPage: string }) => {
 	const pageContent = pagina[0];
 	const hasHiddenContent =
 		pageContent.hidden !== null && pageContent.hidden.trim() !== "";
+	// buscamos las secciones según su identificador.
+	const sectionContent = (
+		<SolicitudSeccion IdSeccion={IdSection}></SolicitudSeccion>
+	);
+	// si no existen secciones no se muestran en la página.
+	const hasSectionContent = sectionContent !== null;
 
 	return (
 		<>
@@ -60,7 +56,7 @@ export const SolicitudNoticia = ({ IdPage }: { IdPage: string }) => {
 					<h1 className="titulo">{pageContent.title}</h1>
 				</div>
 				<h2 className="historia-titulo">
-					<span>{pageContent.date.toString()}</span>
+					<span>{pageContent.text}</span>
 				</h2>
 				{pageContent.image !== null && pageContent.image.trim() !== "" && (
 					<figure>
@@ -110,7 +106,30 @@ export const SolicitudNoticia = ({ IdPage }: { IdPage: string }) => {
 						</>
 					)}
 				</div>
+				<div className="historia-galeria">
+					{pageContent.gallery?.length > 0 &&
+						pageContent.gallery.map((galeria) => (
+							<div key={galeria.gallery_alt} className="galeria-item">
+								<figure>
+									<Image
+										src={galeria.gallery_url}
+										width={200}
+										height={200}
+										alt={galeria.gallery_alt}
+									/>
+								</figure>
+								<h4>
+									<div
+										dangerouslySetInnerHTML={{
+											__html: galeria.gallery_text
+										}}
+									/>
+								</h4>
+							</div>
+						))}
+				</div>
 			</section>
+			{hasSectionContent && sectionContent}
 		</>
 	);
 };

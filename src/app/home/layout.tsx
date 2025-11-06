@@ -19,7 +19,7 @@ export default function MainLayout({
         <div className="relative z-100">
           <MenuNav />
         </div>
-        <div id="carrusel" className="relative z-10 flex flex-1 items-center justify-end pb-10 pt-12 sm:pb-16">
+        <div id="carrusel" className="relative z-10 flex flex-1 items-center pb-10 pt-12 sm:pb-16">
           <Carrusel />
         </div>
       </header>

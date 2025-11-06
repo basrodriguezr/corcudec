@@ -1,7 +1,6 @@
 'use client'
-import { SolicitudPagina } from "@/app/components/PaginaPlana";
-import { Footer } from "@/app/components";
-import { Acordeon, AcordeonRef } from "@/app/components/Acordeon";
+import { Pagina, Footer } from "@/app/components";
+import { Acordeon, AcordeonRef } from "@/app/components/base/AcordeonBase";
 
 const PAGE_ID = "82";
 const SECTION_ID = "transparencia";
@@ -88,7 +87,7 @@ export default function MostrarPagina() {
 		<>
 		<main className="bg-white text-neutral-900">
 			<div className="contenedor-transparencia">
-				<SolicitudPagina IdPage={PAGE_ID} IdSection={SECTION_ID}/>
+				<Pagina IdPage={PAGE_ID} IdSection={SECTION_ID}/>
 				<Acordeon links={listaLinks} texto={titulo}/>
 			</div>
 		</main>

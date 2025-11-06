@@ -1,7 +1,6 @@
-import { SolicitudNoticia } from "@/app/components/PaginaNoticia";
-import { Footer } from "@/app/components";
+import { Galeria, Footer } from "@/app/components";
 
-const PAGE_ID = "109";
+const GALLERY_ID = "116";
 
 // Componente principal de la vista, ahora usa el componente reutilizable
 export default function MostrarPagina() {
@@ -10,7 +9,7 @@ export default function MostrarPagina() {
 		<>
 			<main className="bg-white text-neutral-900">
 				<div className="contenedor-transparencia">
-					<SolicitudNoticia IdPage={PAGE_ID}/>
+					<Galeria IdGaleria={GALLERY_ID} />
 				</div>
 			</main>
 

@@ -16,7 +16,7 @@ export interface SeccionData {
 }
 
 // URL de la API (definida fuera del componente)
-const API_URL = DRUPAL_HOSTNAME + DRUPAL_ROUTES.SECCION;
+const API_URL = DRUPAL_HOSTNAME + DRUPAL_ROUTES.SECCIONES;
 
 // 2. Función de Obtención de Datos
 export const fetchSecciones = async (value : string) => {
@@ -27,7 +27,6 @@ export const fetchSecciones = async (value : string) => {
 	try {
 		const response = await fetch(API_URL + value, requestOptions);
 
-		console.log(response);
 		if (!response.ok) {
 			throw Error(`HTTP error! status: ${response.status}`);
 		}

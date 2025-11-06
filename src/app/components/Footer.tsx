@@ -3,7 +3,6 @@
 import Image from 'next/image'
 import React from 'react'
 import { CORCUDEC_ROUTE } from '@/config/global';
-import Link from 'next/link';
 
 export const Footer = () => {
     return (
@@ -81,7 +80,7 @@ export const Footer = () => {
                         <ul className="footer-menu flex flex-col gap-2">
                             <li><a href={CORCUDEC_ROUTE + "/contactanos"}>CONTÁCTENOS</a></li>
                             <li><a href={CORCUDEC_ROUTE + "/transparencia"}>TRANSPARENCIA</a></li>
-                            {/* <li><a href={CORCUDEC_ROUTE + "/modeloPrevencionDelito"}>MODELO DE PREVENCIÓN DEL DELITO</a></li> */}
+                            <li><a href={CORCUDEC_ROUTE + "/modeloPrevencionDelito"}>MODELO DE PREVENCIÓN DEL DELITO</a></li>
                         </ul>
 
                     </div>
