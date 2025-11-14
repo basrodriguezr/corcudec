@@ -20,7 +20,6 @@ export const Abonos = () => {
           alt="Abonos"
         />
       </Link>
-      
     </div>
   )
 }

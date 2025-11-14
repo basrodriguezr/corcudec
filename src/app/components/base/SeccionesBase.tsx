@@ -1,53 +1,31 @@
 "use client";
 import Image from "next/image";
-import { useState, useEffect, useCallback } from "react";
-import { fetchSecciones, SeccionData } from "@/app/components/data/Seccion";
+import Link from "next/link";
+import { useState } from "react";
 
-// Estados para seguimiento de carga y posibles errores
-type FetchState = "LOADING" | "LOADED" | "ERROR";
+// Definimos las estructuras de datos
+export interface SeccionData {
+	id: string;
+	title: string;
+	image: string;
+	content: string;
+	hidden: string;
+	gallery: {
+		gallery_url: string;
+		gallery_alt: string;
+		gallery_text: string;
+	}[];
+	files: {
+		file_url: string;
+		file_text: string;
+	}[];
+	published: boolean;
+}
 
-export const SolicitudSeccion = ({ IdSeccion }: { IdSeccion: string }) => {
-	const [seccion, setSeccion] = useState<SeccionData[]>([]);
-	const [status, setStatus] = useState<FetchState>("LOADING");
+export const SolicitudSeccion = ({ seccion }: { seccion: SeccionData[] }) => {
 	const [verMasAbierto, setVerMasAbierto] = useState(false);
 
-	const loadSecciones = useCallback(async (id: string) => {
-		setStatus("LOADING");
-		try {
-			const data = await fetchSecciones(id);
-
-			if (data.length > 0) {
-				setSeccion(data); // data puede ser un objeto o undefined
-				setStatus("LOADED");
-			} else setStatus("ERROR");
-		} catch (error) {
-			console.error(error);
-			setStatus("ERROR");
-			// No es necesario loguear aquí, ya se hace en fetchCarrusel
-		}
-	}, []);
-
-	useEffect(() => {
-		loadSecciones(IdSeccion);
-	}, [IdSeccion, loadSecciones]); // CORRECTO: El array vacío [] asegura que se ejecute solo al montar.
-
 	if (seccion.length > 0) {
-		// Manejo de Estados de Carga y Error
-		if (status === "LOADING") {
-			return (
-				<div className="flex justify-center items-center h-48 text-lg font-semibold text-gray-700">
-					Cargando Sección...
-				</div>
-			);
-		}
-		// 💡 Optimización: Si el estado es ERROR o si el contenido es undefined después de cargar
-		if (status === "ERROR" || !seccion) {
-			return (
-				<div className="flex justify-center items-center h-48 text-lg font-semibold text-red-900">
-					No se pudo cargar la Sección.
-				</div>
-			);
-		}
 		return (
 			<>
 				{seccion.map((sectionContent) => (
@@ -110,6 +88,19 @@ export const SolicitudSeccion = ({ IdSeccion }: { IdSeccion: string }) => {
 										</button>
 									</>
 								)}
+						</div>
+						<div className="historia-links">
+							{sectionContent.files.map((files, index)=>(
+								<Link
+									key={"urlsec" + index}
+									href={files.file_url}
+									target="_blank"
+									rel="noreferrer"
+									className="btn-url2"
+								>
+									{files.file_text}
+								</Link>
+							))}
 						</div>
 						<div className="historia-galeria">
 							{sectionContent.gallery?.length > 0 &&

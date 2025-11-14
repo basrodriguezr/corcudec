@@ -52,7 +52,7 @@ export const CarruselBase = ({ slides }: CarruselBaseProps) => {
         }}
       >
         {slides.map((slide, index) => (
-          <SwiperSlide key={index + slide.url} className="event-slide">
+          <SwiperSlide key={index} className="event-slide">
             <a
               href={slide.url}
               className="event-card"

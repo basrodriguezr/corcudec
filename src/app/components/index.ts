@@ -6,3 +6,4 @@ export { Zona } from './base/ZonaBase';
 export { Footer } from './Footer';
 export { Pagina } from './data/PaginaData';
 export { Galeria } from './data/GaleriaData';
+export { Acordeon } from './data/AcordeonData';

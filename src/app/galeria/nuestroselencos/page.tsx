@@ -1,3 +1,4 @@
+"use client"
 import { Galeria, Footer } from "@/app/components";
 
 const GALLERY_ID = "117";

@@ -2,8 +2,9 @@
 
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { fetchNoticia, Noticias } from "@/app/components/data/Noticias";
-import { Acordeon, AcordeonRef } from "@/app/components/base/AcordeonBase";
+import { AcordeonItems, AcordeonRef } from "@/app/components/base/AcordeonBase";
 import { Pagina, Footer } from "@/app/components";
+import { title } from "process";
 
 const PAGE_ID = "102";
 const SECTION_ID = "noticias-principal";
@@ -27,7 +28,6 @@ export default function MostrarNoticias() {
                 setNoticias(data);
             } else {
                 // Manejo de caso en que los datos no son el formato esperado
-                setError("La estructura de los datos de noticias no es válida.");
                 setNoticias([]);
             }
         } catch (err) {
@@ -46,13 +46,15 @@ export default function MostrarNoticias() {
 
     // useMemo: Se utiliza para calcular el array de enlaces solo cuando el array 'noticias' cambia.
     // Esto previene recálculos innecesarios en cada render si otras partes del estado cambiaran.
-    const linksAcordeon = useMemo(() => {
-        return noticias.map(element => ({
-            href: `/noticias/${element.position}`,
-            target: "",
-            rel: "",
-            text: `${element.date} - ${element.title}`,
-        } as AcordeonRef));
+    const linksAcordeon : AcordeonItems[] = useMemo(() => {
+        return noticias.map(element => (
+            {
+                href: `/noticias/${element.position}`,
+                target: "",
+                rel: "",
+                text: `${element.date} - ${element.title}`,
+            }
+        ));
     }, [noticias]);
 
     // Renderizado Condicional: Estructura más clara para mostrar estados.
@@ -71,11 +73,14 @@ export default function MostrarNoticias() {
 				</div>
             );
         }
+        const acordeones : AcordeonRef[] = [{
+            title:TITULO_SECCION,
+            links:linksAcordeon,
+            open:true // Por defecto abierto
+        }]
         return (
-            <Acordeon 
-                links={linksAcordeon} 
-                texto={TITULO_SECCION} 
-                abierto={true} // Por defecto abierto
+            <AcordeonItems
+                acordeones={acordeones}
             />
         );
     };
@@ -86,7 +91,7 @@ export default function MostrarNoticias() {
             <main className="bg-white text-neutral-900">
                 <div className="contenedor-transparencia">
                     <Pagina IdPage={PAGE_ID} IdSection={SECTION_ID} />
-                    {renderContent()}
+                    {noticias.length > 0 && renderContent()}
                 </div>
             </main>
 

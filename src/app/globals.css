@@ -135,82 +135,82 @@ body {
 
 	.abono {
 		@apply grid
-    min-h-[15vh] 
-    bg-black 
-    justify-center 
-    content-center 
-    px-6 
-    py-10;
+			min-h-[15vh] 
+			bg-black 
+			justify-center 
+			content-center 
+			px-6 
+			py-10;
 	}
 
 	.abono iframe {
-		@apply mx-auto 
-      h-auto 
-      w-full 
-      max-w-[580px];
+		@apply mx-auto
+			h-auto 
+			w-full 
+			max-w-[580px];
 	}
 
 	.contact-list {
 		@apply list-none 
-      p-0 
-      m-0;
+			p-0 
+			m-0;
 	}
 
 	.contact-item {
 		@apply flex      
-      items-center 
-      gap-2 
-      mb-2.5 
-      justify-center 
-      font-[14px];
+			items-center 
+			gap-2 
+			mb-2.5 
+			justify-center 
+			font-[14px];
 	}
 
 	.icon {
 		@apply text-white 
-      inline-grid
-      place-items-center
-      min-w-5;
+			inline-grid
+			place-items-center
+			min-w-5;
 	}
 
 	.social-row {
 		@apply flex
-      gap-4.5
-      justify-center
-      mt-2;
+			gap-4.5
+			justify-center
+			mt-2;
 	}
 
 	/* tailwind.css o styles.css */
 	.social {
 		@apply w-[44px] 
-      h-[44px] 
-      rounded-full 
-      grid 
-      place-items-center
-      border-[1.5px] 
-      border-white/90 
-      text-white 
-      no-underline
-      transition-all 
-      duration-150 
-      ease-[cubic-bezier(.25,.1,.25,1)]
-      backdrop-blur-[2px]
-      hover:-translate-y-0.5 
-      hover:bg-white/10;
+			h-[44px] 
+			rounded-full 
+			grid 
+			place-items-center
+			border-[1.5px] 
+			border-white/90 
+			text-white 
+			no-underline
+			transition-all 
+			duration-150 
+			ease-[cubic-bezier(.25,.1,.25,1)]
+			backdrop-blur-[2px]
+			hover:-translate-y-0.5 
+			hover:bg-white/10;
 	}
 
 	/* .multimedia {
     @apply min-h-[55vh] 
-      bg-[url('/img/seccion3.webp')] 
-      max-w-[var(--max-wrap)] 
-      mx-auto
-      grid 
-      grid-cols-[2fr_1.2fr] 
-      gap-8 
-      items-center 
-      text-left 
-      p-5
-      text-white
-      text-sm;
+		bg-[url('/img/seccion3.webp')] 
+		max-w-[var(--max-wrap)] 
+		mx-auto
+		grid 
+		grid-cols-[2fr_1.2fr] 
+		gap-8 
+		items-center 
+		text-left 
+		p-5
+		text-white
+		text-sm;
   } */
 
 	.multimedia {
@@ -230,15 +230,15 @@ body {
 	}
 
 	/* .video-texto {
-    @apply justify-self-start 
-      self-start 
-      -ml-20 
-      mt-25 
-      text-white 
-      text-[15px] 
-      text-justify 
-      max-w-[480px] 
-      w-[420px];
+		@apply justify-self-start 
+			self-start 
+			-ml-20 
+			mt-25 
+			text-white 
+			text-[15px] 
+			text-justify 
+			max-w-[480px] 
+			w-[420px];
   } */
 
 	.galeria {
@@ -247,62 +247,62 @@ body {
 
 	/* .galeria {
     @apply min-h-[60vh] 
-      bg-black
-      text-white
-      pt-14
-      pb-14
-      pl-10
-      pr-10;
+		bg-black
+		text-white
+		pt-14
+		pb-14
+		pl-10
+		pr-10;
   } */
 
 	.items-galeria {
 		@apply mx-auto grid w-full max-w-[var(--max-wrap)] grid-cols-1 gap-10 px-4 no-underline;
 		/* @apply grid 
-      grid-cols-3
-    text-yellow-400 
-      mx-auto
-      max-w-[var(--max-wrap)] 
-      [gap:8px_10px] 
-      no-underline; */
+			grid-cols-3
+			text-yellow-400 
+			mx-auto
+			max-w-[var(--max-wrap)] 
+			[gap:8px_10px] 
+			no-underline; */
 	}
 
 	.item-galeria {
 		@apply flex
-      flex-col
-      items-center
-      m-[30px];
+			flex-col
+			items-center
+			m-[30px];
 	}
 
 	.form-card {
 		@apply mt-[34px] 
-      mx-auto
-      w-[min(920px,100%)]
-      bg-gradient-to-b from-[#3f3f3f] to-[#2f2f2f]
-      rounded-[32px]
-      py-[34px] px-[clamp(18px,4vw,48px)]
-      shadow-[var(--shadow)]
-      relative
-      after:content-[''] after:absolute after:inset-0
-      after:rounded-[32px]
-      after:shadow-[inset_0_0_0_1px_rgba(255,255,255,.06)]
-      after:pointer-events-none
-      text-white;
+			mx-auto
+			w-[min(920px,100%)]
+			bg-gradient-to-b from-[#3f3f3f] to-[#2f2f2f]
+			rounded-[32px]
+			py-[34px] px-[clamp(18px,4vw,48px)]
+			shadow-[var(--shadow)]
+			relative
+			after:content-[''] after:absolute after:inset-0
+			after:rounded-[32px]
+			after:shadow-[inset_0_0_0_1px_rgba(255,255,255,.06)]
+			after:pointer-events-none
+			text-white;
 	}
 
 	.form-title {
 		@apply text-center 
-      font-semibold 
-      tracking-[0.2px] 
-      mt-[2px] 
-      mb-[26px]
-      text-[2rem];
+			font-semibold 
+			tracking-[0.2px] 
+			mt-[2px] 
+			mb-[26px]
+			text-[2rem];
 	}
 
 	.helper {
 		@apply mt-3
-      text-center 
-      text-[0.9rem]
-      text-gray-400;
+			text-center 
+			text-[0.9rem]
+			text-gray-400;
 	}
 
 	.field {
@@ -315,15 +315,15 @@ body {
 
 	.field-input {
 		@apply h-[56px]
-      w-full
-      border-0
-      rounded-full
-      px-[22px]
-      text-[1.05rem]
-      bg-[#fff7fb] 
-      text-[#222] outline-none
-      shadow-[inset_0_1px_0_rgba(0,0,0,.08)]
-      placeholder:text-[#888];
+			w-full
+			border-0
+			rounded-2xl
+			px-4
+			text-[1.05rem]
+			bg-[#fff7fb] 
+			text-[#222] outline-none
+			shadow-[inset_0_1px_0_rgba(0,0,0,.08)]
+			placeholder:text-[#888];
 	}
 
 	#tipo {
@@ -332,28 +332,28 @@ body {
 
 	.btn-send {
 		@apply block
-      mt-[20px]
-      mx-auto
-      py-[10px]
-      px-[42px]
-      h-[54px]
-      rounded-full
-      border-2
-      border-white
-      bg-[#581911]
-      text-white
-      font-extrabold
-      tracking-[0.6px]
-      shadow-[0_8px_24px_rgba(0,0,0,.25)]
-      cursor-pointer
-      transition-[transform,box-shadow,background-color]
-      duration-[120ms] ease-in-out
-      hover:-translate-y-px
-      hover:bg-[var(--accent-dark)]
-      hover:shadow-[0_12px_28px_rgba(0,0,0,.3)]
-      focus-visible:outline-[3px]
-      focus-visible:outline-white/60
-      focus-visible:outline-offset-2;
+			mt-[20px]
+			mx-auto
+			py-[10px]
+			px-[42px]
+			h-[54px]
+			rounded-full
+			border-2
+			border-white
+			bg-[#581911]
+			text-white
+			font-extrabold
+			tracking-[0.6px]
+			shadow-[0_8px_24px_rgba(0,0,0,.25)]
+			cursor-pointer
+			transition-[transform,box-shadow,background-color]
+			duration-[120ms] ease-in-out
+			hover:-translate-y-px
+			hover:bg-[var(--accent-dark)]
+			hover:shadow-[0_12px_28px_rgba(0,0,0,.3)]
+			focus-visible:outline-[3px]
+			focus-visible:outline-white/60
+			focus-visible:outline-offset-2;
 	}
 
 	.btn-url {
@@ -431,35 +431,35 @@ body {
 
 	.historia-section {
 		@apply max-w-[1100px] 
-      w-full
-      mx-auto 
-      mb-[20px] 
-      px-5
-      leading-[1.7] 
-      text-base 
-      text-[#222];
+			w-full
+			mx-auto 
+			mb-[20px] 
+			px-5
+			leading-[1.7] 
+			text-base 
+			text-[#222];
 	}
 
 	.contenedor-transparencia {
 		@apply flex
-      flex-col 
-      bg-white 
-      bg-no-repeat
-      [background-image:url('/img/TEXTURA/NUBE1.png'),url('/img/TEXTURA/NUBE2.png'),url('/img/TEXTURA/NUBE3.png')]
-      [background-position:-30%_18%,78%_32%,146%_82%]
-      [background-size:600px,600px,600px];
+			flex-col 
+			bg-white 
+			bg-no-repeat
+			[background-image:url('/img/TEXTURA/NUBE1.png'),url('/img/TEXTURA/NUBE2.png'),url('/img/TEXTURA/NUBE3.png')]
+			[background-position:-30%_18%,78%_32%,146%_82%]
+			[background-size:600px,600px,600px];
 	}
 
 	.historia-titulo {
 		@apply inline-block 
-      relative 
-      my-[20px];
+			relative 
+			my-[20px];
 	}
 
 	.historia-titulo > span {
 		/* si tu Tailwind permite @apply con valores arbitrarios, deja la línea de text-[...] */
 		@apply bg-[#504e4f] text-white font-bold text-[clamp(0.8rem,3vw,1.2rem)]
-      px-5 py-2 relative z-[2] whitespace-nowrap;
+			px-5 py-2 relative z-[2] whitespace-pre-wrap;
 	}
 
 	/* el ::before hay que dejarlo como CSS normal */
@@ -476,74 +476,74 @@ body {
 
 	.historia-texto {
 		@apply flex 
-      flex-col
-      mb-4;
+			flex-col
+			mb-4;
 	}
 
 	.historia-texto div ul {
 		@apply list-disc
-      pl-5
-      font-[system-ui];
+			pl-5
+			font-[system-ui];
 	}
 
 	.historia-texto div h3 {
 		@apply text-3xl 
-      font-bold
-      my-2;
+			font-bold
+			my-2;
 	}
 
 	.historia-texto .ver-mas-btn {
 		@apply inline-flex
-      leading-4;
+			leading-4;
 	}
 
 	.historia-texto p {
 		@apply mb-5 mt-5 
-      text-justify
-      text-base font-[system-ui];
+			text-justify
+			text-base font-[system-ui];
 	}
 
 	.titulo-pagina {
 		@apply max-w-[1100]
-      mt-7 mb-2
-      mr-auto ml-auto
-      pt-0 pb-7
-      text-[clamp(20px,3.8vw,42px)] 
-      text-[#581911] 
-      leading-[1.15];
+			mt-7 mb-2
+			mr-auto ml-auto
+			pt-0 pb-7
+			text-[clamp(20px,3.8vw,42px)] 
+			text-[#581911] 
+			leading-[1.15];
 	}
 
 	.titulo {
 		@apply text-[clamp(20px,3.8vw,42px)] 
-      text-[#581911] 
-      leading-[1.15]
-      font-semibold 
-      mb-2
-      mt-0;
+			text-[#581911] 
+			leading-[1.15]
+			font-semibold 
+			mb-2
+			mt-0;
 	}
 
 	.ver-mas-btn {
 		@apply bg-[#ffffffcc]
-      border 
-      border-[#2c2b2b] 
-      text-[#2c2b2b]
-      text-[15px] 
-      py-0.5 px-2.5
-      ml-auto
-      cursor-pointer 
-      inline-flex 
-      items-center 
-      gap-2
-      font-sans 
-      uppercase 
-      bg-clip-padding 
-      select-none
-      hover:bg-black
-      hover:text-white
-      hover:transition-[0.3s]
-      active:bg-transparent
-      active:text-black
-      active:outline-none;
+			border 
+			border-[#2c2b2b] 
+			text-[#2c2b2b]
+			text-[15px] 
+			py-0.5 px-2.5
+			ml-auto
+			cursor-pointer 
+			inline-flex 
+			items-center 
+			gap-2
+			font-sans 
+			uppercase 
+			bg-clip-padding 
+			select-none
+			hover:bg-black
+			hover:text-white
+			hover:transition-[0.3s]
+			active:bg-transparent
+			active:text-black
+			active:outline-none;
 	}
 
 	.accordion-btn {
@@ -597,11 +597,11 @@ body {
 
 	.historia-galeria {
 		@apply grid 
-      grid-cols-1
-      md:grid-cols-2
-      gap-x-5
-      gap-y-8
-      mb-5;
+			grid-cols-1
+			md:grid-cols-2
+			gap-x-5
+			gap-y-8
+			mb-5;
 	}
 
 	.abono-item {
@@ -622,25 +622,25 @@ body {
 
 	.galeria-item {
 		@apply grid 
-      grid-cols-3
-      gap-4
-      items-center;
+			grid-cols-3
+			gap-4
+			items-center;
 	}
 
 	.galeria-item img {
 		@apply w-[100%]
-      aspect-square
-      object-cover
-      rounded-md
-      block
-      max-w-[100%];
+			aspect-square
+			object-cover
+			rounded-md
+			block
+			max-w-[100%];
 	}
 
 	.galeria-item h4 {
 		@apply font-semibold
-      text-2xl
-      leading-[1.2]
-      col-span-2;
+			text-2xl
+			leading-[1.2]
+			col-span-2;
 	}
 
 	@media (min-width: 768px) {
@@ -681,71 +681,81 @@ body {
 
 	.gal-foto {
 		@apply grid 
-      grid-cols-1 
-      gap-4 
-      sm:grid-cols-2 
-      xl:grid-cols-3 
-      2xl:grid-cols-4;
+			grid-cols-1 
+			gap-4 
+			sm:grid-cols-2 
+			xl:grid-cols-3 
+			2xl:grid-cols-4;
 	}
 
 	.gal-det {
 		@apply relative
-      row-span-2
-      items-center 
-      justify-center 
-      gap-4 
-      overflow-hidden 
-      rounded-3xl 
-      border 
-      border-white/10 
-      bg-white/5 
-      px-6 
-      text-center 
-      text-white 
-      shadow-[0_30px_60px_rgba(0,0,0,0.45)] 
-      after:pointer-events-none 
-      after:absolute 
-      after:inset-0 
-      after:rounded-3xl 
-      after:shadow-[0_0_40px_rgba(255,255,255,0.08)] 
-      lg:pt-0
-      content-center;
+			row-span-2
+			items-center 
+			justify-center 
+			gap-4 
+			overflow-hidden 
+			rounded-3xl 
+			border 
+			border-white/10 
+			bg-white/5 
+			px-6 
+			text-center 
+			text-white 
+			shadow-[0_30px_60px_rgba(0,0,0,0.45)] 
+			after:pointer-events-none 
+			after:absolute 
+			after:inset-0 
+			after:rounded-3xl 
+			after:shadow-[0_0_40px_rgba(255,255,255,0.08)] 
+			lg:pt-0
+			content-center;
 	}
 
-  .gal-btnbase {
-    @apply border 
-      border-white/20
-      rounded-full
-      px-4 py-2 
-      font-semibold;
-  }
+	.gal-btnbase {
+		@apply border 
+			border-white/20
+			rounded-full
+			px-4 py-2 
+			font-semibold;
+	}
 
-  .gal-btn1 {
-    @apply absolute;
-  }
+	.gal-btn1 {
+		@apply absolute;
+	}
 
-  .gal-btn2 {
-    @apply absolute
-    top-1/2
-    hidden
-    -translate-y-1/2
-    items-center
-    justify-center
-    bg-black/60
-    hover:bg-black/20
-    text-sm
-    uppercase
-    tracking-widest
-    backdrop-blur
-    md:flex;
-  }
+	.gal-btn2 {
+		@apply absolute
+			top-1/2
+			hidden
+			-translate-y-1/2
+			items-center
+			justify-center
+			bg-black/60
+			hover:bg-black/20
+			text-sm
+			uppercase
+			tracking-widest
+			backdrop-blur
+			md:flex;
+	}
 
-  .gal-btn3 {
-    @apply bg-white/10
-      text-white
-      transition
-      hover:bg-white/20;
-  }
+	.gal-btn3 {
+		@apply bg-white/10
+			text-white
+			transition
+			hover:bg-white/20;
+	}
+
+	/* .historia-links a {
+		@apply text-blue-600
+			hover:text-blue-800
+			visited:text-purple-600
+			underline
+			hover:no-underline
+			transition-colors
+			duration-150;
+	} */
 
 	#turnkey-credit {
 		display: none;

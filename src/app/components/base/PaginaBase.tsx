@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
-import { SolicitudSeccion } from "@/app/components/Secciones";
+import { Seccion } from "@/app/components/data/SeccionData";
 
 // Definimos las estructuras de datos
 export interface PageData {
@@ -16,6 +17,10 @@ export interface PageData {
 		gallery_url: string;
 		gallery_alt: string;
 		gallery_text: string;
+	}[];
+	files: {
+		file_url: string;
+		file_text: string;
 	}[];
 	published: boolean;
 }
@@ -43,9 +48,7 @@ export const SolicitudPagina = ({
 	const hasHiddenContent =
 		pageContent.hidden !== null && pageContent.hidden.trim() !== "";
 	// buscamos las secciones según su identificador.
-	const sectionContent = (
-		<SolicitudSeccion IdSeccion={IdSection}></SolicitudSeccion>
-	);
+	const sectionContent = (<Seccion IdSeccion={IdSection} />);
 	// si no existen secciones no se muestran en la página.
 	const hasSectionContent = sectionContent !== null;
 
@@ -105,6 +108,19 @@ export const SolicitudPagina = ({
 							</button>
 						</>
 					)}
+				</div>
+				<div className="historia-links">
+					{pageContent.files.map((files, index)=>(
+						<Link
+							key={"urlsec" + index}
+							href={files.file_url}
+							target="_blank"
+							rel="noreferrer"
+							className="btn-url2"
+						>
+							{files.file_text}
+						</Link>
+					))}
 				</div>
 				<div className="historia-galeria">
 					{pageContent.gallery?.length > 0 &&

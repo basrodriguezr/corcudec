@@ -1,5 +1,5 @@
 // Constantes globales
-export const DRUPAL_HOSTNAME = 'https://drupal.elteatrodesa.cl';
+export const DRUPAL_HOSTNAME = 'https://drupal.corcudec.cl';
 export const CORCUDEC_ROUTE = '';
 
 // Nombres de rutas de la API de Drupal
@@ -15,4 +15,6 @@ export const DRUPAL_ROUTES = {
     NOTICIA: '/api/noticia/',
     GALERIAS: '/api/galerias',
     GALERIA: '/api/galeria/',
+    ACORDEON: '/api/acordeon/',
+    CORREO: '/api/contacto',
 } as const;
