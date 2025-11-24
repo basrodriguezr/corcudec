@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import React from 'react'
 import { CORCUDEC_ROUTE } from '@/config/global';
+import imageLoader from '@/lib/imageLoader';
 
 export const Footer = () => {
     return (
@@ -14,8 +15,8 @@ export const Footer = () => {
                     {/*Inicio logos*/}
                     <div className="flex w-full max-w-xs flex-col items-center gap-6 lg:max-w-none lg:items-start">
                         <div className="flex flex-wrap items-center justify-center gap-6 lg:justify-start">
-                            <Image src={CORCUDEC_ROUTE + "/img/ICONOS/logo_udec.png"} width={175} height={70} alt='Universidad de Concepción - Corporación Cultural' className="h-auto w-[175px] max-w-full" sizes="(max-width: 1024px) 60vw, 175px" />
-                            <Image src={CORCUDEC_ROUTE + "/img/ICONOS/logo_gob.png"} width={90} height={70} alt='Ministerio de las Culturas, las Artes y el Patrimonio' className="h-auto w-[90px] max-w-full" sizes="(max-width: 1024px) 40vw, 90px" />                        </div>
+                            <Image loader={imageLoader} src={CORCUDEC_ROUTE + "/img/ICONOS/logo_udec.png"} width={175} height={70} alt='Universidad de Concepción - Corporación Cultural' className="h-auto w-[175px] max-w-full" sizes="(max-width: 1024px) 60vw, 175px" />
+                            <Image loader={imageLoader} src={CORCUDEC_ROUTE + "/img/ICONOS/logo_gob.png"} width={90} height={70} alt='Ministerio de las Culturas, las Artes y el Patrimonio' className="h-auto w-[90px] max-w-full" sizes="(max-width: 1024px) 40vw, 90px" />                        </div>
                     </div>
                     {/*Fin logos*/}
 
@@ -129,4 +130,3 @@ const YoutubeIcon = () => (
         <path d="m10 15 5-3-5-3z"></path>
     </svg>
 );
-
