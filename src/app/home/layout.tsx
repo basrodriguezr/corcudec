@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import { Carrusel, MenuNav, Footer } from "../components";
 
 const metadataBase = new URL("https://www.corcudec.cl");
-const defaultImage = "/img/violonchelista.png";
+const defaultImage = "/img/violonchelista.webp";
 
 export const metadata: Metadata = {
   metadataBase,
@@ -65,7 +65,7 @@ export default function MainLayout({
         })}
       </Script>
       {/*INICIO CABECERA*/}
-      <header className="relative flex min-h-[50vh] flex-col overflow-hidden bg-[url('/img/violonchelista.png')] bg-cover bg-center bg-no-repeat">
+      <header className="relative flex min-h-[50vh] flex-col overflow-hidden bg-[url('/img/violonchelista.webp')] bg-cover bg-center bg-no-repeat">
         <div className="absolute inset-0 bg-black/55" />
         <div className="relative z-100">
           <MenuNav />
@@ -81,7 +81,7 @@ export default function MainLayout({
       {/*FIN CUERPO*/}
 
       {/*INICIO FOOTER*/}
-      <footer className="relative min-h-[60vh] bg-[url('/img/FOOTER.png')] bg-cover bg-center bg-no-repeat">
+      <footer className="relative min-h-[60vh] bg-[url('/img/FOOTER.webp')] bg-cover bg-center bg-no-repeat">
         <div className="absolute inset-0 pointer-events-none bg-black/10" />
         <Footer />
       </footer>

@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import "./globals.css";
 
 const metadataBase = new URL("https://www.corcudec.cl");
-const defaultImage = "/img/public/violonchelista.png";
+const defaultImage = "/img/public/violonchelista.webp";
 
 export const metadata: Metadata = {
   metadataBase,
