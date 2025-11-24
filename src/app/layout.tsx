@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   description:
     "Corporación Cultural Universidad de Concepción promueve la programación artística, la formación y el acceso a la cultura en la región del Biobío.",
-  icons: "https://www.corcudec.cl/favicon/favicon-32x32.png?ver=202306091143",
+  icons: "https://www.udec.cl/pexterno/sites/default/files/favicon.ico",
   alternates: {
     canonical: "/",
   },

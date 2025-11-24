@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   description:
     "Consulta la programación cultural, fechas y horarios de los espectáculos de la Corporación Cultural Universidad de Concepción.",
-  icons: "https://www.corcudec.cl/favicon/favicon-32x32.png?ver=202306091143",
+  icons: "https://www.udec.cl/pexterno/sites/default/files/favicon.ico",
   alternates: {
     canonical: "/programacion",
   },

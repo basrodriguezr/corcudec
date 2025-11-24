@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   description:
     "Infórmate sobre la cartelera y servicios del Teatro Universidad de Concepción, administrado por la Corporación Cultural.",
-  icons: "https://www.corcudec.cl/favicon/favicon-32x32.png?ver=202306091143",
+  icons: "https://www.udec.cl/pexterno/sites/default/files/favicon.ico",
   alternates: {
     canonical: "/teatro",
   },
