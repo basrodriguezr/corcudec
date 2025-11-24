@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState, useMemo, useCallback } from "react";
+import imageLoader from '@/lib/imageLoader';
 
 // Tipos: Definimos las estructuras de datos
 export interface GaleriaItem {
@@ -81,6 +82,7 @@ export const GaleriaBase = ({ galeria }: { galeria: GaleriaItem }) => {
 								className="group relative w-full cursor-zoom-in overflow-hidden rounded-3xl border border-white/40 shadow-[0_20px_40px_rgba(0,0,0,0.45)] focus:outline-none focus-visible:ring-4 focus-visible:ring-yellow-400"
 							>
 								<Image
+									loader={imageLoader}
 									src={image.gallery_url}
 									alt={image.gallery_alt}
 									width={100}
@@ -107,6 +109,7 @@ export const GaleriaBase = ({ galeria }: { galeria: GaleriaItem }) => {
 					>
 						<div className="relative aspect-[3/2] w-full overflow-hidden rounded-2xl bg-black">
 							<Image
+								loader={imageLoader}
 								src={currentImage.gallery_url}
 								alt={currentImage.gallery_alt}
 								fill

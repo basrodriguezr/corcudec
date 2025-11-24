@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import imageLoader from "@/lib/imageLoader";
 
 // Definimos las estructuras de datos
 export interface NewsData {
@@ -42,6 +43,7 @@ export const NoticiaBase = ({ news }: { news: NewsData }) => {
                 {news.image && news.image.trim() !== "" && (
                     <figure>
                         <Image
+                            loader={imageLoader}
                             src={news.image}
                             width={1060}
                             height={360}
@@ -61,8 +63,8 @@ export const NoticiaBase = ({ news }: { news: NewsData }) => {
                             <div
                                 id="bloque-ver-mas"
                                 className={`transition-all duration-500 ease-in-out overflow-hidden ${verMasAbierto
-                                        ? "max-h-[2000px] opacity-100 mt-4"
-                                        : "max-h-0 opacity-0"
+                                    ? "max-h-[2000px] opacity-100 mt-4"
+                                    : "max-h-0 opacity-0"
                                     }`}
                                 aria-hidden={!verMasAbierto}
                             >

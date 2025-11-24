@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import imageLoader from "@/lib/imageLoader";
 
 // Definimos las estructuras de datos
 export interface ProgramaPage {
@@ -53,6 +54,7 @@ export const SolicitudPrograma = ({ pagina }: { pagina: ProgramaPage[] }) => {
 				{pageContent.image !== null && pageContent.image.trim() !== "" && (
 					<figure>
 						<Image
+							loader={imageLoader}
 							src={pageContent.image}
 							width={1060}
 							height={360}
@@ -108,6 +110,7 @@ export const SolicitudPrograma = ({ pagina }: { pagina: ProgramaPage[] }) => {
 							<div className="programa-item">
 								<figure>
 									<Image
+										loader={imageLoader}
 										src={imagen.image_url}
 										width={200}
 										height={200}

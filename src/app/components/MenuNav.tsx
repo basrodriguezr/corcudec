@@ -75,7 +75,7 @@ export const MenuNav = () => {
                 <div className="flex h-20 items-center justify-between">
 
                     <div className="flex-shrink-0">
-                        <Link href="/home/main" onClick={() => { setIsMenuOpen(false); setOpenDesktopMenu(null); }}>␊
+                        <Link href="/home/main" onClick={() => { setIsMenuOpen(false); setOpenDesktopMenu(null); }}>
                             <Image loader={imageLoader} src={CORCUDEC_ROUTE + "/img/logoudec.png"} width={130} height={50} alt="Universidad de Concepción" sizes="(max-width: 1024px) 120px, 130px" priority />
                         </Link>
                     </div>

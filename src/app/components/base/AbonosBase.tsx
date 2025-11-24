@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import imageLoader from "@/lib/imageLoader";
 import Link from "next/link";
 
 // Definimos las estructuras de datos
@@ -53,6 +54,7 @@ export const SolicitudAbonos = ({ pagina }: { pagina: AbonoPage[] }) => {
 								<figure className="abonos-items" key={index2}>
 									<Link href={items.link_url} target="_blank" rel="noreferrer">
 										<Image
+											loader={imageLoader}
 											src={items.image_url}
 											width={200}
 											height={200}
