@@ -101,12 +101,12 @@ export const SolicitudPrograma = ({ pagina }: { pagina: ProgramaPage[] }) => {
 				</div>
 			</section>
 			{pageContent.sections.map((secciones, index)=>(
-				<section key={index}>
+				<section key={index} className="historia-section">
 					<h2 className="historia-titulo">
 						<span>{secciones.section_title}</span>
 					</h2>
 					{secciones.images_links.map((imagen, ix)=>(
-						<div className="historia-programa">
+						<div key={ix} className="historia-programa">
 							<div className="programa-item">
 								<figure>
 									<Image

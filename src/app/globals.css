@@ -612,6 +612,10 @@ body {
 		@apply text-lg font-bold my-2 w-100 text-center;
 	}
 
+	.programa-item div {
+		@apply w-100;
+	}
+
 	.programa-item figure {
 		@apply h-full content-center bg-neutral-700;
 	}
