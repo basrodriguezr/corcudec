@@ -101,40 +101,44 @@ export const SolicitudPrograma = ({ pagina }: { pagina: ProgramaPage[] }) => {
 				</div>
 			</section>
 			{pageContent.sections.map((secciones, index) => (
-				<section key={`section-${index}`}>
-					<h2 className="historia-titulo">
-						<span>{secciones.section_title}</span>
-					</h2>
-					{secciones.images_links.map((imagen, imageIndex) => (
-						<div className="historia-programa" key={`${imagen.image_url}-${imageIndex}`}>
-							<div className="programa-item">
-								<figure>
-									<Image
-										loader={imageLoader}
-										src={imagen.image_url}
-										width={200}
-										height={200}
-										alt={imagen.image_alt}
-										sizes="(max-width: 640px) 80vw, 200px"
-									/>
-								</figure>
-							</div>
-							<div className="programa-item">
-								<h3>{imagen.title}</h3>
-								<div dangerouslySetInnerHTML={{ __html: imagen.text }} />
-								<div className="w-100 text-center">
-									<Link
-										className="btn-url my-4"
-										href={imagen.link_url}
-										target="_blank"
-									>
-										Comprar Aquí
-									</Link>
+				secciones.section_title && (
+					<section key={`section-${index}`} className="historia-section">
+						<h2 className="historia-titulo">
+							<span>{secciones.section_title}</span>
+						</h2>
+						{secciones.images_links.map((imagen, imageIndex) => (
+							imagen.link_url && (
+								<div className="historia-programa" key={`${imagen.image_url}-${imageIndex}`}>
+									<div className="programa-item">
+										<figure>
+											<Image
+												loader={imageLoader}
+												src={imagen.image_url}
+												width={200}
+												height={200}
+												alt={imagen.image_alt}
+												sizes="(max-width: 640px) 80vw, 200px"
+											/>
+										</figure>
+									</div>
+									<div className="programa-item">
+										<h3>{imagen.title}</h3>
+										<div dangerouslySetInnerHTML={{ __html: imagen.text }} />
+										<div className="w-100 text-center">
+											<Link
+												className="btn-url my-4"
+												href={imagen.link_url}
+												target="_blank"
+											>
+												Comprar Aquí
+											</Link>
+										</div>
+									</div>
 								</div>
-							</div>
-						</div>
-					))}
-				</section>
+							)
+						))}
+					</section>
+				)
 			))}
 		</>
 	);

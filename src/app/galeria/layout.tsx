@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   description:
     "Recorre la galería multimedia de la Corporación Cultural Universidad de Concepción con imágenes y momentos destacados.",
-  icons: "https://www.corcudec.cl/favicon/favicon-32x32.png?ver=202306091143",
+  icons: "https://www.udec.cl/pexterno/sites/default/files/favicon.ico",
   alternates: {
     canonical: "/galeria",
   },

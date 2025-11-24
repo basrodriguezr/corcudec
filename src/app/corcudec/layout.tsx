@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   description:
     "Conoce la misión, historia y gestión cultural de la Corporación Cultural Universidad de Concepción.",
-  icons: "https://www.corcudec.cl/favicon/favicon-32x32.png?ver=202306091143",
+  icons: "https://www.udec.cl/pexterno/sites/default/files/favicon.ico",
   alternates: {
     canonical: "/corcudec",
   },
