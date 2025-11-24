@@ -13,7 +13,7 @@ export default function MostrarPagina() {
 				</div>
 			</main>
 			
-			<footer className="relative min-h-[60vh] bg-[url('/img/FOOTER.png')] bg-cover bg-center bg-no-repeat text-white">
+			<footer className="relative min-h-[60vh] bg-[url('/img/FOOTER.webp')] bg-cover bg-center bg-no-repeat text-white">
 				<div className="absolute inset-0 pointer-events-none" />
 				<Footer />
 			</footer>

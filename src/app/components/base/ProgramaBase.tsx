@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import imageLoader from "@/lib/imageLoader";
 
 // Definimos las estructuras de datos
 export interface ProgramaPage {
@@ -53,11 +54,12 @@ export const SolicitudPrograma = ({ pagina }: { pagina: ProgramaPage[] }) => {
 				{pageContent.image !== null && pageContent.image.trim() !== "" && (
 					<figure>
 						<Image
+							loader={imageLoader}
 							src={pageContent.image}
 							width={1060}
 							height={360}
 							alt={pageContent.title}
-							unoptimized={false}
+							sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1060px"
 						/>
 					</figure>
 				)}
@@ -68,11 +70,10 @@ export const SolicitudPrograma = ({ pagina }: { pagina: ProgramaPage[] }) => {
 							{/* Contenido oculto: Se ajustan las clases para una transición suave */}
 							<div
 								id="bloque-ver-mas"
-								className={`transition-all duration-500 ease-in-out overflow-hidden ${
-									verMasAbierto
-										? "max-h-[2000px] opacity-100 mt-4"
-										: "max-h-0 opacity-0"
-								}`}
+								className={`transition-all duration-500 ease-in-out overflow-hidden ${verMasAbierto
+									? "max-h-[2000px] opacity-100 mt-4"
+									: "max-h-0 opacity-0"
+									}`}
 								aria-hidden={!verMasAbierto}
 							>
 								<div dangerouslySetInnerHTML={{ __html: pageContent.hidden }} />
@@ -88,9 +89,8 @@ export const SolicitudPrograma = ({ pagina }: { pagina: ProgramaPage[] }) => {
 							>
 								{verMasAbierto ? "Ver menos" : "Ver más"}
 								<span
-									className={`transition-transform duration-300 ${
-										verMasAbierto ? "rotate-180" : ""
-									}`}
+									className={`transition-transform duration-300 ${verMasAbierto ? "rotate-180" : ""
+										}`}
 									aria-hidden
 								>
 									▼
@@ -100,21 +100,22 @@ export const SolicitudPrograma = ({ pagina }: { pagina: ProgramaPage[] }) => {
 					)}
 				</div>
 			</section>
-			{pageContent.sections.map((secciones, index)=>(
-				<section key={index} className="historia-section">
+			{pageContent.sections.map((secciones, index) => (
+				<section key={`section-${index}`}>
 					<h2 className="historia-titulo">
 						<span>{secciones.section_title}</span>
 					</h2>
-					{secciones.images_links.map((imagen, ix)=>(
-						<div key={ix} className="historia-programa">
+					{secciones.images_links.map((imagen, imageIndex) => (
+						<div className="historia-programa" key={`${imagen.image_url}-${imageIndex}`}>
 							<div className="programa-item">
 								<figure>
 									<Image
+										loader={imageLoader}
 										src={imagen.image_url}
 										width={200}
 										height={200}
 										alt={imagen.image_alt}
-										unoptimized={false}
+										sizes="(max-width: 640px) 80vw, 200px"
 									/>
 								</figure>
 							</div>
@@ -122,9 +123,9 @@ export const SolicitudPrograma = ({ pagina }: { pagina: ProgramaPage[] }) => {
 								<h3>{imagen.title}</h3>
 								<div dangerouslySetInnerHTML={{ __html: imagen.text }} />
 								<div className="w-100 text-center">
-									<Link 
-										className="btn-url my-4" 
-										href={imagen.link_url} 
+									<Link
+										className="btn-url my-4"
+										href={imagen.link_url}
 										target="_blank"
 									>
 										Comprar Aquí

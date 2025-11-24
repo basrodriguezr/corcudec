@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import imageLoader from "@/lib/imageLoader";
 import Link from "next/link";
-import { useState } from "react";
 
 // Definimos las estructuras de datos
 export interface AbonoPage {
@@ -54,12 +54,13 @@ export const SolicitudAbonos = ({ pagina }: { pagina: AbonoPage[] }) => {
 								<figure className="abonos-items" key={index2}>
 									<Link href={items.link_url} target="_blank" rel="noreferrer">
 										<Image
+											loader={imageLoader}
 											src={items.image_url}
 											width={200}
 											height={200}
 											alt={items.image_alt}
 											className="w-full h-auto object-cover"
-											unoptimized={false}
+											sizes="(max-width: 640px) 80vw, 200px"
 										/>
 									</Link>
 								</figure>

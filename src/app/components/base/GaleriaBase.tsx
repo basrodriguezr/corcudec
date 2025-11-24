@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState, useMemo, useCallback } from "react";
+import imageLoader from '@/lib/imageLoader';
 
 // Tipos: Definimos las estructuras de datos
 export interface GaleriaItem {
@@ -36,17 +37,17 @@ export const GaleriaBase = ({ galeria }: { galeria: GaleriaItem }) => {
 	}, []);
 
 	const showPrevious = useCallback(() => {
-    setActiveIndex((current) => {
-		if (current === null) return current;
-		return current === 0 ? galeria.gallery.length - 1 : current - 1;
-	});
+		setActiveIndex((current) => {
+			if (current === null) return current;
+			return current === 0 ? galeria.gallery.length - 1 : current - 1;
+		});
 	}, [galeria.gallery.length]);
 
 	const showNext = useCallback(() => {
-	setActiveIndex((current) => {
-		if (current === null) return current;
-		return current === galeria.gallery.length - 1 ? 0 : current + 1;
-	});
+		setActiveIndex((current) => {
+			if (current === null) return current;
+			return current === galeria.gallery.length - 1 ? 0 : current + 1;
+		});
 	}, [galeria.gallery.length]);
 
 	return (
@@ -81,13 +82,13 @@ export const GaleriaBase = ({ galeria }: { galeria: GaleriaItem }) => {
 								className="group relative w-full cursor-zoom-in overflow-hidden rounded-3xl border border-white/40 shadow-[0_20px_40px_rgba(0,0,0,0.45)] focus:outline-none focus-visible:ring-4 focus-visible:ring-yellow-400"
 							>
 								<Image
+									loader={imageLoader}
 									src={image.gallery_url}
 									alt={image.gallery_alt}
 									width={100}
 									height={100}
 									className="h-auto w-full rounded-3xl object-cover brightness-90 transition duration-200 group-hover:brightness-105"
 									sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, (max-width: 1536px) 33vw, 25vw"
-									unoptimized={false}
 								/>
 							</button>
 						))}
@@ -108,13 +109,12 @@ export const GaleriaBase = ({ galeria }: { galeria: GaleriaItem }) => {
 					>
 						<div className="relative aspect-[3/2] w-full overflow-hidden rounded-2xl bg-black">
 							<Image
+								loader={imageLoader}
 								src={currentImage.gallery_url}
 								alt={currentImage.gallery_alt}
 								fill
 								className="object-cover"
 								sizes="(max-width: 768px) 100vw, (max-width: 1280px) 80vw, 60vw"
-								priority
-								unoptimized={false}
 							/>
 							<button
 								type="button"

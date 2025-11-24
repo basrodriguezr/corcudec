@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectCoverflow } from "swiper/modules";
-
+import imageLoader from '@/lib/imageLoader';
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 
@@ -61,12 +61,13 @@ export const CarruselBase = ({ slides }: CarruselBaseProps) => {
               aria-label={slide.tag ? `${slide.tag} - ${slide.title}` : slide.title}
             >
               <Image
+                loader={imageLoader}
                 src={slide.image}
                 alt={slide.tag ? `${slide.tag} - ${slide.title}` : slide.title}
                 fill
                 className="event-card__image"
-                priority={index < 3}
-                unoptimized={false}
+                priority={index === 0}
+                sizes="(max-width: 640px) 90vw, (max-width: 1024px) 70vw, 960px"
               />
             </a>
           </SwiperSlide>

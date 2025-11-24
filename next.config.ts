@@ -1,38 +1,41 @@
 // import type { NextConfig } from "next";
 
 // const nextConfig: NextConfig = {
-//   output: "standalone",  
+//   output: "export",
+//   reactStrictMode: true,
+//   trailingSlash: true,
 //   images: {
 //     unoptimized: true,
 //     remotePatterns: [
-//       { protocol: 'https', hostname: 'www.corcudec.cl' },
-//       { protocol: 'https', hostname: 'media-scl2-1.cdn.whatsapp.net' },
-//       { protocol: 'https', hostname: 'pokeapi.co' },
-//       { protocol: 'https', hostname: 'raw.githubusercontent.com' }
+//       { protocol: "https", hostname: "www.corcudec.cl" },
+//       {
+//         protocol: "https",
+//         hostname: "drupal.corcudec.cl",
+//         port: "",
+//         pathname: "/sites/default/files/**",
+//       },
 //     ],
-//     // o más simple:
-//     // domains: ['cdn.midominio.cl', 'mi-otro-cdn.com']
 //   },
 // };
 
 // export default nextConfig;
-
-
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "export",
   reactStrictMode: true,
-  // basePath: "/corcudec",
   trailingSlash: true,
   images: {
     unoptimized: true,
+    loader: "custom",
+    loaderFile: "./src/lib/imageLoader.ts",
     remotePatterns: [
       { protocol: "https", hostname: "www.corcudec.cl" },
-      { protocol: "https", hostname: "drupal.corcudec.cl", port: "", pathname: "/sites/default/files/**" },
+      { protocol: "https", hostname: "corcudec.cl" },
+      { protocol: "https", hostname: "drupal.elteatrodesa.cl" },
+      { protocol: "https", hostname: "drupal.corcudec.cl" },
     ],
   },
 };
 
 export default nextConfig;
-
