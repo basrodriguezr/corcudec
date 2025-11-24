@@ -68,11 +68,10 @@ export const SolicitudPrograma = ({ pagina }: { pagina: ProgramaPage[] }) => {
 							{/* Contenido oculto: Se ajustan las clases para una transición suave */}
 							<div
 								id="bloque-ver-mas"
-								className={`transition-all duration-500 ease-in-out overflow-hidden ${
-									verMasAbierto
-										? "max-h-[2000px] opacity-100 mt-4"
-										: "max-h-0 opacity-0"
-								}`}
+								className={`transition-all duration-500 ease-in-out overflow-hidden ${verMasAbierto
+									? "max-h-[2000px] opacity-100 mt-4"
+									: "max-h-0 opacity-0"
+									}`}
 								aria-hidden={!verMasAbierto}
 							>
 								<div dangerouslySetInnerHTML={{ __html: pageContent.hidden }} />
@@ -88,9 +87,8 @@ export const SolicitudPrograma = ({ pagina }: { pagina: ProgramaPage[] }) => {
 							>
 								{verMasAbierto ? "Ver menos" : "Ver más"}
 								<span
-									className={`transition-transform duration-300 ${
-										verMasAbierto ? "rotate-180" : ""
-									}`}
+									className={`transition-transform duration-300 ${verMasAbierto ? "rotate-180" : ""
+										}`}
 									aria-hidden
 								>
 									▼
@@ -100,13 +98,13 @@ export const SolicitudPrograma = ({ pagina }: { pagina: ProgramaPage[] }) => {
 					)}
 				</div>
 			</section>
-			{pageContent.sections.map((secciones, index)=>(
+			{pageContent.sections.map((secciones, index) => (
 				<section key={index}>
 					<h2 className="historia-titulo">
 						<span>{secciones.section_title}</span>
 					</h2>
-					{secciones.images_links.map((imagen, ix)=>(
-						<div className="historia-programa">
+					{secciones.images_links.map((imagen, ix) => (
+						<div className="historia-programa" key={imagen.image_url || ix}>
 							<div className="programa-item">
 								<figure>
 									<Image
@@ -122,9 +120,9 @@ export const SolicitudPrograma = ({ pagina }: { pagina: ProgramaPage[] }) => {
 								<h3>{imagen.title}</h3>
 								<div dangerouslySetInnerHTML={{ __html: imagen.text }} />
 								<div className="w-100 text-center">
-									<Link 
-										className="btn-url my-4" 
-										href={imagen.link_url} 
+									<Link
+										className="btn-url my-4"
+										href={imagen.link_url}
 										target="_blank"
 									>
 										Comprar Aquí
