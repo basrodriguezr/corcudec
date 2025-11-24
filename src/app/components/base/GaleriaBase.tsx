@@ -36,17 +36,17 @@ export const GaleriaBase = ({ galeria }: { galeria: GaleriaItem }) => {
 	}, []);
 
 	const showPrevious = useCallback(() => {
-    setActiveIndex((current) => {
-		if (current === null) return current;
-		return current === 0 ? galeria.gallery.length - 1 : current - 1;
-	});
+		setActiveIndex((current) => {
+			if (current === null) return current;
+			return current === 0 ? galeria.gallery.length - 1 : current - 1;
+		});
 	}, [galeria.gallery.length]);
 
 	const showNext = useCallback(() => {
-	setActiveIndex((current) => {
-		if (current === null) return current;
-		return current === galeria.gallery.length - 1 ? 0 : current + 1;
-	});
+		setActiveIndex((current) => {
+			if (current === null) return current;
+			return current === galeria.gallery.length - 1 ? 0 : current + 1;
+		});
 	}, [galeria.gallery.length]);
 
 	return (
@@ -87,7 +87,6 @@ export const GaleriaBase = ({ galeria }: { galeria: GaleriaItem }) => {
 									height={100}
 									className="h-auto w-full rounded-3xl object-cover brightness-90 transition duration-200 group-hover:brightness-105"
 									sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, (max-width: 1536px) 33vw, 25vw"
-									unoptimized={false}
 								/>
 							</button>
 						))}
@@ -113,8 +112,6 @@ export const GaleriaBase = ({ galeria }: { galeria: GaleriaItem }) => {
 								fill
 								className="object-cover"
 								sizes="(max-width: 768px) 100vw, (max-width: 1280px) 80vw, 60vw"
-								priority
-								unoptimized={false}
 							/>
 							<button
 								type="button"

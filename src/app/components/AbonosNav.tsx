@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { CORCUDEC_ROUTE } from '@/config/global';
+import imageLoader from '../../lib/imageLoader';
 
 export const Abonos = () => {
   return (
@@ -14,10 +15,12 @@ export const Abonos = () => {
         className="group items-center"
       >
         <Image
-          src={ CORCUDEC_ROUTE + "/img/abonos.png" }
+          src={CORCUDEC_ROUTE + "/img/abonos.png"}
           width={580}
           height={58}
           alt="Abonos"
+          sizes="(max-width: 640px) 80vw, 580px"
+          loader={imageLoader}
         />
       </Link>
     </div>

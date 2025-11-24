@@ -41,7 +41,7 @@ export const SolicitudSeccion = ({ seccion }: { seccion: SeccionData[] }) => {
 										width={1060}
 										height={360}
 										alt={sectionContent.title}
-										unoptimized={false}
+										sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1060px"
 									/>
 								</figure>
 							)}
@@ -55,11 +55,10 @@ export const SolicitudSeccion = ({ seccion }: { seccion: SeccionData[] }) => {
 										{/* Contenido oculto: Se ajustan las clases para una transición suave */}
 										<div
 											id="bloque-ver-mas"
-											className={`transition-all duration-500 ease-in-out overflow-hidden ${
-												verMasAbierto
+											className={`transition-all duration-500 ease-in-out overflow-hidden ${verMasAbierto
 													? "max-h-[2000px] opacity-100 mt-4"
 													: "max-h-0 opacity-0"
-											}`}
+												}`}
 											aria-hidden={!verMasAbierto}
 										>
 											<div
@@ -79,9 +78,8 @@ export const SolicitudSeccion = ({ seccion }: { seccion: SeccionData[] }) => {
 										>
 											{verMasAbierto ? "Ver menos" : "Ver más"}
 											<span
-												className={`transition-transform duration-300 ${
-													verMasAbierto ? "rotate-180" : ""
-												}`}
+												className={`transition-transform duration-300 ${verMasAbierto ? "rotate-180" : ""
+													}`}
 												aria-hidden
 											>
 												▼
@@ -91,7 +89,7 @@ export const SolicitudSeccion = ({ seccion }: { seccion: SeccionData[] }) => {
 								)}
 						</div>
 						<div className="historia-links">
-							{sectionContent.files.map((files, index)=>(
+							{sectionContent.files.map((files, index) => (
 								<Link
 									key={"urlsec" + index}
 									href={files.file_url}
@@ -113,7 +111,7 @@ export const SolicitudSeccion = ({ seccion }: { seccion: SeccionData[] }) => {
 												width={200}
 												height={200}
 												alt={galeria.gallery_alt}
-												unoptimized={false}
+												sizes="(max-width: 640px) 80vw, 200px"
 											/>
 										</figure>
 										<h4>

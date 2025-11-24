@@ -57,7 +57,7 @@ export const SolicitudPrograma = ({ pagina }: { pagina: ProgramaPage[] }) => {
 							width={1060}
 							height={360}
 							alt={pageContent.title}
-							unoptimized={false}
+							sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1060px"
 						/>
 					</figure>
 				)}
@@ -99,12 +99,12 @@ export const SolicitudPrograma = ({ pagina }: { pagina: ProgramaPage[] }) => {
 				</div>
 			</section>
 			{pageContent.sections.map((secciones, index) => (
-				<section key={index}>
+				<section key={`section-${index}`}>
 					<h2 className="historia-titulo">
 						<span>{secciones.section_title}</span>
 					</h2>
-					{secciones.images_links.map((imagen, ix) => (
-						<div className="historia-programa" key={imagen.image_url || ix}>
+					{secciones.images_links.map((imagen, imageIndex) => (
+						<div className="historia-programa" key={`${imagen.image_url}-${imageIndex}`}>
 							<div className="programa-item">
 								<figure>
 									<Image
@@ -112,7 +112,7 @@ export const SolicitudPrograma = ({ pagina }: { pagina: ProgramaPage[] }) => {
 										width={200}
 										height={200}
 										alt={imagen.image_alt}
-										unoptimized={false}
+										sizes="(max-width: 640px) 80vw, 200px"
 									/>
 								</figure>
 							</div>

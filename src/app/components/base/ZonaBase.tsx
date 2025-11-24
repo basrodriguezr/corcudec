@@ -59,9 +59,8 @@ export const Zona = () => {
 							href={href}
 							target={target}
 							rel={target === "_blank" ? "noreferrer" : undefined}
-							className={`group ${
-								published ? "flex flex-col" : "hidden"
-							} items-center`}
+							className={`group ${published ? "flex flex-col" : "hidden"
+								} items-center`}
 						>
 							<figure className="flex flex-col items-center gap-4">
 								<figcaption className="text-center uppercase tracking-[0.5px]">
@@ -76,7 +75,7 @@ export const Zona = () => {
 										width={400}
 										height={400}
 										className="aspect-square w-full object-cover transition-transform duration-200 ease-out group-hover:scale-[1.03]"
-										unoptimized={false}
+										sizes="(max-width: 768px) 80vw, 280px"
 									/>
 								</div>
 							</figure>

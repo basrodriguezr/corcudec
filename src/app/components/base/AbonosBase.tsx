@@ -58,7 +58,7 @@ export const SolicitudAbonos = ({ pagina }: { pagina: AbonoPage[] }) => {
 											height={200}
 											alt={items.image_alt}
 											className="w-full h-auto object-cover"
-											unoptimized={false}
+											sizes="(max-width: 640px) 80vw, 200px"
 										/>
 									</Link>
 								</figure>

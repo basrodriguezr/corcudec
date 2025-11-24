@@ -70,7 +70,7 @@ export const SolicitudPagina = ({
 							width={1060}
 							height={360}
 							alt={pageContent.title}
-							unoptimized={false}
+							sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1060px"
 						/>
 					</figure>
 				)}
@@ -81,11 +81,10 @@ export const SolicitudPagina = ({
 							{/* Contenido oculto: Se ajustan las clases para una transición suave */}
 							<div
 								id="bloque-ver-mas"
-								className={`transition-all duration-500 ease-in-out overflow-hidden ${
-									verMasAbierto
+								className={`transition-all duration-500 ease-in-out overflow-hidden ${verMasAbierto
 										? "max-h-[2000px] opacity-100 mt-4"
 										: "max-h-0 opacity-0"
-								}`}
+									}`}
 								aria-hidden={!verMasAbierto}
 							>
 								<div dangerouslySetInnerHTML={{ __html: pageContent.hidden }} />
@@ -101,9 +100,8 @@ export const SolicitudPagina = ({
 							>
 								{verMasAbierto ? "Ver menos" : "Ver más"}
 								<span
-									className={`transition-transform duration-300 ${
-										verMasAbierto ? "rotate-180" : ""
-									}`}
+									className={`transition-transform duration-300 ${verMasAbierto ? "rotate-180" : ""
+										}`}
 									aria-hidden
 								>
 									▼
@@ -113,7 +111,7 @@ export const SolicitudPagina = ({
 					)}
 				</div>
 				<div className="historia-links">
-					{pageContent.files.map((files, index)=>(
+					{pageContent.files.map((files, index) => (
 						<Link
 							key={"urlsec" + index}
 							href={files.file_url}

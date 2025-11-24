@@ -20,6 +20,12 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Manejo de imágenes y export estático
+
+- El proyecto utiliza un `loader` personalizado en `src/lib/imageLoader.ts` para que los componentes `<Image>` funcionen con `next export` sin depender del optimizador de Vercel.
+- Los dominios permitidos para imágenes remotas están configurados en `next.config.ts` (`www.corcudec.cl`, `corcudec.cl`, `drupal.elteatrodesa.cl` y `drupal.corcudec.cl`). Si se agregan nuevos orígenes, actualiza `remotePatterns` antes de usarlos.
+- Para mantener las imágenes listas en una exportación estática, guarda los recursos necesarios en la carpeta `public/` o genera las versiones optimizadas previo al despliegue (por ejemplo, descargando los archivos desde Drupal al momento de preparar el build) y mantenlos sincronizados con el contenido.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

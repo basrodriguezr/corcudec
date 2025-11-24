@@ -65,8 +65,8 @@ export const CarruselBase = ({ slides }: CarruselBaseProps) => {
                 alt={slide.tag ? `${slide.tag} - ${slide.title}` : slide.title}
                 fill
                 className="event-card__image"
-                priority={index < 3}
-                unoptimized={false}
+                priority={index === 0}
+                sizes="(max-width: 640px) 90vw, (max-width: 1024px) 70vw, 960px"
               />
             </a>
           </SwiperSlide>
