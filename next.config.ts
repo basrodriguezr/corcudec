@@ -26,6 +26,7 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   trailingSlash: true,
   images: {
+    unoptimized: true,
     loader: "custom",
     loaderFile: "./src/lib/imageLoader.ts",
     remotePatterns: [
