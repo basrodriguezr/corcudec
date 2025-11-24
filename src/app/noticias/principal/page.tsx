@@ -4,7 +4,6 @@ import { useState, useEffect, useCallback, useMemo } from "react";
 import { fetchNoticia, Noticias } from "@/app/components/data/Noticias";
 import { AcordeonItems, AcordeonRef } from "@/app/components/base/AcordeonBase";
 import { Pagina, Footer } from "@/app/components";
-import { title } from "process";
 
 const PAGE_ID = "102";
 const SECTION_ID = "noticias-principal";
@@ -19,7 +18,7 @@ export default function MostrarNoticias() {
     const loadNoticias = useCallback(async () => {
         setIsLoading(true); // Inicia la carga
         setError(null);    // Limpia errores previos
-        
+
         try {
             // Se asume que fetchNoticia puede devolver un array vacío o null/undefined si hay un problema
             const data = await fetchNoticia();
@@ -46,7 +45,7 @@ export default function MostrarNoticias() {
 
     // useMemo: Se utiliza para calcular el array de enlaces solo cuando el array 'noticias' cambia.
     // Esto previene recálculos innecesarios en cada render si otras partes del estado cambiaran.
-    const linksAcordeon : AcordeonItems[] = useMemo(() => {
+    const linksAcordeon: AcordeonItems[] = useMemo(() => {
         return noticias.map(element => (
             {
                 href: `/noticias/${element.position}`,
@@ -69,14 +68,14 @@ export default function MostrarNoticias() {
         if (error) {
             return (
                 <div className="flex justify-center items-center h-48 text-lg font-semibold text-red-900">
-					No se pueden cargas más Noticias.
-				</div>
+                    No se pueden cargas más Noticias.
+                </div>
             );
         }
-        const acordeones : AcordeonRef[] = [{
-            title:TITULO_SECCION,
-            links:linksAcordeon,
-            open:true // Por defecto abierto
+        const acordeones: AcordeonRef[] = [{
+            title: TITULO_SECCION,
+            links: linksAcordeon,
+            open: true // Por defecto abierto
         }]
         return (
             <AcordeonItems
