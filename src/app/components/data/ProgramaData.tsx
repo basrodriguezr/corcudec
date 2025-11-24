@@ -2,13 +2,13 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { DRUPAL_HOSTNAME, DRUPAL_ROUTES } from "@/config/global";
-import { PageData, SolicitudPagina } from "../base/PaginaBase";
+import { ProgramaPage, SolicitudPrograma } from "../base/ProgramaBase";
 
 // URL de la API (definida fuera del componente)
-const API_URL = DRUPAL_HOSTNAME + DRUPAL_ROUTES.PAGINA;
+const API_URL = DRUPAL_HOSTNAME + DRUPAL_ROUTES.PROGRAMA;
 
 // Función de Obtención de Datos
-async function fetchPaginas(value : string): Promise<PageData[]> {
+async function fetchPaginas(value : string): Promise<ProgramaPage[]> {
 	const requestOptions = {
 		method: "GET",
 		headers: { "Content-Type": "application/json" },
@@ -21,7 +21,7 @@ async function fetchPaginas(value : string): Promise<PageData[]> {
 			throw new Error(`HTTP error! status: ${response.status}`);
 		}
 
-		const result = (await response.json()) as PageData[];
+		const result = (await response.json()) as ProgramaPage[];
 
 		return result;
 	} catch (error) {
@@ -35,12 +35,10 @@ type FetchState = 'LOADING' | 'LOADED' | 'ERROR';
 
 export const Pagina = ({
 	IdPage,
-	IdSection
 }:{
 	IdPage: string,
-	IdSection: string
 }) =>{
-	const [pagina, setPagina] = useState<PageData[]>([]);
+	const [pagina, setPagina] = useState<ProgramaPage[]>([]);
 	const [status, setStatus] = useState<FetchState>('LOADING');
 
 	const loadPaginas = useCallback(async (id: string) => {
@@ -80,5 +78,5 @@ export const Pagina = ({
 		);
 	}
 
-	return <SolicitudPagina pagina={pagina} IdSection={IdSection} />;
+	return <SolicitudPrograma pagina={pagina} />;
 };

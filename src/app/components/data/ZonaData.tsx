@@ -18,7 +18,8 @@ const API_URL = DRUPAL_HOSTNAME + DRUPAL_ROUTES.ZONA;
 export const fetchZona = async (): Promise<ZonaItem[]> => {
 	const requestOptions = {
 		method: "GET",
-		headers: { "Content-Type": "application/json" }
+		headers: { "Content-Type": "application/json" },
+		next: { revalidate: 300 }
 	};
 	try {
 		const response = await fetch(API_URL, requestOptions);

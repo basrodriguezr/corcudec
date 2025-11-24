@@ -11,7 +11,8 @@ const API_URL = DRUPAL_HOSTNAME + DRUPAL_ROUTES.SECCIONES;
 export const fetchSecciones = async (value : string) => {
 	const requestOptions = {
 		method: "GET",
-		headers: { "Content-Type": "application/json" }
+		headers: { "Content-Type": "application/json" },
+		next: { revalidate: 300 }
 	};
 	try {
 		const response = await fetch(API_URL + value, requestOptions);
@@ -65,7 +66,7 @@ export const Seccion = ({ IdSeccion }: { IdSeccion : string }) => {
 			</div>
 		);
 	}
-	console.log(seccion);
+
 	// 💡 Optimización: Si el estado es ERROR o si el contenido es undefined después de cargar
 	if (status === "ERROR" || !seccion) {
 		return (

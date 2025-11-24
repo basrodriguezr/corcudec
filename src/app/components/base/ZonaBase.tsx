@@ -76,6 +76,7 @@ export const Zona = () => {
 										width={400}
 										height={400}
 										className="aspect-square w-full object-cover transition-transform duration-200 ease-out group-hover:scale-[1.03]"
+										unoptimized={false}
 									/>
 								</div>
 							</figure>

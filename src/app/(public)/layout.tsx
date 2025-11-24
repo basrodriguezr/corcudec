@@ -12,7 +12,7 @@ export default function PublicLayout({ children }: Readonly<{ children: ReactNod
   return (
     <div className="min-h-screen bg-[url('/img/seccion2.png')] bg-cover bg-center bg-no-repeat">
       {/*INICIO CABECERA*/}
-      <header className="relative flex flex-col overflow-visible bg-gradient-to-r from-neutral-100 via-neutral-900 to-black text-white opacity-100 z-100">
+      <header className="relative flex flex-col bg-white bg-nubes-multiple">
         <div className="relative">
           <MenuNav />
         </div>

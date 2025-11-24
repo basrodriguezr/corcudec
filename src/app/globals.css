@@ -507,7 +507,7 @@ body {
 		@apply max-w-[1100]
 			mt-7 mb-2
 			mr-auto ml-auto
-			pt-0 pb-7
+			py-0
 			text-[clamp(20px,3.8vw,42px)] 
 			text-[#581911] 
 			leading-[1.15];
@@ -595,7 +595,7 @@ body {
 		font-weight: 600;
 	}
 
-	.historia-galeria {
+	.historia-galeria, .historia-programa {
 		@apply grid 
 			grid-cols-1
 			md:grid-cols-2
@@ -604,6 +604,22 @@ body {
 			mb-5;
 	}
 
+	.programa-item {
+		@apply py-2 justify-items-center;
+	}
+
+	.programa-item h3 {
+		@apply text-lg font-bold my-2 w-100 text-center;
+	}
+
+	.programa-item figure {
+		@apply h-full content-center bg-neutral-700;
+	}
+
+	.programa-item img {
+		@apply w-max;
+	}
+/* 
 	.abono-item {
 		@apply flex items-start gap-4;
 	}
@@ -618,8 +634,8 @@ body {
 
 	.abono-item a h4 {
 		@apply text-2xl font-semibold;
-	}
-
+	} 
+*/
 	.galeria-item {
 		@apply grid 
 			grid-cols-3
@@ -641,6 +657,24 @@ body {
 			text-2xl
 			leading-[1.2]
 			col-span-2;
+	}
+
+	.abonos-items {
+		@apply
+			max-w-md 
+			w-full 
+			shadow-2xl 
+			shadow-black 
+			transform 
+			transition-all 
+			duration-300 
+			ease-in-out 
+			cursor-pointer 
+			hover:scale-[1.03] 
+			hover:shadow-2xl 
+			active:scale-[0.98] 
+			active:border-b-0 
+			active:translate-y-1;
 	}
 
 	@media (min-width: 768px) {

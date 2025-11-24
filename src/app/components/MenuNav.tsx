@@ -75,7 +75,7 @@ export const MenuNav = () => {
 
                     <div className="flex-shrink-0">
                         <Link href="/home/main" onClick={() => { setIsMenuOpen(false); setOpenDesktopMenu(null); }}>
-                            <Image src={CORCUDEC_ROUTE + "/img/logoudec.png"} width={130} height={50} alt="Universidad de Concepción" />
+                            <Image src={CORCUDEC_ROUTE + "/img/logoudec.png"} width={130} height={50} alt="Universidad de Concepción" unoptimized={false} />
                         </Link>
                     </div>
 

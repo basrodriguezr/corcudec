@@ -14,8 +14,8 @@ export const Footer = () => {
                     {/*Inicio logos*/}
                     <div className="flex w-full max-w-xs flex-col items-center gap-6 lg:max-w-none lg:items-start">
                         <div className="flex flex-wrap items-center justify-center gap-6 lg:justify-start">
-                            <Image src={CORCUDEC_ROUTE + "/img/ICONOS/logo_udec.png"} width={175} height={70} alt='Universidad de Concepción - Corporación Cultural' className="h-auto w-[175px] max-w-full" />
-                            <Image src={CORCUDEC_ROUTE + "/img/ICONOS/logo_gob.png"} width={90} height={70} alt='Ministerio de las Culturas, las Artes y el Patrimonio' className="h-auto w-[90px] max-w-full" />
+                            <Image src={CORCUDEC_ROUTE + "/img/ICONOS/logo_udec.png"} width={175} height={70} alt='Universidad de Concepción - Corporación Cultural' className="h-auto w-[175px] max-w-full" unoptimized={false} />
+                            <Image src={CORCUDEC_ROUTE + "/img/ICONOS/logo_gob.png"} width={90} height={70} alt='Ministerio de las Culturas, las Artes y el Patrimonio' className="h-auto w-[90px] max-w-full" unoptimized={false} />
                         </div>
                     </div>
                     {/*Fin logos*/}

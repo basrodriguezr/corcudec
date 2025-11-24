@@ -3,36 +3,30 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { Seccion } from "@/app/components/data/SeccionData";
 
 // Definimos las estructuras de datos
-export interface PageData {
+export interface ProgramaPage {
 	id: string;
 	title: string;
-	text: string;
 	image: string;
 	content: string;
 	hidden: string;
-	gallery: {
-		gallery_url: string;
-		gallery_alt: string;
-		gallery_text: string;
-	}[];
-	files: {
-		file_url: string;
-		file_text: string;
+	sections: {
+		section_title: string;
+		images_links: {
+			image_url: string;
+			image_alt: string;
+			title: string;
+			text: string
+			link_url: string;
+			link_title: string;
+		}[];
 	}[];
 	published: boolean;
 }
 
 // Componente de Presentación
-export const SolicitudPagina = ({
-	pagina,
-	IdSection = ""
-}: {
-	pagina: PageData[];
-	IdSection?: string;
-}) => {
+export const SolicitudPrograma = ({ pagina }: { pagina: ProgramaPage[] }) => {
 	const [verMasAbierto, setVerMasAbierto] = useState(false);
 
 	// Manejo de estado sin datos (si el array está vacío) - Se puede mover a este nivel para que sea más robusto
@@ -47,10 +41,6 @@ export const SolicitudPagina = ({
 	const pageContent = pagina[0];
 	const hasHiddenContent =
 		pageContent.hidden !== null && pageContent.hidden.trim() !== "";
-	// buscamos las secciones según su identificador.
-	const sectionContent = (<Seccion IdSeccion={IdSection} />);
-	// si no existen secciones no se muestran en la página.
-	const hasSectionContent = sectionContent !== null;
 
 	return (
 		<>
@@ -60,9 +50,6 @@ export const SolicitudPagina = ({
 				</div>
 			</section>
 			<section className="historia-section">
-				<h2 className="historia-titulo">
-					<span>{pageContent.text}</span>
-				</h2>
 				{pageContent.image !== null && pageContent.image.trim() !== "" && (
 					<figure>
 						<Image
@@ -112,44 +99,44 @@ export const SolicitudPagina = ({
 						</>
 					)}
 				</div>
-				<div className="historia-links">
-					{pageContent.files.map((files, index)=>(
-						<Link
-							key={"urlsec" + index}
-							href={files.file_url}
-							target="_blank"
-							rel="noreferrer"
-							className="btn-url2"
-						>
-							{files.file_text}
-						</Link>
-					))}
-				</div>
-				<div className="historia-galeria">
-					{pageContent.gallery?.length > 0 &&
-						pageContent.gallery.map((galeria) => (
-							<div key={galeria.gallery_alt} className="galeria-item">
+			</section>
+			{pageContent.sections.map((secciones, index)=>(
+				<section key={index}>
+					<h2 className="historia-titulo">
+						<span>{secciones.section_title}</span>
+					</h2>
+					{secciones.images_links.map((imagen, ix)=>(
+						<div className="historia-programa">
+							<div className="programa-item">
 								<figure>
 									<Image
-										src={galeria.gallery_url}
+										src={imagen.image_url}
 										width={200}
 										height={200}
-										alt={galeria.gallery_alt}
+										alt={imagen.image_alt}
 										unoptimized={false}
 									/>
 								</figure>
-								<h4>
-									<div
-										dangerouslySetInnerHTML={{
-											__html: galeria.gallery_text
-										}}
-									/>
-								</h4>
 							</div>
-						))}
-				</div>
-			</section>
-			{hasSectionContent && sectionContent}
+							<div className="programa-item">
+								<h3>{imagen.title}</h3>
+								<div dangerouslySetInnerHTML={{ __html: imagen.text }} />
+								<div className="w-100 text-center">
+									<Link 
+										className="btn-url my-4" 
+										href={imagen.link_url} 
+										target="_blank"
+									>
+										Comprar Aquí
+									</Link>
+								</div>
+							</div>
+						</div>
+					))}
+				</section>
+			))}
 		</>
 	);
 };
+
+

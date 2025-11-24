@@ -1,20 +1,15 @@
 "use client"
-import { Pagina, Footer, Acordeon } from "@/app/components";
-
-const PAGE_ID = "111";
-const SECTION_ID = "abonos";
+import { Footer } from "@/app/components";
+import { DatosAbonos } from "@/app/components/data/AbonosData";
 
 // Componente principal de la vista, ahora usa el componente reutilizable
 export default function MostrarPagina() {
-	const acordeonContent = ( <Acordeon IdSection={SECTION_ID} /> );
-	const hasAcordeonContent = acordeonContent !== null;
 	//mostramos el resultado
 	return (
 		<>
 			<main className="bg-white text-neutral-900">
 				<div className="contenedor-transparencia">
-					<Pagina IdPage={PAGE_ID} IdSection={SECTION_ID} />
-					{hasAcordeonContent && acordeonContent}
+					<DatosAbonos />
 				</div>
 			</main>
 			

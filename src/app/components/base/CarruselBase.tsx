@@ -66,6 +66,7 @@ export const CarruselBase = ({ slides }: CarruselBaseProps) => {
                 fill
                 className="event-card__image"
                 priority={index < 3}
+                unoptimized={false}
               />
             </a>
           </SwiperSlide>

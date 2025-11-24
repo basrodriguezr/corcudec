@@ -11,6 +11,7 @@ async function fetchCarrusel(): Promise<SlideData[]> {
   const requestOptions = {
     method: "GET",
     headers: { "Content-Type": "application/json" },
+    next: { revalidate: 300 }
   };
 
   try {

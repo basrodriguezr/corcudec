@@ -41,6 +41,7 @@ export const SolicitudSeccion = ({ seccion }: { seccion: SeccionData[] }) => {
 										width={1060}
 										height={360}
 										alt={sectionContent.title}
+										unoptimized={false}
 									/>
 								</figure>
 							)}
@@ -112,6 +113,7 @@ export const SolicitudSeccion = ({ seccion }: { seccion: SeccionData[] }) => {
 												width={200}
 												height={200}
 												alt={galeria.gallery_alt}
+												unoptimized={false}
 											/>
 										</figure>
 										<h4>

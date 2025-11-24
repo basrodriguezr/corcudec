@@ -7,7 +7,7 @@ import { useState } from "react";
 export interface NewsData {
 	id: string;
 	title: string;
-	date: Date;
+	date: string;
 	image: string;
 	content: string;
 	hidden: string;
@@ -33,9 +33,11 @@ export const NoticiaBase = ( {news} : {news:NewsData} ) => {
                 <div className="titulo-pagina">
                     <h1 className="titulo">{news.title}</h1>
                 </div>
+            </section>
+            <section className="historia-section">
                 <h2 className="historia-titulo">
                     {/* Se convierte la fecha a string si no lo es ya */}
-                    <span>{new Date(news.date).toLocaleDateString()}</span>
+                    <span>{news.date}</span>
                 </h2>
                 {news.image && news.image.trim() !== "" && (
                     <figure>
@@ -44,7 +46,7 @@ export const NoticiaBase = ( {news} : {news:NewsData} ) => {
                             width={1060}
                             height={360}
                             alt={news.title}
-                            // Usar className en lugar de clases directas en figure si es necesario
+                            unoptimized={false}
                         />
                     </figure>
                 )}

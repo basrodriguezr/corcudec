@@ -2,26 +2,26 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { DRUPAL_HOSTNAME, DRUPAL_ROUTES } from "@/config/global";
-import { PageData, SolicitudPagina } from "../base/PaginaBase";
+import { AbonoPage, SolicitudAbonos } from "../base/AbonosBase";
 
 // URL de la API (definida fuera del componente)
-const API_URL = DRUPAL_HOSTNAME + DRUPAL_ROUTES.PAGINA;
+const API_URL = DRUPAL_HOSTNAME + DRUPAL_ROUTES.ABONOS;
 
 // Función de Obtención de Datos
-async function fetchPaginas(value : string): Promise<PageData[]> {
+async function fetchPaginas(): Promise<AbonoPage[]> {
 	const requestOptions = {
 		method: "GET",
 		headers: { "Content-Type": "application/json" },
 		next: { revalidate: 300 }
 	};
 	try {
-		const response = await fetch(API_URL + value, requestOptions);
-
+		const response = await fetch(API_URL, requestOptions);
+		
 		if (!response.ok) {
 			throw new Error(`HTTP error! status: ${response.status}`);
 		}
 
-		const result = (await response.json()) as PageData[];
+		const result = (await response.json()) as AbonoPage[];
 
 		return result;
 	} catch (error) {
@@ -33,20 +33,14 @@ async function fetchPaginas(value : string): Promise<PageData[]> {
 // Estados para seguimiento de carga y posibles errores
 type FetchState = 'LOADING' | 'LOADED' | 'ERROR';
 
-export const Pagina = ({
-	IdPage,
-	IdSection
-}:{
-	IdPage: string,
-	IdSection: string
-}) =>{
-	const [pagina, setPagina] = useState<PageData[]>([]);
+export const DatosAbonos = () =>{
+	const [pagina, setPagina] = useState<AbonoPage[]>([]);
 	const [status, setStatus] = useState<FetchState>('LOADING');
 
-	const loadPaginas = useCallback(async (id: string) => {
+	const loadPaginas = useCallback(async () => {
 		setStatus("LOADING");
 		try {
-			const data = await fetchPaginas(id);
+			const data = await fetchPaginas();
 
 			if (data.length > 0) {
 				setPagina(data); // data puede ser un objeto o undefined
@@ -59,8 +53,8 @@ export const Pagina = ({
 	},[]);
 
 	useEffect(() => {
-		loadPaginas(IdPage);
-	}, [IdPage, loadPaginas]);
+		loadPaginas();
+	}, [loadPaginas]);
 
 	// Manejo de Estados de Carga y Error
 	if (status === "LOADING") {
@@ -80,5 +74,5 @@ export const Pagina = ({
 		);
 	}
 
-	return <SolicitudPagina pagina={pagina} IdSection={IdSection} />;
+	return <SolicitudAbonos pagina={pagina} />;
 };

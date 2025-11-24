@@ -11,7 +11,8 @@ const API_URL = DRUPAL_HOSTNAME + DRUPAL_ROUTES.ACORDEON;
 async function fetchAcordeon(value: string): Promise<AcordeonRef[]> {
 	const requestOptions = {
 		method: "GET",
-		headers: { "Content-Type": "application/json" }
+		headers: { "Content-Type": "application/json" },
+		next: { revalidate: 300 }
 	};
 	try {
 		const response = await fetch(API_URL + value, requestOptions);

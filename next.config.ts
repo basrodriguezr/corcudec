@@ -29,6 +29,7 @@ const nextConfig: NextConfig = {
     unoptimized: true,
     remotePatterns: [
       { protocol: "https", hostname: "www.corcudec.cl" },
+      { protocol: "https", hostname: "drupal.corcudec.cl", port: "", pathname: "/sites/default/files/**" },
     ],
   },
 };

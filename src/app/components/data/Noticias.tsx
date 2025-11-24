@@ -16,7 +16,8 @@ const API_URL = DRUPAL_HOSTNAME + DRUPAL_ROUTES.NOTICIAS;
 export const fetchNoticia = async (): Promise<Noticias[]> => {
 	const requestOptions = {
 		method: "GET",
-		headers: { "Content-Type": "application/json" }
+		headers: { "Content-Type": "application/json" },
+		next: { revalidate: 300 }
 	};
 	try {
 		const response = await fetch(API_URL, requestOptions);

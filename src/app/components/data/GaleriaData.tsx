@@ -11,6 +11,7 @@ async function fetchGaleria(value : string): Promise<GaleriaItem[]> {
   const requestOptions = {
     method: "GET",
     headers: { "Content-Type": "application/json" },
+    next: { revalidate: 300 }
   };
 
   try {

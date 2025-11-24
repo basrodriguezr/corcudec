@@ -11,6 +11,7 @@ async function fetchMultimedia(): Promise<MultimediaData[] | undefined> {
   const requestOptions = {
     method: "GET",
     headers: { "Content-Type": "application/json" },
+    next: { revalidate: 300 }
   };
 
   try {
