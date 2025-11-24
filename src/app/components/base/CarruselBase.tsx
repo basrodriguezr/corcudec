@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectCoverflow } from "swiper/modules";
-
+import imageLoader from '@/lib/imageLoader';
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 
@@ -61,6 +61,7 @@ export const CarruselBase = ({ slides }: CarruselBaseProps) => {
               aria-label={slide.tag ? `${slide.tag} - ${slide.title}` : slide.title}
             >
               <Image
+                loader={imageLoader}
                 src={slide.image}
                 alt={slide.tag ? `${slide.tag} - ${slide.title}` : slide.title}
                 fill

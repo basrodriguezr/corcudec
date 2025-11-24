@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { ZonaItem, fetchZona } from "@/app/components/data/ZonaData";
+import imageLoader from '@/lib/imageLoader';
 
 // Estados para seguimiento de carga y posibles errores
 type FetchState = "LOADING" | "LOADED" | "ERROR";
@@ -70,6 +71,7 @@ export const Zona = () => {
 								</figcaption>
 								<div className="w-full max-w-[280px] overflow-hidden rounded-xl">
 									<Image
+										loader={imageLoader}
 										src={image}
 										alt={alt}
 										width={400}
