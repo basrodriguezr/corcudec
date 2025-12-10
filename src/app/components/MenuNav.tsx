@@ -6,29 +6,58 @@ import Link from "next/link";
 import { CORCUDEC_ROUTE } from '@/config/global';
 import imageLoader from '@/lib/imageLoader';
 
-const menuItems = [
+interface SubSubMenuItem {
+    title: string;
+    href: string;
+}
+interface NestedMenuItem {
+    title: string;
+    href: string;
+    id?: string; // Hacemos 'id' opcional, pero lo necesitamos para los toggles anidados
+    subItems?: SubSubMenuItem[];
+}
+interface SimpleMenuItem {
+    id: string;
+    title: string;
+    href: string;
+}
+interface MenuWithSubItems extends SimpleMenuItem {
+    subItems: NestedMenuItem[];
+}
+type MenuItem = SimpleMenuItem | MenuWithSubItems;
+
+const menuItems: MenuItem[] = [
     {
         id: 'corcudec', title: 'CORCUDEC', href: '#', subItems: [
             { title: 'Quiénes Somos', href: '/quienessomos/' },
             { title: 'Equipo', href: '/equipo/' },
             { title: 'Alianzas', href: '/alianzas/' }
         ]
-    },
-    {
+    }, {
         id: 'elencos', title: 'Elencos', href: '#', subItems: [
-            { title: 'Orquesta Sinfónica UdeC', href: '/orquesta/' },
-            { title: 'Coro Sinfónico UdeC', href: '/coro/' },
-            { title: 'Invitados Destacados', href: '/invitados/' }
+            {
+                id: 'orquesta', title: 'Orquesta Sinfónica UdeC', href: '/orquesta/', subItems: [
+                    { title: 'Concursos', href: '/concursos/' }
+                ]
+            },
+            {
+                id: 'coro', title: 'Coro Sinfónico UdeC', href: '/coro/', subItems: [
+                    { title: 'Audiciones', href: '/audiciones/' }
+                ]
+            },
+            {
+                id: 'invitados', title: 'Invitados Destacados', href: '/invitados/', subItems: [
+                    { title: 'MasterClass', href: '/masterclass/' }
+                ]
+            }
         ]
-    },
-    {
+    }, {
         id: 'teatro', title: 'Teatro Udec', href: '#', subItems: [
             { title: 'Historia', href: '/historia/' },
             { title: 'Programas Emblemáticos', href: '/programas/' },
             { title: 'Arriendos', href: '/arriendos/' }
         ]
-    },
-    {
+    }, {
         id: 'programacion', title: 'Programación', href: '#', subItems: [
             { title: 'Temporada Sinfónica', href: '/sinfonica/' },
             { title: 'D’Camara', href: '/camara/' },
@@ -39,6 +68,7 @@ const menuItems = [
         ]
     },
     { id: 'abonos', title: 'Abonos', href: '/abonos/' },
+    { id: 'comunidad', title: 'Comunidad', href: '/comunidad/' },
     { id: 'noticias', title: 'NOTICIAS', href: '/noticias/principal/' },
 ];
 
@@ -46,17 +76,19 @@ export const MenuNav = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [openDesktopMenu, setOpenDesktopMenu] = useState<string | null>(null);
     const [openMobileSubMenu, setOpenMobileSubMenu] = useState<string | null>(null);
+    const [openDesktopSubSubMenu, setOpenDesktopSubSubMenu] = useState<string | null>(null);
+
     const navRef = useRef<HTMLElement>(null);
 
     const handleDesktopMenuToggle = (e: React.MouseEvent, id: string) => {
         e.preventDefault();
         setOpenDesktopMenu(openDesktopMenu === id ? null : id);
     };
-
     const handleMobileSubMenuToggle = (e: React.MouseEvent, id: string) => {
         e.preventDefault();
         setOpenMobileSubMenu(openMobileSubMenu === id ? null : id);
     };
+
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (navRef.current && !navRef.current.contains(event.target as Node)) {
@@ -85,16 +117,47 @@ export const MenuNav = () => {
                                 <li key={item.id} className="relative">
                                     <Link
                                         href={item.href}
-                                        onClick={(e) => item.subItems && handleDesktopMenuToggle(e, item.id)}
+                                        onClick={(e) => 'subItems' in item && item.subItems && handleDesktopMenuToggle(e, item.id)}
                                         className="inline-flex items-center px-2 py-6 hover:text-amber-400 whitespace-nowrap uppercase text-sm font-semibold tracking-wide"
                                     >
                                         {item.title}
                                     </Link>
-                                    {item.subItems && (
+                                    {'subItems' in item && item.subItems && (
                                         <div className={`absolute left-0 top-full mt-2 transition-opacity duration-300 ease-in-out z-[130]  ${openDesktopMenu === item.id ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
                                             <div className="min-w-56 rounded-md bg-black ring-1 ring-white/10 shadow-xl p-2 text-md">
-                                                {item.subItems.map(subItem => (
-                                                    <Link key={subItem.title} href={`/${item.id + subItem.href}`} onClick={() => setOpenDesktopMenu(null)} className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap">{subItem.title}</Link>
+                                                {item.subItems.map((subItem) => (
+                                                    <div key={subItem.title} className="relative">
+                                                        <Link
+                                                            href={`/${item.id + subItem.href}`}
+                                                            className="w-full flex justify-between items-center px-3 py-2 hover:bg-white/5 whitespace-nowrap text-left"
+                                                            onMouseEnter={() => subItem.subItems && setOpenDesktopSubSubMenu(subItem.id || subItem.title)}
+                                                            onClick={() => setOpenDesktopMenu(null)}
+                                                        >
+                                                            {subItem.title}
+                                                            {/* Indicador de que tiene sub-submenú */}
+                                                            {subItem.subItems && (
+                                                                <span className='ms-3'>►</span>
+                                                            )}
+                                                        </Link>
+
+                                                        {/* Renderizado del SEGUNDO SUBMENÚ */}
+                                                        {subItem.subItems && (
+                                                            <div className={`absolute left-full top-0 ml-1 transition-opacity duration-300 ease-in-out z-[140] ${openDesktopSubSubMenu === (subItem.id || subItem.title) ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+                                                                <div className="min-w-56 rounded-md bg-neutral-900 ring-1 ring-white/10 shadow-xl p-2 text-md">
+                                                                    {subItem.subItems.map((subSubItem) => (
+                                                                        <Link 
+                                                                            key={subSubItem.title} 
+                                                                            href={`/${item.id}/${subItem.id}${subSubItem.href}`} 
+                                                                            onClick={() => { setOpenDesktopMenu(null); setOpenDesktopSubSubMenu(null); }} 
+                                                                            className="block px-3 py-2 hover:bg-white/5 whitespace-nowrap"
+                                                                        >
+                                                                            {subSubItem.title}
+                                                                        </Link>
+                                                                    ))}
+                                                                </div>
+                                                            </div>
+                                                        )}
+                                                    </div>
                                                 ))}
                                             </div>
                                         </div>
@@ -121,19 +184,40 @@ export const MenuNav = () => {
                             <div key={item.id}>
                                 <Link
                                     href={item.href}
-                                    onClick={(e) => item.subItems && handleMobileSubMenuToggle(e, item.id)}
+                                    onClick={(e) => 'subItems' in item && item.subItems && handleMobileSubMenuToggle(e, item.id)}
                                     className="w-full flex justify-between items-center rounded-md px-3 py-2 text-base font-semibold text-white hover:bg-gray-700 text-left"
                                 >
                                     <span>{item.title}</span>
                                 </Link>
 
-                                {openMobileSubMenu === item.id && item.subItems && (
-                                    // MODIFICACIÓN: Se reintroducen las clases para el fondo negro del submenú
+                                {openMobileSubMenu === item.id && 'subItems' in item && item.subItems && (
                                     <div className="bg-black rounded-md mt-1 p-2 space-y-1 pl-4">
                                         {item.subItems.map(subItem => (
-                                            <Link key={subItem.title} href={`/${item.id + subItem.href}`} onClick={() => setIsMenuOpen(false)} className="block rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
-                                                {subItem.title}
-                                            </Link>
+                                            <div key={subItem.title}>
+                                                <Link
+                                                    href={`/${item.id + subItem.href}`}
+                                                    className="w-full flex justify-between items-center rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white text-left"
+                                                >
+                                                    <span>{subItem.title}</span>
+                                                    
+                                                </Link>
+
+                                                {/* Renderizado del SEGUNDO SUBMENÚ MÓVIL */}
+                                                {subItem.subItems && (
+                                                    <div className="mt-1 p-2 space-y-1 pl-4">
+                                                        {subItem.subItems.map(subSubItem => (
+                                                            <Link 
+                                                                key={subSubItem.title} 
+                                                                href={`/${item.id}/${subItem.id}${subSubItem.href}`} 
+                                                                onClick={() => setIsMenuOpen(false)} 
+                                                                className="px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white text-left"
+                                                            >
+                                                                • {subSubItem.title}
+                                                            </Link>
+                                                        ))}
+                                                    </div>
+                                                )}
+                                            </div>
                                         ))}
                                     </div>
                                 )}
