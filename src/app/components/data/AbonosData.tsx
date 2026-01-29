@@ -18,7 +18,7 @@ async function fetchPaginas(): Promise<AbonoPage[]> {
 		const response = await fetch(API_URL, requestOptions);
 		
 		if (!response.ok) {
-			throw new Error(`HTTP error! status: ${response.status}`);
+			throw Error(`HTTP error! status: ${response.status}`);
 		}
 
 		const result = (await response.json()) as AbonoPage[];

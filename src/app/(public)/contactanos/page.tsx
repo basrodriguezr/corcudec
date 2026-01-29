@@ -96,7 +96,7 @@ export default function Consultas() {
             if (!res.ok) {
                 // Leer el mensaje de error si el servidor lo proporciona
                 const errorData = await res.json();
-                throw new Error(errorData.message || "Error al enviar el formulario.");
+                throw Error(errorData.message || "Error al enviar el formulario.");
             }
 
             // Éxito

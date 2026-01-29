@@ -18,7 +18,7 @@ async function fetchPaginas(value : string): Promise<PageData[]> {
 		const response = await fetch(API_URL + value, requestOptions);
 
 		if (!response.ok) {
-			throw new Error(`HTTP error! status: ${response.status}`);
+			throw Error(`HTTP error! status: ${response.status}`);
 		}
 
 		const result = (await response.json()) as PageData[];

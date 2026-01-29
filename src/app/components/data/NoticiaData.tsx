@@ -20,7 +20,7 @@ async function fetchNews(value : string): Promise<NewsData[]> {
 
         if (!response.ok) {
             // Si la respuesta no es 200, lanzamos un error HTTP
-            throw new Error(`HTTP error! status: ${response.status}`);
+            throw Error(`HTTP error! status: ${response.status}`);
         }
         
         // Asumimos que la API retorna un array de NewsData

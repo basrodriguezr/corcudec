@@ -18,7 +18,7 @@ async function fetchMultimedia(): Promise<MultimediaData[] | undefined> {
     const response = await fetch(API_URL, requestOptions);
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      throw Error(`HTTP error! status: ${response.status}`);
     }
     // Asumimos que la API retorna un elemento de MultimediaData
     const result = (await response.json()) as MultimediaData[];

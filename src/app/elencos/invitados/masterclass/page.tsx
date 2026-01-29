@@ -1,7 +1,7 @@
 "use client"
 import { Pagina, Footer, Acordeon } from "@/app/components";
 
-const PAGE_ID = "144";
+const PAGE_ID = "146";
 const SECTION_ID = "elencos-invitados-masterclass";
 
 // Componente principal de la vista, ahora usa el componente reutilizable

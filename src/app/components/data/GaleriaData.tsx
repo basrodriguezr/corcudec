@@ -18,7 +18,7 @@ async function fetchGaleria(value : string): Promise<GaleriaItem[]> {
     const response = await fetch(API_URL + value, requestOptions);
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      throw Error(`HTTP error! status: ${response.status}`);
     }
     // Asumimos que la API retorna un elemento de MultimediaData
     const result = (await response.json()) as GaleriaItem[];

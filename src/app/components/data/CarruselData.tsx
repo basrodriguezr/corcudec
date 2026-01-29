@@ -18,7 +18,7 @@ async function fetchCarrusel(): Promise<SlideData[]> {
     const response = await fetch(API_URL, requestOptions);
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      throw Error(`HTTP error! status: ${response.status}`);
     }
     // Usamos SlideData como el tipo de retorno esperado
     const result = (await response.json()) as SlideData[]; 

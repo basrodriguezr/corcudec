@@ -613,7 +613,7 @@ body {
 	}
 
 	.programa-item div {
-		@apply w-100;
+		@apply w-[80%] py-1;
 	}
 
 	.programa-item figure {

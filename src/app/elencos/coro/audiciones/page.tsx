@@ -1,7 +1,7 @@
 "use client"
 import { Pagina, Footer, Acordeon } from "@/app/components";
 
-const PAGE_ID = "142";
+const PAGE_ID = "145";
 const SECTION_ID = "elencos-coro-audiciones";
 
 // Componente principal de la vista, ahora usa el componente reutilizable

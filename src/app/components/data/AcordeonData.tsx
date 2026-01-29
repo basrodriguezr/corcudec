@@ -18,7 +18,7 @@ async function fetchAcordeon(value: string): Promise<AcordeonRef[]> {
 		const response = await fetch(API_URL + value, requestOptions);
 
 		if (!response.ok) {
-			throw new Error(`HTTP error! status: ${response.status}`);
+			throw Error(`HTTP error! status: ${response.status}`);
 		}
 
 		const result = (await response.json()) as AcordeonRef[];
