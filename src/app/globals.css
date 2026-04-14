@@ -27,7 +27,10 @@ body {
 	height: auto !important;
 	transform: scale(0.78);
 	opacity: 0.4;
-	transition: transform 0.4s ease, opacity 0.4s ease, filter 0.4s ease;
+	transition:
+		transform 0.4s ease,
+		opacity 0.4s ease,
+		filter 0.4s ease;
 	will-change: transform;
 	display: flex;
 	align-items: stretch;
@@ -546,37 +549,58 @@ body {
 			active:outline-none;
 	}
 
+	/* Propiedades comunes para ambos botones */
+	.folder-btn,
 	.accordion-btn {
-		background: #e6f0ff;
-		border: 2px solid #cce0ff;
 		color: #003366;
 		font-weight: bold;
+		font-size: 16px;
 		padding: 15px;
 		width: 100%;
 		text-align: left;
 		cursor: pointer;
-		font-size: 16px;
 		position: relative;
+		border: 2px solid;
 	}
 
+	/* Colores específicos */
+	.folder-btn {
+		background: #f9ffd9;
+		border-color: #ffe9c1;
+	}
+	.accordion-btn {
+		background: #e6f0ff;
+		border-color: #cce0ff;
+	}
+
+	/* Flecha y estados */
+	.folder-btn::after,
 	.accordion-btn::after {
 		content: "\25BC";
-		/* flecha hacia abajo */
 		position: absolute;
 		right: 20px;
 		transition: transform 0.3s;
 	}
 
-	.accordion-btn.active::after {
+	.active::after {
 		transform: rotate(180deg);
-		/* gira la flecha */
 	}
 
+	/* Contenido */
+	.folder-content,
 	.accordion-content {
 		display: none;
-		border: 2px solid #cce0ff;
-		border-top: none;
 		padding: 15px;
+		border: 2px solid;
+		border-top: none;
+		background-color: white;
+	}
+
+	.folder-content {
+		border-color: #ffe9c1;
+	}
+	.accordion-content {
+		border-color: #cce0ff;
 	}
 
 	.accordion-content ul {
@@ -595,7 +619,8 @@ body {
 		font-weight: 600;
 	}
 
-	.historia-galeria, .historia-programa {
+	.historia-galeria,
+	.historia-programa {
 		@apply grid 
 			grid-cols-1
 			md:grid-cols-2
@@ -623,7 +648,7 @@ body {
 	.programa-item img {
 		@apply w-max;
 	}
-/* 
+	/* 
 	.abono-item {
 		@apply flex items-start gap-4;
 	}
@@ -664,8 +689,7 @@ body {
 	}
 
 	.abonos-items {
-		@apply
-			max-w-md 
+		@apply max-w-md 
 			w-full 
 			shadow-2xl 
 			shadow-black 

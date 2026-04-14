@@ -2,8 +2,9 @@
 
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { fetchNoticia, Noticias } from "@/app/components/data/Noticias";
-import { AcordeonItems, AcordeonRef } from "@/app/components/base/AcordeonBase";
+import { LinksItems, AcordeonRef, AcordeonItems } from "@/app/components/base/AcordeonBase";
 import { Pagina, Footer } from "@/app/components";
+import Link from "next/link";
 
 const PAGE_ID = "102";
 const SECTION_ID = "noticias-principal";
@@ -45,7 +46,7 @@ export default function MostrarNoticias() {
 
     // useMemo: Se utiliza para calcular el array de enlaces solo cuando el array 'noticias' cambia.
     // Esto previene recálculos innecesarios en cada render si otras partes del estado cambiaran.
-    const linksAcordeon: AcordeonItems[] = useMemo(() => {
+    const linksAcordeon: LinksItems[] = useMemo(() => {
         return noticias.map(element => (
             {
                 href: `/noticias/${element.position}`,
@@ -75,7 +76,8 @@ export default function MostrarNoticias() {
         const acordeones: AcordeonRef[] = [{
             title: TITULO_SECCION,
             links: linksAcordeon,
-            open: true // Por defecto abierto
+            open: true, // Por defecto abierto
+            folders: [] // Sin carpetas, solo enlaces
         }]
         return (
             <AcordeonItems

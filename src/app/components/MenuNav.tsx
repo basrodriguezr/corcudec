@@ -42,7 +42,7 @@ const menuItems: MenuItem[] = [
             },
             {
                 id: 'coro', title: 'Coro Sinfónico UdeC', href: '/coro/', subItems: [
-                    { title: 'Audiciones', href: '/audiciones/' }
+                    { title: 'Convocatorias', href: '/convocatorias/' }
                 ]
             },
             {
